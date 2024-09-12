@@ -1,162 +1,123 @@
 <?php
+require_once __DIR__ . '/../vendor/autoload.php';
 include '../includes/menu.php';
+include '../includes/php/home.php';
 ?>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/home.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-
     <main>
         <div class="content">
             <h2>Pastas</h2>
             <a href="nova_pasta.php"><button class="btn-primary">+ Nova pasta</button></a>
             <a href="novo_arquivo.php"><button class="btn-primary">+ Novo arquivo</button></a>
             <ul class="folder-list">
-                <!-- Financeiro folder -->
                 <li class="folder">
                     <div class="folder-title">
                         Financeiro 
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <ul class="folder-items">
-                        <li class="expandable">
-                            <button class="expand-btn">+</button>
-                            <i class="bi bi-gear-wide-connected" id="gear-icon" ></i><i class="fas fa-folder"></i>Orçamentos
-                            <ul class="expandable-items">
-                                <!-- Add content here as needed -->
-                               <li><i class="fas fa-file-alt"><button class="expand-btn">Abrir</button></i><a href="arquivo.php">Orçamento_1.pdf</a></li>
-                               <li><i class="fas fa-file-alt"><button class="expand-btn">Abrir</button></i><a href="arquivo2.php">Orçamento_2.pdf</a></li>
-                            </ul>
-                        </li>
-                        <li class="expandable">
-                            <button class="expand-btn">+</button>
-                            <i class="bi bi-gear-wide-connected"></i> 
-                            <i class="fas fa-folder"></i>Cláusulas
-                            <ul class="expandable-items">
-                                <!-- Add content here as needed -->
-                                <li><i class="fas fa-file-alt"><button class="expand-btn">Abrir</button></i>Cláusula_1.pdf</li>
-                                <li><i class="fas fa-file-alt"><button class="expand-btn">Abrir</button></i>Cláusula_2.pdf</li>
-                            </ul>
-                        </li>
+                        <?= $lista_financeiro ?>
                     </ul>
-                </li>       
 
-                <div class="modal fade" id="gearModal" tabindex="-1" aria-labelledby="gearModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="gearModalLabel">Configurações</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                             
-                                <a href="#"><button type="button" class="btn btn-primary">Excluir</button></a>
-                                <a href="editar_pastas_sub.php"><button type="button" class="btn btn-primary">Editar</button></a>
-                                <a href="nova_subpasta.php"><button type="button" class="btn btn-primary">Nova SubPasta</button></a>
-        
-                            </div>
 
+                    <li class="folder">
+                    <div class="folder-title">
+                        Comercial 
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <ul class="folder-items">
+                        <?= $lista_comercial ?>
+                    </ul>
+
+
+
+                    <li class="folder">
+                    <div class="folder-title">
+                        Administrativo
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <ul class="folder-items">
+                        <?= $lista_adm ?>
+                    </ul>
+
+
+                    <li class="folder">
+                    <div class="folder-title">
+                        T.I
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <ul class="folder-items">
+                        <?= $lista_ti ?>
+                    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <div class="modal fade" id="gearModal" tabindex="-1" aria-labelledby="gearModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="gearModalLabel">Configurações</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <a href="#"><button type="button" class="btn btn-primary">Excluir</button></a>
+                                    <a href="editar_pastas_sub.php"><button type="button" class="btn btn-primary">Editar</button></a>
+                                    <a href="nova_subpasta.php"><button type="button" class="btn btn-primary">Nova SubPasta</button></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-
-
-                <!-- Recursos Humanos folder -->
-                <li class="folder">
-                    <div class="folder-title">
-                        Recursos Humanos
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <ul class="folder-items">
-                        <li class="expandable">
-                            <button class="expand-btn">+</button>
-                            <i class="bi bi-gear-wide-connected" id="gear-icon" ></i><i class="fas fa-folder"></i>Orçamentos
-                            <ul class="expandable-items">
-                                <!-- Add content here as needed -->
-                                <li class="expandable">
-                                    <button class="expand-btn">+</button>
-                                    <i class="bi bi-gear-wide-connected"></i> 
-                                    <i class="fas fa-file-alt"></i>CLT
-                                    <ul class="expandable-items">
-                                        <li><i class="fas fa-file-alt"><button class="expand-btn">Abrir</button></i>Relatório_CLT_1.pdf</li>
-                                        <li><i class="fas fa-file-alt"><button class="expand-btn">Abrir</button></i>Relatório_CLT_2.pdf</li>
-                                    </ul>
-                                </li>
-                                <li class="expandable">
-                                    <button class="expand-btn">+</button>
-                                    <i class="bi bi-gear-wide-connected"></i> 
-                                    <i class="fas fa-file-alt"></i>CNPJ
-                                    <ul class="expandable-items">
-                                        <li><i class="fas fa-file-alt"><button class="expand-btn">Abrir</button></i>Relatório_CNPJ_1.pdf</li>
-                                        <li><i class="fas fa-file-alt"><button class="expand-btn">Abrir</button></i>Relatório_CNPJ_2.pdf</li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="expandable">
-                            <button class="expand-btn">+</button>
-                            <i class="bi bi-gear-wide-connected"></i> 
-                            <i class="fas fa-folder"></i>Outros
-                            <ul class="expandable-items">
-                                <!-- Add content here as needed -->
-                                <li><i class="fas fa-file-alt"><button class="expand-btn">Abrir</button></i>Outro_1.pdf</li>
-                                <li><i class="fas fa-file-alt"><button class="expand-btn">Abrir</button></i>Outro_2.pdf</li>
-                            </ul>
-                        </li>
-                    </ul>
                 </li>
-
-                <!-- TI folder -->
-                <li class="folder">
-                    <div class="folder-title">
-                        TI
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <ul class="folder-items">
-                        <li class="expandable">
-                            <button class="expand-btn">Abrir</button>
-                            <i class="fas fa-folder"></i>Minicraft
-                           
-                        </li>
-                        <li class="expandable">
-                            <button class="expand-btn">+</button>
-                            <i class="bi bi-gear-wide-connected"></i> 
-                            <i class="fas fa-folder"></i>Cláusulas
-                            <ul class="expandable-items">
-                                <!-- Add content here as needed -->
-                                <li><i class="fas fa-file-alt"><button class="expand-btn">Abrir</button></i>Cláusula_1.pdf</li> <button class="expand-btn">+</button>
-                                <li><i class="fas fa-file-alt"><button class="expand-btn">Abrir</button></i>Cláusula_2.pdf</li> <button class="expand-btn">+</button>
-                            </ul>
-                           
-                           
-                        </li>
-                    </ul>
-                </li>
-
             </ul>
         </div>
-
-        
     </main>
 
     <!-- FontAwesome for icons -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
-
-<!-- Script para abrir o modal ao clicar no ícone -->
-<script>
-    document.getElementById('gear-icon').addEventListener('click', function () {
-        var myModal = new bootstrap.Modal(document.getElementById('gearModal'));
-        myModal.show();
-    });
-</script>
-
+    <!-- Script para abrir o modal ao clicar no ícone -->
     <script>
+        document.querySelectorAll('.gear-icon').forEach(icon => {
+            icon.addEventListener('click', function () {
+                var myModal = new bootstrap.Modal(document.getElementById('gearModal'));
+                myModal.show();
+            });
+        });
+
         // JavaScript to handle folder toggle
         document.querySelectorAll('.folder').forEach(folder => {
             folder.addEventListener('click', () => {
@@ -191,5 +152,4 @@ include '../includes/menu.php';
         });
     </script>
 </body>
-
 </html>

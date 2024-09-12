@@ -182,6 +182,7 @@ main {
 }
 
 .folder-items, .folder-items2, .expandable-items {
+    list-style: none;
     display: none; /* Inicialmente oculto */
     overflow: hidden;
     max-height: 0; /* Esconder inicialmente */
