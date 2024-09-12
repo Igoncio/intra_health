@@ -1,0 +1,140 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #e9f0f5;
+}
+
+.editor-container {
+    width: 90%;
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+    position: relative;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Botão de voltar */
+.back-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.back-btn span {
+    margin-right: 5px;
+}
+
+.back-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Título da página */
+.page-title {
+    margin-top: 60px;
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #333;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+/* Barra de ferramentas */
+.toolbar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.format-btn {
+    background-color: #6a6a6a;
+    color: white;
+    border: none;
+    padding: 4px 4px;
+    margin: 0 6px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+.format-btn:hover {
+    background-color: #0056b3;
+}
+
+.sheet {
+    background-color: #fdfdfd;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    min-height: 550px;
+    border: 1px solid #e0e0e0;
+    font-size: 18px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    text-align: left;
+    margin-bottom: 30px;
+    overflow-y: auto;
+    max-height: 700px;
+}
+
+.sheet:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.edit-icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.edit-icon {
+    font-size: 48px;
+    color: #484848;
+    transition: color 0.3s;
+}
+
+.edit-icon:hover {
+    color: #0056b3;
+    transform: scale(1.05);
+}
+
+.edit-icon-container p {
+    font-size: 18px;
+    color: #646464;
+    margin-top: 5px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.edit-icon-container:hover p {
+    color: #0056b3;
+}
