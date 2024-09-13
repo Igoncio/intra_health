@@ -18,21 +18,16 @@ $stmt = $db->query($sql);
 // Busca todos os resultados
 $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Mostra os dados (para depuração)
-// echo '<pre>'; print_r($dados); echo '</pre>';
+// Mostra os dados2 (para depuração)
+// echo '<pre>'; print_r($dados2); echo '</pre>';
 
-// Organize os dados por nome da pasta
+// Organize os dados2 por nome da pasta
 $pasta_estrutura = [];
 
 foreach ($dados as $row) {
     $nome_pasta = htmlspecialchars($row['nome_pasta']);
     $nome_subpasta = htmlspecialchars($row['nome_subpasta']);
     $nome_arquivo = htmlspecialchars($row['nome_arquivo']);
-
-    // Verifica se nome_pasta, nome_subpasta ou nome_arquivo são válidos
-    if (!$nome_pasta || !$nome_subpasta || !$nome_arquivo) {
-        continue; // Ignora se algum desses campos for null
-    }
 
     if (!isset($pasta_estrutura[$nome_pasta])) {
         $pasta_estrutura[$nome_pasta] = [];
@@ -45,15 +40,9 @@ foreach ($dados as $row) {
     $pasta_estrutura[$nome_pasta][$nome_subpasta][] = $nome_arquivo;
 }
 
-// Gera a lista HTML a partir da estrutura de dados
-// Gera a lista HTML a partir da estrutura de dados
 $lista_financeiro = '';
 
 foreach ($pasta_estrutura as $pasta => $subpastas) {
-    if (!$pasta) {
-        continue; // Ignora se a pasta for null
-    }
-
     // Checa se há subpastas válidas (não vazias)
     $subpastas_validas = array_filter($subpastas, function($arquivos) {
         return !empty($arquivos); // Subpasta é válida se contém arquivos
@@ -72,8 +61,9 @@ foreach ($pasta_estrutura as $pasta => $subpastas) {
             <ul class="expandable-items">';
 
     foreach ($subpastas_validas as $subpasta => $arquivos) {
+        // Não renderiza subpastas vazias
         if (!$subpasta || empty($arquivos)) {
-            continue; // Ignora se a subpasta ou lista de arquivos for null/vazia
+            continue;
         }
 
         $lista_financeiro .= '
@@ -103,13 +93,8 @@ foreach ($pasta_estrutura as $pasta => $subpastas) {
 
     $lista_financeiro .= '
             </ul>
-        </li>
-    ';
+        </li>';
 }
-
-
-
-
 
 
 //===============  C O M E R C I A L  ======================================================================================================================= =================================================================== ===================================================================  
