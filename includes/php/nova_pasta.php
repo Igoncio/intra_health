@@ -1,6 +1,5 @@
 <?php
 
-// Inclui o arquivo de conexão PDO
 include '.././App/Db/connPoo.php';
 
 

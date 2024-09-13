@@ -16,7 +16,7 @@ include '../includes/php/permissoes.php';
     <form action="#" method="POST">  
         
         <label for="folder-name">Nome do Grupo:</label>
-        <input type="text" id="folder-name" name="folder-name" placeholder="Digite o nome do grupo" required>
+        <input type="text" id="folder-name" name="nome" placeholder="Digite o nome do grupo" required>
             
         <section class="perm-chama">
             <label id="titulo">Acesso aos grupos:</label>
@@ -33,7 +33,7 @@ include '../includes/php/permissoes.php';
                 </label>
 
                 <label class="container-check">
-                    <input type="checkbox" name="acesso_administrativo" value="1">
+                    <input type="checkbox" name="acesso_adm" value="1">
                     <div>Administrativo</div>
                 </label>
 
@@ -56,17 +56,17 @@ include '../includes/php/permissoes.php';
                 </label>
 
                 <label class="container-check">
-                    <input type="checkbox" name="cad_arquivo" value="1">
+                    <input type="checkbox" name="cad_arq" value="1">
                     <div>Novo Arquivo</div>   
                 </label>   
 
                 <label class="container-check">
-                    <input type="checkbox" name="cad_usuario" value="1">
+                    <input type="checkbox" name="cad_user" value="1">
                     <div>Novo Usuario</div>   
                 </label>
 
                 <label class="container-check">
-                    <input type="checkbox" name="cad_grupo" value="1">
+                    <input type="checkbox" name="cad_perm" value="1">
                     <div>Nova Grupo de Permissões</div>                
                 </label>
 
@@ -84,12 +84,12 @@ include '../includes/php/permissoes.php';
                 </label>
 
                 <label class="container-check">
-                    <input type="checkbox" name="edit_arquivo" value="1">
+                    <input type="checkbox" name="edit_arq" value="1">
                     <div>Editar Arquivo</div>
                 </label>
 
                 <label class="container-check">
-                    <input type="checkbox" name="edit_usuario" value="1">
+                    <input type="checkbox" name="edit_user" value="1">
                     <div>Editar Usuario</div>
                 </label>
 
@@ -107,17 +107,17 @@ include '../includes/php/permissoes.php';
                 </label>
 
                 <label class="container-check">
-                    <input type="checkbox" name="excluir_arquivo" value="1">
+                    <input type="checkbox" name="excluir_arq" value="1">
                     <div>Excluir Arquivo</div>
                 </label>
 
                 <label class="container-check">
-                    <input type="checkbox" name="excluir_usuario" value="1">
+                    <input type="checkbox" name="excluir_user" value="1">
                     <div>Excluir Usuario</div>
                 </label>
                 
                 <label class="container-check">
-                    <input type="checkbox" name="excluir_grupo" value="1">
+                    <input type="checkbox" name="excluir_perm" value="1">
                     <div>Excluir Grupo de Permissões</div>
                 </label>
 
