@@ -2,7 +2,6 @@
 
 include '.././App/Db/connPoo.php';
 
-// Cria uma nova instância PDO para a conexão com o banco de dados
 $db = new PDO("mysql:host=localhost;dbname=intra_health", "root", "");
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
