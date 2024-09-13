@@ -46,11 +46,22 @@ foreach ($dados as $row) {
 }
 
 // Gera a lista HTML a partir da estrutura de dados
+// Gera a lista HTML a partir da estrutura de dados
 $lista_financeiro = '';
 
 foreach ($pasta_estrutura as $pasta => $subpastas) {
     if (!$pasta) {
         continue; // Ignora se a pasta for null
+    }
+
+    // Checa se há subpastas válidas (não vazias)
+    $subpastas_validas = array_filter($subpastas, function($arquivos) {
+        return !empty($arquivos); // Subpasta é válida se contém arquivos
+    });
+
+    // Não renderiza a pasta se não houver subpastas válidas
+    if (empty($subpastas_validas)) {
+        continue;
     }
 
     $lista_financeiro .= '
@@ -60,9 +71,9 @@ foreach ($pasta_estrutura as $pasta => $subpastas) {
             <i class="fas fa-folder"></i> ' . $pasta . '
             <ul class="expandable-items">';
 
-    foreach ($subpastas as $subpasta => $arquivos) {
-        if (!$subpasta) {
-            continue; // Ignora se a subpasta for null
+    foreach ($subpastas_validas as $subpasta => $arquivos) {
+        if (!$subpasta || empty($arquivos)) {
+            continue; // Ignora se a subpasta ou lista de arquivos for null/vazia
         }
 
         $lista_financeiro .= '
@@ -100,6 +111,7 @@ foreach ($pasta_estrutura as $pasta => $subpastas) {
 
 
 
+
 //===============  C O M E R C I A L  ======================================================================================================================= =================================================================== ===================================================================  
 
 $sql2 = 'SELECT * FROM vw_grupo_estrutura WHERE id_grupo = 2';
@@ -130,19 +142,32 @@ foreach ($dados2 as $row2) {
     $pasta_estrutura2[$nome_pasta2][$nome_subpasta2][] = $nome_arquivo2;
 }
 
-// Gera a lista HTML a partir da estrutura de dados2
 $lista_comercial = '';
 
 foreach ($pasta_estrutura2 as $pasta => $subpastas) {
-    $lista_comercial .= '
-       
-            <li class="expandable">
-                <button class="expand-btn">+</button>
-                <i class="bi bi-gear-wide-connected gear-icon"></i>
-                <i class="fas fa-folder"></i> ' . $pasta . '
-                <ul class="expandable-items">';
+    // Checa se há subpastas válidas (não vazias)
+    $subpastas_validas = array_filter($subpastas, function($arquivos) {
+        return !empty($arquivos); // Subpasta é válida se contém arquivos
+    });
 
-    foreach ($subpastas as $subpasta => $arquivos) {
+    // Não renderiza a pasta se não houver subpastas válidas
+    if (empty($subpastas_validas)) {
+        continue;
+    }
+
+    $lista_comercial .= '
+        <li class="expandable">
+            <button class="expand-btn">+</button>
+            <i class="bi bi-gear-wide-connected gear-icon"></i>
+            <i class="fas fa-folder"></i> ' . $pasta . '
+            <ul class="expandable-items">';
+
+    foreach ($subpastas_validas as $subpasta => $arquivos) {
+        // Não renderiza subpastas vazias
+        if (!$subpasta || empty($arquivos)) {
+            continue;
+        }
+
         $lista_comercial .= '
             <li class="expandable">
                 <button class="expand-btn">+</button>
@@ -151,6 +176,10 @@ foreach ($pasta_estrutura2 as $pasta => $subpastas) {
                 <ul class="expandable-items">';
 
         foreach ($arquivos as $arquivo) {
+            if (!$arquivo) {
+                continue; // Ignora se o arquivo for null
+            }
+
             $lista_comercial .= '
                 <li>
                     <i class="fas fa-file-alt"></i>
@@ -166,12 +195,8 @@ foreach ($pasta_estrutura2 as $pasta => $subpastas) {
 
     $lista_comercial .= '
             </ul>
-        </li>
-    ';
+        </li>';
 }
-
-
-
 
 
 //===============  A D M I N I S T R A T I V O  ======================================================================================================================= =================================================================== ===================================================================  
@@ -204,18 +229,33 @@ foreach ($dados3 as $row3) {
 }
 
 // Gera a lista HTML a partir da estrutura de dados2
+// Gera a lista HTML a partir da estrutura de dados3 (administrativo)
 $lista_adm = '';
 
 foreach ($pasta_estrutura3 as $pasta => $subpastas) {
-    $lista_adm .= '
-       
-            <li class="expandable">
-                <button class="expand-btn">+</button>
-                <i class="bi bi-gear-wide-connected gear-icon"></i>
-                <i class="fas fa-folder"></i> ' . $pasta . '
-                <ul class="expandable-items">';
+    // Filtra as subpastas para remover aquelas sem arquivos
+    $subpastas_validas = array_filter($subpastas, function($arquivos) {
+        return !empty($arquivos); // Subpasta é válida se contém arquivos
+    });
 
-    foreach ($subpastas as $subpasta => $arquivos) {
+    // Se não houver subpastas válidas, pula para a próxima pasta
+    if (empty($subpastas_validas)) {
+        continue;
+    }
+
+    $lista_adm .= '
+        <li class="expandable">
+            <button class="expand-btn">+</button>
+            <i class="bi bi-gear-wide-connected gear-icon"></i>
+            <i class="fas fa-folder"></i> ' . $pasta . '
+            <ul class="expandable-items">';
+
+    foreach ($subpastas_validas as $subpasta => $arquivos) {
+        // Se a subpasta estiver vazia ou o nome da subpasta for nulo, ignora
+        if (!$subpasta || empty($arquivos)) {
+            continue;
+        }
+
         $lista_adm .= '
             <li class="expandable">
                 <button class="expand-btn">+</button>
@@ -224,6 +264,10 @@ foreach ($pasta_estrutura3 as $pasta => $subpastas) {
                 <ul class="expandable-items">';
 
         foreach ($arquivos as $arquivo) {
+            if (!$arquivo) {
+                continue; // Ignora se o arquivo for null ou vazio
+            }
+
             $lista_adm .= '
                 <li>
                     <i class="fas fa-file-alt"></i>
@@ -239,9 +283,9 @@ foreach ($pasta_estrutura3 as $pasta => $subpastas) {
 
     $lista_adm .= '
             </ul>
-        </li>
-    ';
+        </li>';
 }
+
 
 
 
@@ -276,18 +320,33 @@ foreach ($dados4 as $row4) {
 }
 
 // Gera a lista HTML a partir da estrutura de dados2
+// Gera a lista HTML a partir da estrutura de dados4 (TI)
 $lista_ti = '';
 
 foreach ($pasta_estrutura4 as $pasta => $subpastas) {
-    $lista_ti .= '
-       
-            <li class="expandable">
-                <button class="expand-btn">+</button>
-                <i class="bi bi-gear-wide-connected gear-icon"></i>
-                <i class="fas fa-folder"></i> ' . $pasta . '
-                <ul class="expandable-items">';
+    // Filtra as subpastas para remover aquelas sem arquivos
+    $subpastas_validas = array_filter($subpastas, function($arquivos) {
+        return !empty($arquivos); // Subpasta é válida se contém arquivos
+    });
 
-    foreach ($subpastas as $subpasta => $arquivos) {
+    // Se não houver subpastas válidas, pula para a próxima pasta
+    if (empty($subpastas_validas)) {
+        continue;
+    }
+
+    $lista_ti .= '
+        <li class="expandable">
+            <button class="expand-btn">+</button>
+            <i class="bi bi-gear-wide-connected gear-icon"></i>
+            <i class="fas fa-folder"></i> ' . $pasta . '
+            <ul class="expandable-items">';
+
+    foreach ($subpastas_validas as $subpasta => $arquivos) {
+        // Se a subpasta estiver vazia ou o nome da subpasta for nulo, ignora
+        if (!$subpasta || empty($arquivos)) {
+            continue;
+        }
+
         $lista_ti .= '
             <li class="expandable">
                 <button class="expand-btn">+</button>
@@ -296,6 +355,10 @@ foreach ($pasta_estrutura4 as $pasta => $subpastas) {
                 <ul class="expandable-items">';
 
         foreach ($arquivos as $arquivo) {
+            if (!$arquivo) {
+                continue; // Ignora se o arquivo for null ou vazio
+            }
+
             $lista_ti .= '
                 <li>
                     <i class="fas fa-file-alt"></i>
@@ -311,8 +374,8 @@ foreach ($pasta_estrutura4 as $pasta => $subpastas) {
 
     $lista_ti .= '
             </ul>
-        </li>
-    ';
+        </li>';
 }
+
 
 ?>
