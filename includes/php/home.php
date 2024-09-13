@@ -10,18 +10,39 @@ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
 
+
+//===============  P E G A N D O - I D  ======================================================================================================================= =================================================================== ===================================================================  
+
+$pega_id = 'SELECT id_grupo FROM vw_grupo_estrutura';
+
+$stmt = $db->query($pega_id);
+
+$dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$ids_grupos = [];
+
+$lista_id = '';
+foreach ($dados as $row) {
+    $id_grupo = htmlspecialchars($row['id_grupo']);
+
+    if (!in_array($id_grupo, $ids_grupos)) {
+        $ids_grupos[] = $id_grupo;
+        
+        // Corrigido: Use aspas duplas e chaves para interpolar variáveis
+        $lista_id .= "<a href='nova_subpasta.php?id_grupo={$id_grupo}'>ID: {$id_grupo}</a><br>";
+    }
+}
+
+
+
+
 //===============  F I N A N C E I R O  ======================================================================================================================= =================================================================== ===================================================================  
 
 $sql = 'SELECT * FROM vw_grupo_estrutura WHERE id_grupo = 1';
 $stmt = $db->query($sql);
 
-// Busca todos os resultados
 $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Mostra os dados2 (para depuração)
-// echo '<pre>'; print_r($dados2); echo '</pre>';
-
-// Organize os dados2 por nome da pasta
 $pasta_estrutura = [];
 
 foreach ($dados as $row) {
@@ -43,12 +64,11 @@ foreach ($dados as $row) {
 $lista_financeiro = '';
 
 foreach ($pasta_estrutura as $pasta => $subpastas) {
-    // Checa se há subpastas válidas (não vazias)
+
     $subpastas_validas = array_filter($subpastas, function($arquivos) {
-        return !empty($arquivos); // Subpasta é válida se contém arquivos
+        return !empty($arquivos); 
     });
 
-    // Não renderiza a pasta se não houver subpastas válidas
     if (empty($subpastas_validas)) {
         continue;
     }
@@ -61,7 +81,6 @@ foreach ($pasta_estrutura as $pasta => $subpastas) {
             <ul class="expandable-items">';
 
     foreach ($subpastas_validas as $subpasta => $arquivos) {
-        // Não renderiza subpastas vazias
         if (!$subpasta || empty($arquivos)) {
             continue;
         }
@@ -75,7 +94,7 @@ foreach ($pasta_estrutura as $pasta => $subpastas) {
 
         foreach ($arquivos as $arquivo) {
             if (!$arquivo) {
-                continue; // Ignora se o arquivo for null
+                continue; 
             }
 
             $lista_financeiro .= '
@@ -102,13 +121,8 @@ foreach ($pasta_estrutura as $pasta => $subpastas) {
 $sql2 = 'SELECT * FROM vw_grupo_estrutura WHERE id_grupo = 2';
 $stmt3 = $db->query($sql2);
 
-// Busca todos os resultados
 $dados2 = $stmt3->fetchAll(PDO::FETCH_ASSOC);
 
-// Mostra os dados2 (para depuração)
-// echo '<pre>'; print_r($dados2); echo '</pre>';
-
-// Organize os dados2 por nome da pasta
 $pasta_estrutura2 = [];
 
 foreach ($dados2 as $row2) {
@@ -130,12 +144,10 @@ foreach ($dados2 as $row2) {
 $lista_comercial = '';
 
 foreach ($pasta_estrutura2 as $pasta => $subpastas) {
-    // Checa se há subpastas válidas (não vazias)
     $subpastas_validas = array_filter($subpastas, function($arquivos) {
-        return !empty($arquivos); // Subpasta é válida se contém arquivos
+        return !empty($arquivos); 
     });
 
-    // Não renderiza a pasta se não houver subpastas válidas
     if (empty($subpastas_validas)) {
         continue;
     }
@@ -148,7 +160,6 @@ foreach ($pasta_estrutura2 as $pasta => $subpastas) {
             <ul class="expandable-items">';
 
     foreach ($subpastas_validas as $subpasta => $arquivos) {
-        // Não renderiza subpastas vazias
         if (!$subpasta || empty($arquivos)) {
             continue;
         }
@@ -162,7 +173,7 @@ foreach ($pasta_estrutura2 as $pasta => $subpastas) {
 
         foreach ($arquivos as $arquivo) {
             if (!$arquivo) {
-                continue; // Ignora se o arquivo for null
+                continue; 
             }
 
             $lista_comercial .= '
@@ -188,13 +199,7 @@ foreach ($pasta_estrutura2 as $pasta => $subpastas) {
 $sql3 = 'SELECT * FROM vw_grupo_estrutura WHERE id_grupo = 3';
 $stmt3 = $db->query($sql3);
 
-// Busca todos os resultados
 $dados3 = $stmt3->fetchAll(PDO::FETCH_ASSOC);
-
-// Mostra os dados3 (para depuração)
-// echo '<pre>'; print_r($dados3); echo '</pre>';
-
-// Organize os dados3 por nome da pasta
 $pasta_estrutura3 = [];
 
 foreach ($dados3 as $row3) {
@@ -213,17 +218,13 @@ foreach ($dados3 as $row3) {
     $pasta_estrutura3[$nome_pasta3][$nome_subpasta3][] = $nome_arquivo3;
 }
 
-// Gera a lista HTML a partir da estrutura de dados2
-// Gera a lista HTML a partir da estrutura de dados3 (administrativo)
 $lista_adm = '';
 
 foreach ($pasta_estrutura3 as $pasta => $subpastas) {
-    // Filtra as subpastas para remover aquelas sem arquivos
     $subpastas_validas = array_filter($subpastas, function($arquivos) {
-        return !empty($arquivos); // Subpasta é válida se contém arquivos
+        return !empty($arquivos); 
     });
 
-    // Se não houver subpastas válidas, pula para a próxima pasta
     if (empty($subpastas_validas)) {
         continue;
     }
@@ -236,7 +237,6 @@ foreach ($pasta_estrutura3 as $pasta => $subpastas) {
             <ul class="expandable-items">';
 
     foreach ($subpastas_validas as $subpasta => $arquivos) {
-        // Se a subpasta estiver vazia ou o nome da subpasta for nulo, ignora
         if (!$subpasta || empty($arquivos)) {
             continue;
         }
@@ -250,7 +250,7 @@ foreach ($pasta_estrutura3 as $pasta => $subpastas) {
 
         foreach ($arquivos as $arquivo) {
             if (!$arquivo) {
-                continue; // Ignora se o arquivo for null ou vazio
+                continue;
             }
 
             $lista_adm .= '
@@ -279,13 +279,7 @@ foreach ($pasta_estrutura3 as $pasta => $subpastas) {
 $sql4 = 'SELECT * FROM vw_grupo_estrutura WHERE id_grupo = 4';
 $stmt4 = $db->query($sql4);
 
-// Busca todos os resultados
 $dados4 = $stmt4->fetchAll(PDO::FETCH_ASSOC);
-
-// Mostra os dados4 (para depuração)
-// echo '<pre>'; print_r($dados4); echo '</pre>';
-
-// Organize os dados4 por nome da pasta
 $pasta_estrutura4 = [];
 
 foreach ($dados4 as $row4) {
@@ -304,17 +298,13 @@ foreach ($dados4 as $row4) {
     $pasta_estrutura4[$nome_pasta4][$nome_subpasta4][] = $nome_arquivo3;
 }
 
-// Gera a lista HTML a partir da estrutura de dados2
-// Gera a lista HTML a partir da estrutura de dados4 (TI)
 $lista_ti = '';
 
 foreach ($pasta_estrutura4 as $pasta => $subpastas) {
-    // Filtra as subpastas para remover aquelas sem arquivos
     $subpastas_validas = array_filter($subpastas, function($arquivos) {
-        return !empty($arquivos); // Subpasta é válida se contém arquivos
+        return !empty($arquivos); 
     });
 
-    // Se não houver subpastas válidas, pula para a próxima pasta
     if (empty($subpastas_validas)) {
         continue;
     }
@@ -327,7 +317,6 @@ foreach ($pasta_estrutura4 as $pasta => $subpastas) {
             <ul class="expandable-items">';
 
     foreach ($subpastas_validas as $subpasta => $arquivos) {
-        // Se a subpasta estiver vazia ou o nome da subpasta for nulo, ignora
         if (!$subpasta || empty($arquivos)) {
             continue;
         }
@@ -341,7 +330,7 @@ foreach ($pasta_estrutura4 as $pasta => $subpastas) {
 
         foreach ($arquivos as $arquivo) {
             if (!$arquivo) {
-                continue; // Ignora se o arquivo for null ou vazio
+                continue; 
             }
 
             $lista_ti .= '

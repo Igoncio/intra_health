@@ -19,6 +19,7 @@ include '../includes/php/home.php';
             <h2>Pastas</h2>
             <a href="nova_pasta.php"><button class="btn-primary">+ Nova pasta</button></a>
             <a href="novo_arquivo.php"><button class="btn-primary">+ Novo arquivo</button></a>
+            <a href="novo_arquivo.php"><button class="btn-primary">+ Nova subpasta</button></a>
             <ul class="folder-list">
                 <li class="folder">
                     <div class="folder-title">
@@ -57,50 +58,12 @@ include '../includes/php/home.php';
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <ul class="folder-items">
+                        
                         <?= $lista_ti ?>
                     </ul>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    <div class="modal fade" id="gearModal" tabindex="-1" aria-labelledby="gearModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="gearModalLabel">Configurações</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <a href="#"><button type="button" class="btn btn-primary">Excluir</button></a>
-                                    <a href="editar_pastas_sub.php"><button type="button" class="btn btn-primary">Editar</button></a>
-                                    <a href="nova_subpasta.php"><button type="button" class="btn btn-primary">Nova SubPasta</button></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                   
                 </li>
             </ul>
         </div>
@@ -111,12 +74,7 @@ include '../includes/php/home.php';
 
     <!-- Script para abrir o modal ao clicar no ícone -->
     <script>
-        document.querySelectorAll('.gear-icon').forEach(icon => {
-            icon.addEventListener('click', function () {
-                var myModal = new bootstrap.Modal(document.getElementById('gearModal'));
-                myModal.show();
-            });
-        });
+       
 
         // JavaScript to handle folder toggle
         document.querySelectorAll('.folder').forEach(folder => {
