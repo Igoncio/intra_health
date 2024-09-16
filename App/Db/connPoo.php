@@ -12,3 +12,5 @@ $db = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
 if ($db->connect_error) {
     die("Falha na conexão: " . $db->connect_error);
 }
+
+$conn = mysqli_connect("localhost", "root", "", "intra_health");
