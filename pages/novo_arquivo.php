@@ -36,16 +36,16 @@ include '../includes/php/novo_arquivo.php';
         <select  class="form-select"  name="id_subpasta" id="sub"></select>
         
         <label for="folder-name">Nome do arquivo:</label>
-        <input type="text" id="folder-name" name="folder-name" placeholder="Digite o nome do arquivo" required>
+        <input type="text" id="folder-name" name="nome" placeholder="Digite o nome do arquivo" required>
         
         <fieldset>
             <legend>Selecione uma opção</legend>
             <div class="radio-group">
-                <input type="radio" id="opcao1" name="opcao" value="pronto">
+                <input type="radio" id="opcao1" name="editavel" value="0">
                 <label for="opcao1">Irei adicionar um arquivo já pronto</label>
             </div>
             <div class="radio-group">
-                <input type="radio" id="opcao2" name="opcao" value="editor">
+                <input type="radio" id="opcao2" name="editavel" value="1">
                 <label for="opcao2">Irei usar o editor de texto do sistema</label>
             </div>
         </fieldset>
