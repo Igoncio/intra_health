@@ -18,8 +18,8 @@ include '../includes/php/home.php';
         <div class="content">
             <h2>Pastas</h2>
             <a href="nova_pasta.php"><button class="btn-primary">+ Nova pasta</button></a>
+            <a href="nova_subpasta.php"><button class="btn-primary">+ Nova subpasta</button></a>
             <a href="novo_arquivo.php"><button class="btn-primary">+ Novo arquivo</button></a>
-            <a href="novo_arquivo.php"><button class="btn-primary">+ Nova subpasta</button></a>
             <ul class="folder-list">
                 <li class="folder">
                     <div class="folder-title">
