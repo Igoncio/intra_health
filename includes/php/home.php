@@ -35,320 +35,359 @@ foreach ($dados as $row) {
 
 
 
-//===============  F I N A N C E I R O  ======================================================================================================================= =================================================================== ===================================================================  
 
+//===============  P E G A N D O - A R Q U I V O  ======================================================================================================================= =================================================================== ===================================================================  
+
+$query_arq = 'SELECT * FROM arquivo';
+$stmt5 = $db->query($query_arq);
+$dados_arq = $stmt5->fetchAll(PDO::FETCH_ASSOC);
+
+//===============  F I N A N C E I R O  ======================================================================================================================= 
 $sql = 'SELECT * FROM vw_grupo_estrutura WHERE id_grupo = 1';
 $stmt = $db->query($sql);
-
 $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$pasta_estrutura = [];
+$lista_financeiro = ''; // Certifique-se de que essa variável esteja inicializada
 
-foreach ($dados as $row) {
-    $nome_pasta = htmlspecialchars($row['nome_pasta']);
-    $nome_subpasta = htmlspecialchars($row['nome_subpasta']);
-    $nome_arquivo = htmlspecialchars($row['nome_arquivo']);
-
-    if (!isset($pasta_estrutura[$nome_pasta])) {
-        $pasta_estrutura[$nome_pasta] = [];
+// Primeiro, adiciona arquivos na raiz (id_grupo = 1, id_pasta = 0, id_subpasta = 0)
+foreach ($dados_arq as $arq) {
+    if ($arq['id_grupo'] == 1 && $arq['id_pasta'] == 0 && $arq['id_subpasta'] == 0) {
+        $lista_financeiro .= '
+            <li>
+                <i class="fas fa-file-alt"></i>
+                <button class="expand-btn">Abrir</button>
+                ' . htmlspecialchars($arq['nome']) . '
+            </li>';
     }
-
-    if (!isset($pasta_estrutura[$nome_pasta][$nome_subpasta])) {
-        $pasta_estrutura[$nome_pasta][$nome_subpasta] = [];
-    }
-
-    $pasta_estrutura[$nome_pasta][$nome_subpasta][] = $nome_arquivo;
 }
 
-$lista_financeiro = '';
+// Agrupando dados por pasta e subpasta
+$pastas = [];
+foreach ($dados as $row) {
+    $pastas[$row['id_pasta']]['nome'] = $row['nome_pasta'];
+    $pastas[$row['id_pasta']]['subpastas'] = [];
+}
 
-foreach ($pasta_estrutura as $pasta => $subpastas) {
-
-    $subpastas_validas = array_filter($subpastas, function($arquivos) {
-        return !empty($arquivos); 
-    });
-
-    if (empty($subpastas_validas)) {
-        continue;
+// Adicionando subpastas
+foreach ($dados as $row) {
+    if ($row['id_subpasta'] != 0) {
+        $pastas[$row['id_pasta']]['subpastas'][$row['id_subpasta']] = $row['nome_subpasta'];
     }
+}
 
+// Agora, itere sobre as pastas e subpastas
+foreach ($pastas as $id_pasta => $pasta) {
+    // Pasta principal
     $lista_financeiro .= '
         <li class="expandable">
             <button class="expand-btn">+</button>
             <i class="bi bi-gear-wide-connected gear-icon"></i>
-            <i class="fas fa-folder"></i> ' . $pasta . '
+            <i class="fas fa-folder"></i> ' . htmlspecialchars($pasta['nome']) . '
             <ul class="expandable-items">';
 
-    foreach ($subpastas_validas as $subpasta => $arquivos) {
-        if (!$subpasta || empty($arquivos)) {
-            continue;
-        }
-
-        $lista_financeiro .= '
-            <li class="expandable">
-                <button class="expand-btn">+</button>
-                <i class="bi bi-gear-wide-connected"></i> 
-                <i class="fas fa-file-alt"></i> ' . $subpasta . '
-                <ul class="expandable-items">';
-
-        foreach ($arquivos as $arquivo) {
-            if (!$arquivo) {
-                continue; 
-            }
-
+    // Adiciona arquivos da pasta principal
+    foreach ($dados_arq as $arq) {
+        if ($arq['id_grupo'] == 1 && $arq['id_pasta'] == $id_pasta && $arq['id_subpasta'] == 0) {
             $lista_financeiro .= '
                 <li>
                     <i class="fas fa-file-alt"></i>
                     <button class="expand-btn">Abrir</button>
-                    ' . $arquivo . '
+                    ' . htmlspecialchars($arq['nome']) . '
                 </li>';
+        }
+    }
+
+    // Adiciona subpastas e seus arquivos
+    foreach ($pasta['subpastas'] as $id_subpasta => $nome_subpasta) {
+        $lista_financeiro .= '
+            <li class="expandable">
+                <button class="expand-btn">+</button>
+                <i class="bi bi-gear-wide-connected"></i>
+                <i class="fas fa-folder"></i> ' . htmlspecialchars($nome_subpasta) . '
+                <ul class="expandable-items">';
+
+        // Adiciona arquivos da subpasta
+        foreach ($dados_arq as $arq) {
+            if ($arq['id_grupo'] == 1 && $arq['id_pasta'] == $id_pasta && $arq['id_subpasta'] == $id_subpasta) {
+                $lista_financeiro .= '
+                    <li>
+                        <i class="fas fa-file-alt"></i>
+                        <button class="expand-btn">Abrir</button>
+                        ' . htmlspecialchars($arq['nome']) . '
+                    </li>';
+            }
         }
 
         $lista_financeiro .= '
                 </ul>
-            </li>';
+            </li>'; // Fecha subpasta
     }
 
     $lista_financeiro .= '
             </ul>
-        </li>';
+        </li>'; // Fecha pasta principal
 }
 
 
-//===============  C O M E R C I A L  ======================================================================================================================= =================================================================== ===================================================================  
+
+
+//===============  C O M E R C I A L  ======================================================================================================================= 
 
 $sql2 = 'SELECT * FROM vw_grupo_estrutura WHERE id_grupo = 2';
-$stmt3 = $db->query($sql2);
+$stmt2 = $db->query($sql2);
+$dados2 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
-$dados2 = $stmt3->fetchAll(PDO::FETCH_ASSOC);
-
-$pasta_estrutura2 = [];
-
-foreach ($dados2 as $row2) {
-    $nome_pasta2 = htmlspecialchars($row2['nome_pasta']);
-    $nome_subpasta2 = htmlspecialchars($row2['nome_subpasta']);
-    $nome_arquivo2 = htmlspecialchars($row2['nome_arquivo']);
-
-    if (!isset($pasta_estrutura2[$nome_pasta2])) {
-        $pasta_estrutura2[$nome_pasta2] = [];
+$lista_comercial = ''; 
+foreach ($dados_arq as $arq) {
+    if ($arq['id_grupo'] == 2 && $arq['id_pasta'] == 0 && $arq['id_subpasta'] == 0) {
+        $lista_comercial .= '
+            <li>
+                <i class="fas fa-file-alt"></i>
+                <button class="expand-btn">Abrir</button>
+                ' . htmlspecialchars($arq['nome']) . '
+            </li>';
     }
-
-    if (!isset($pasta_estrutura2[$nome_pasta2][$nome_subpasta2])) {
-        $pasta_estrutura2[$nome_pasta2][$nome_subpasta2] = [];
-    }
-
-    $pasta_estrutura2[$nome_pasta2][$nome_subpasta2][] = $nome_arquivo2;
 }
 
-$lista_comercial = '';
+// Agrupando dados por pasta e subpasta
+$pastas = [];
+foreach ($dados2 as $row) {
+    $pastas[$row['id_pasta']]['nome'] = $row['nome_pasta'];
+    $pastas[$row['id_pasta']]['subpastas'] = [];
+}
 
-foreach ($pasta_estrutura2 as $pasta => $subpastas) {
-    $subpastas_validas = array_filter($subpastas, function($arquivos) {
-        return !empty($arquivos); 
-    });
-
-    if (empty($subpastas_validas)) {
-        continue;
+// Adicionando subpastas
+foreach ($dados2 as $row) {
+    if ($row['id_subpasta'] != 0) {
+        $pastas[$row['id_pasta']]['subpastas'][$row['id_subpasta']] = $row['nome_subpasta'];
     }
+}
 
+// Agora, itere sobre as pastas e subpastas
+foreach ($pastas as $id_pasta => $pasta) {
+    // Pasta principal
     $lista_comercial .= '
         <li class="expandable">
             <button class="expand-btn">+</button>
             <i class="bi bi-gear-wide-connected gear-icon"></i>
-            <i class="fas fa-folder"></i> ' . $pasta . '
+            <i class="fas fa-folder"></i> ' . htmlspecialchars($pasta['nome']) . '
             <ul class="expandable-items">';
 
-    foreach ($subpastas_validas as $subpasta => $arquivos) {
-        if (!$subpasta || empty($arquivos)) {
-            continue;
-        }
-
-        $lista_comercial .= '
-            <li class="expandable">
-                <button class="expand-btn">+</button>
-                <i class="bi bi-gear-wide-connected"></i> 
-                <i class="fas fa-file-alt"></i> ' . $subpasta . '
-                <ul class="expandable-items">';
-
-        foreach ($arquivos as $arquivo) {
-            if (!$arquivo) {
-                continue; 
-            }
-
+    // Adiciona arquivos da pasta principal
+    foreach ($dados_arq as $arq) {
+        if ($arq['id_grupo'] == 2 && $arq['id_pasta'] == $id_pasta && $arq['id_subpasta'] == 0) {
             $lista_comercial .= '
                 <li>
                     <i class="fas fa-file-alt"></i>
                     <button class="expand-btn">Abrir</button>
-                    ' . $arquivo . '
+                    ' . htmlspecialchars($arq['nome']) . '
                 </li>';
+        }
+    }
+
+    // Adiciona subpastas e seus arquivos
+    foreach ($pasta['subpastas'] as $id_subpasta => $nome_subpasta) {
+        $lista_comercial .= '
+            <li class="expandable">
+                <button class="expand-btn">+</button>
+                <i class="bi bi-gear-wide-connected"></i>
+                <i class="fas fa-folder"></i> ' . htmlspecialchars($nome_subpasta) . '
+                <ul class="expandable-items">';
+
+        // Adiciona arquivos da subpasta
+        foreach ($dados_arq as $arq) {
+            if ($arq['id_grupo'] == 2 && $arq['id_pasta'] == $id_pasta && $arq['id_subpasta'] == $id_subpasta) {
+                $lista_comercial .= '
+                    <li>
+                        <i class="fas fa-file-alt"></i>
+                        <button class="expand-btn">Abrir</button>
+                        ' . htmlspecialchars($arq['nome']) . '
+                    </li>';
+            }
         }
 
         $lista_comercial .= '
                 </ul>
-            </li>';
+            </li>'; // Fecha subpasta
     }
 
     $lista_comercial .= '
             </ul>
-        </li>';
+        </li>'; // Fecha pasta principal
 }
 
 
-//===============  A D M I N I S T R A T I V O  ======================================================================================================================= =================================================================== ===================================================================  
+
+
+//===============  A D M I N I S T R A T I V O  ======================================================================================================================= 
+
 $sql3 = 'SELECT * FROM vw_grupo_estrutura WHERE id_grupo = 3';
 $stmt3 = $db->query($sql3);
-
 $dados3 = $stmt3->fetchAll(PDO::FETCH_ASSOC);
-$pasta_estrutura3 = [];
 
-foreach ($dados3 as $row3) {
-    $nome_pasta3 = htmlspecialchars($row3['nome_pasta']);
-    $nome_subpasta3 = htmlspecialchars($row3['nome_subpasta']);
-    $nome_arquivo3 = htmlspecialchars($row3['nome_arquivo']);
-
-    if (!isset($pasta_estrutura3[$nome_pasta3])) {
-        $pasta_estrutura3[$nome_pasta3] = [];
+$lista_adm = ''; 
+foreach ($dados_arq as $arq) {
+    if ($arq['id_grupo'] == 3 && $arq['id_pasta'] == 0 && $arq['id_subpasta'] == 0) {
+        $lista_adm .= '
+            <li>
+                <i class="fas fa-file-alt"></i>
+                <button class="expand-btn">Abrir</button>
+                ' . htmlspecialchars($arq['nome']) . '
+            </li>';
     }
-
-    if (!isset($pasta_estrutura3[$nome_pasta3][$nome_subpasta3])) {
-        $pasta_estrutura3[$nome_pasta3][$nome_subpasta3] = [];
-    }
-
-    $pasta_estrutura3[$nome_pasta3][$nome_subpasta3][] = $nome_arquivo3;
 }
 
-$lista_adm = '';
+// Agrupando dados por pasta e subpasta
+$pastas = [];
+foreach ($dados3 as $row) {
+    $pastas[$row['id_pasta']]['nome'] = $row['nome_pasta'];
+    $pastas[$row['id_pasta']]['subpastas'] = [];
+}
 
-foreach ($pasta_estrutura3 as $pasta => $subpastas) {
-    $subpastas_validas = array_filter($subpastas, function($arquivos) {
-        return !empty($arquivos); 
-    });
-
-    if (empty($subpastas_validas)) {
-        continue;
+// Adicionando subpastas
+foreach ($dados3 as $row) {
+    if ($row['id_subpasta'] != 0) {
+        $pastas[$row['id_pasta']]['subpastas'][$row['id_subpasta']] = $row['nome_subpasta'];
     }
+}
 
+// Agora, itere sobre as pastas e subpastas
+foreach ($pastas as $id_pasta => $pasta) {
+    // Pasta principal
     $lista_adm .= '
         <li class="expandable">
             <button class="expand-btn">+</button>
             <i class="bi bi-gear-wide-connected gear-icon"></i>
-            <i class="fas fa-folder"></i> ' . $pasta . '
+            <i class="fas fa-folder"></i> ' . htmlspecialchars($pasta['nome']) . '
             <ul class="expandable-items">';
 
-    foreach ($subpastas_validas as $subpasta => $arquivos) {
-        if (!$subpasta || empty($arquivos)) {
-            continue;
-        }
-
-        $lista_adm .= '
-            <li class="expandable">
-                <button class="expand-btn">+</button>
-                <i class="bi bi-gear-wide-connected"></i> 
-                <i class="fas fa-file-alt"></i> ' . $subpasta . '
-                <ul class="expandable-items">';
-
-        foreach ($arquivos as $arquivo) {
-            if (!$arquivo) {
-                continue;
-            }
-
+    // Adiciona arquivos da pasta principal
+    foreach ($dados_arq as $arq) {
+        if ($arq['id_grupo'] == 3 && $arq['id_pasta'] == $id_pasta && $arq['id_subpasta'] == 0) {
             $lista_adm .= '
                 <li>
                     <i class="fas fa-file-alt"></i>
                     <button class="expand-btn">Abrir</button>
-                    ' . $arquivo . '
+                    ' . htmlspecialchars($arq['nome']) . '
                 </li>';
+        }
+    }
+
+    // Adiciona subpastas e seus arquivos
+    foreach ($pasta['subpastas'] as $id_subpasta => $nome_subpasta) {
+        $lista_adm .= '
+            <li class="expandable">
+                <button class="expand-btn">+</button>
+                <i class="bi bi-gear-wide-connected"></i>
+                <i class="fas fa-folder"></i> ' . htmlspecialchars($nome_subpasta) . '
+                <ul class="expandable-items">';
+
+        // Adiciona arquivos da subpasta
+        foreach ($dados_arq as $arq) {
+            if ($arq['id_grupo'] == 3 && $arq['id_pasta'] == $id_pasta && $arq['id_subpasta'] == $id_subpasta) {
+                $lista_adm .= '
+                    <li>
+                        <i class="fas fa-file-alt"></i>
+                        <button class="expand-btn">Abrir</button>
+                        ' . htmlspecialchars($arq['nome']) . '
+                    </li>';
+            }
         }
 
         $lista_adm .= '
                 </ul>
-            </li>';
+            </li>'; // Fecha subpasta
     }
 
     $lista_adm .= '
             </ul>
-        </li>';
+        </li>'; // Fecha pasta principal
 }
 
 
 
 
+//===============  T . I  ======================================================================================================================= 
 
-//===============  T U D O - I N C L U S O  ======================================================================================================================= =================================================================== ===================================================================  
 $sql4 = 'SELECT * FROM vw_grupo_estrutura WHERE id_grupo = 4';
 $stmt4 = $db->query($sql4);
-
 $dados4 = $stmt4->fetchAll(PDO::FETCH_ASSOC);
-$pasta_estrutura4 = [];
 
-foreach ($dados4 as $row4) {
-    $nome_pasta4 = htmlspecialchars($row4['nome_pasta']);
-    $nome_subpasta4 = htmlspecialchars($row4['nome_subpasta']);
-    $nome_arquivo4 = htmlspecialchars($row4['nome_arquivo']);
-
-    if (!isset($pasta_estrutura4[$nome_pasta4])) {
-        $pasta_estrutura4[$nome_pasta4] = [];
+$lista_ti = ''; 
+foreach ($dados_arq as $arq) {
+    if ($arq['id_grupo'] == 4 && $arq['id_pasta'] == 0 && $arq['id_subpasta'] == 0) {
+        $lista_ti .= '
+            <li>
+                <i class="fas fa-file-alt"></i>
+                <button class="expand-btn">Abrir</button>
+                ' . htmlspecialchars($arq['nome']) . '
+            </li>';
     }
-
-    if (!isset($pasta_estrutura4[$nome_pasta4][$nome_subpasta4])) {
-        $pasta_estrutura4[$nome_pasta4][$nome_subpasta4] = [];
-    }
-
-    $pasta_estrutura4[$nome_pasta4][$nome_subpasta4][] = $nome_arquivo3;
 }
 
-$lista_ti = '';
+// Agrupando dados por pasta e subpasta
+$pastas = [];
+foreach ($dados4 as $row) {
+    $pastas[$row['id_pasta']]['nome'] = $row['nome_pasta'];
+    $pastas[$row['id_pasta']]['subpastas'] = [];
+}
 
-foreach ($pasta_estrutura4 as $pasta => $subpastas) {
-    $subpastas_validas = array_filter($subpastas, function($arquivos) {
-        return !empty($arquivos); 
-    });
-
-    if (empty($subpastas_validas)) {
-        continue;
+// Adicionando subpastas
+foreach ($dados4 as $row) {
+    if ($row['id_subpasta'] != 0) {
+        $pastas[$row['id_pasta']]['subpastas'][$row['id_subpasta']] = $row['nome_subpasta'];
     }
+}
 
+// Agora, itere sobre as pastas e subpastas
+foreach ($pastas as $id_pasta => $pasta) {
+    // Pasta principal
     $lista_ti .= '
         <li class="expandable">
             <button class="expand-btn">+</button>
             <i class="bi bi-gear-wide-connected gear-icon"></i>
-            <i class="fas fa-folder"></i> ' . $pasta . '
+            <i class="fas fa-folder"></i> ' . htmlspecialchars($pasta['nome']) . '
             <ul class="expandable-items">';
 
-    foreach ($subpastas_validas as $subpasta => $arquivos) {
-        if (!$subpasta || empty($arquivos)) {
-            continue;
-        }
-
-        $lista_ti .= '
-            <li class="expandable">
-                <button class="expand-btn">+</button>
-                <i class="bi bi-gear-wide-connected"></i> 
-                <i class="fas fa-file-alt"></i> ' . $subpasta . '
-                <ul class="expandable-items">';
-
-        foreach ($arquivos as $arquivo) {
-            if (!$arquivo) {
-                continue; 
-            }
-
+    // Adiciona arquivos da pasta principal
+    foreach ($dados_arq as $arq) {
+        if ($arq['id_grupo'] == 4 && $arq['id_pasta'] == $id_pasta && $arq['id_subpasta'] == 0) {
             $lista_ti .= '
                 <li>
                     <i class="fas fa-file-alt"></i>
                     <button class="expand-btn">Abrir</button>
-                    ' . $arquivo . '
+                    ' . htmlspecialchars($arq['nome']) . '
                 </li>';
+        }
+    }
+
+    // Adiciona subpastas e seus arquivos
+    foreach ($pasta['subpastas'] as $id_subpasta => $nome_subpasta) {
+        $lista_ti .= '
+            <li class="expandable">
+                <button class="expand-btn">+</button>
+                <i class="bi bi-gear-wide-connected"></i>
+                <i class="fas fa-folder"></i> ' . htmlspecialchars($nome_subpasta) . '
+                <ul class="expandable-items">';
+
+        // Adiciona arquivos da subpasta
+        foreach ($dados_arq as $arq) {
+            if ($arq['id_grupo'] == 4 && $arq['id_pasta'] == $id_pasta && $arq['id_subpasta'] == $id_subpasta) {
+                $lista_ti .= '
+                    <li>
+                        <i class="fas fa-file-alt"></i>
+                        <button class="expand-btn">Abrir</button>
+                        ' . htmlspecialchars($arq['nome']) . '
+                    </li>';
+            }
         }
 
         $lista_ti .= '
                 </ul>
-            </li>';
+            </li>'; // Fecha subpasta
     }
 
     $lista_ti .= '
             </ul>
-        </li>';
+        </li>'; // Fecha pasta principal
 }
-
-
-?>
