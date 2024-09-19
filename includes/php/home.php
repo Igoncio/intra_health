@@ -52,12 +52,26 @@ $lista_financeiro = ''; // Certifique-se de que essa variável esteja inicializa
 // Primeiro, adiciona arquivos na raiz (id_grupo = 1, id_pasta = 0, id_subpasta = 0)
 foreach ($dados_arq as $arq) {
     if ($arq['id_grupo'] == 1 && $arq['id_pasta'] == 0 && $arq['id_subpasta'] == 0) {
-        $lista_financeiro .= '
+        if($arq['editavel'] == 1){
+            $lista_financeiro .= '
             <li>
+                <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
+                    <i class="fas fa-file-alt"></i>
+                    <button class="expand-btn">Abrir</button>
+                    ' . htmlspecialchars($arq['nome']) . '
+                </a>
+            </li>';
+        }
+        else{
+            $lista_financeiro .= '
+            <li>
+                <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
                 <i class="fas fa-file-alt"></i>
                 <button class="expand-btn">Abrir</button>
                 ' . htmlspecialchars($arq['nome']) . '
-            </li>';
+                </a>
+                </li>';
+        }
     }
 }
 
@@ -88,12 +102,26 @@ foreach ($pastas as $id_pasta => $pasta) {
     // Adiciona arquivos da pasta principal
     foreach ($dados_arq as $arq) {
         if ($arq['id_grupo'] == 1 && $arq['id_pasta'] == $id_pasta && $arq['id_subpasta'] == 0) {
-            $lista_financeiro .= '
+            if($arq['editavel'] == 1){
+                $lista_financeiro .= '
                 <li>
+                    <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
+                        <i class="fas fa-file-alt"></i>
+                        <button class="expand-btn">Abrir</button>
+                        ' . htmlspecialchars($arq['nome']) . '
+                    </a>
+                </li>';
+            }
+            else{
+                $lista_financeiro .= '
+                <li>
+                    <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
                     <i class="fas fa-file-alt"></i>
                     <button class="expand-btn">Abrir</button>
                     ' . htmlspecialchars($arq['nome']) . '
-                </li>';
+                    </a>
+                    </li>';
+            }
         }
     }
 
@@ -109,12 +137,26 @@ foreach ($pastas as $id_pasta => $pasta) {
         // Adiciona arquivos da subpasta
         foreach ($dados_arq as $arq) {
             if ($arq['id_grupo'] == 1 && $arq['id_pasta'] == $id_pasta && $arq['id_subpasta'] == $id_subpasta) {
-                $lista_financeiro .= '
+                if($arq['editavel'] == 1){
+                    $lista_financeiro .= '
                     <li>
+                        <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
+                            <i class="fas fa-file-alt"></i>
+                            <button class="expand-btn">Abrir</button>
+                            ' . htmlspecialchars($arq['nome']) . '
+                        </a>
+                    </li>';
+                }
+                else{
+                    $lista_financeiro .= '
+                    <li>
+                        <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
                         <i class="fas fa-file-alt"></i>
                         <button class="expand-btn">Abrir</button>
                         ' . htmlspecialchars($arq['nome']) . '
-                    </li>';
+                        </a>
+                        </li>';
+                }
             }
         }
 
@@ -140,12 +182,26 @@ $dados2 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 $lista_comercial = ''; 
 foreach ($dados_arq as $arq) {
     if ($arq['id_grupo'] == 2 && $arq['id_pasta'] == 0 && $arq['id_subpasta'] == 0) {
-        $lista_comercial .= '
+        if($arq['editavel'] == 1){
+            $lista_comercial .= '
             <li>
+                <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
+                    <i class="fas fa-file-alt"></i>
+                    <button class="expand-btn">Abrir</button>
+                    ' . htmlspecialchars($arq['nome']) . '
+                </a>
+            </li>';
+        }
+        else{
+            $lista_comercial .= '
+            <li>
+                <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
                 <i class="fas fa-file-alt"></i>
                 <button class="expand-btn">Abrir</button>
                 ' . htmlspecialchars($arq['nome']) . '
-            </li>';
+                </a>
+                </li>';
+        }
     }
 }
 
@@ -176,12 +232,26 @@ foreach ($pastas as $id_pasta => $pasta) {
     // Adiciona arquivos da pasta principal
     foreach ($dados_arq as $arq) {
         if ($arq['id_grupo'] == 2 && $arq['id_pasta'] == $id_pasta && $arq['id_subpasta'] == 0) {
-            $lista_comercial .= '
+            if($arq['editavel'] == 1){
+                $lista_comercial .= '
                 <li>
+                    <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
+                        <i class="fas fa-file-alt"></i>
+                        <button class="expand-btn">Abrir</button>
+                        ' . htmlspecialchars($arq['nome']) . '
+                    </a>
+                </li>';
+            }
+            else{
+                $lista_comercial .= '
+                <li>
+                    <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
                     <i class="fas fa-file-alt"></i>
                     <button class="expand-btn">Abrir</button>
                     ' . htmlspecialchars($arq['nome']) . '
-                </li>';
+                    </a>
+                    </li>';
+            }
         }
     }
 
@@ -197,12 +267,26 @@ foreach ($pastas as $id_pasta => $pasta) {
         // Adiciona arquivos da subpasta
         foreach ($dados_arq as $arq) {
             if ($arq['id_grupo'] == 2 && $arq['id_pasta'] == $id_pasta && $arq['id_subpasta'] == $id_subpasta) {
-                $lista_comercial .= '
+                if($arq['editavel'] == 1){
+                    $lista_comercial .= '
                     <li>
+                        <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
+                            <i class="fas fa-file-alt"></i>
+                            <button class="expand-btn">Abrir</button>
+                            ' . htmlspecialchars($arq['nome']) . '
+                        </a>
+                    </li>';
+                }
+                else{
+                    $lista_comercial .= '
+                    <li>
+                        <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
                         <i class="fas fa-file-alt"></i>
                         <button class="expand-btn">Abrir</button>
                         ' . htmlspecialchars($arq['nome']) . '
-                    </li>';
+                        </a>
+                        </li>';
+                }
             }
         }
 
@@ -228,12 +312,26 @@ $dados3 = $stmt3->fetchAll(PDO::FETCH_ASSOC);
 $lista_adm = ''; 
 foreach ($dados_arq as $arq) {
     if ($arq['id_grupo'] == 3 && $arq['id_pasta'] == 0 && $arq['id_subpasta'] == 0) {
-        $lista_adm .= '
+        if($arq['editavel'] == 1){
+            $lista_adm .= '
             <li>
+                <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
+                    <i class="fas fa-file-alt"></i>
+                    <button class="expand-btn">Abrir</button>
+                    ' . htmlspecialchars($arq['nome']) . '
+                </a>
+            </li>';
+        }
+        else{
+            $lista_adm .= '
+            <li>
+                <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
                 <i class="fas fa-file-alt"></i>
                 <button class="expand-btn">Abrir</button>
                 ' . htmlspecialchars($arq['nome']) . '
-            </li>';
+                </a>
+                </li>';
+        }
     }
 }
 
@@ -264,12 +362,26 @@ foreach ($pastas as $id_pasta => $pasta) {
     // Adiciona arquivos da pasta principal
     foreach ($dados_arq as $arq) {
         if ($arq['id_grupo'] == 3 && $arq['id_pasta'] == $id_pasta && $arq['id_subpasta'] == 0) {
-            $lista_adm .= '
+            if($arq['editavel'] == 1){
+                $lista_adm .= '
                 <li>
+                    <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
+                        <i class="fas fa-file-alt"></i>
+                        <button class="expand-btn">Abrir</button>
+                        ' . htmlspecialchars($arq['nome']) . '
+                    </a>
+                </li>';
+            }
+            else{
+                $lista_adm .= '
+                <li>
+                    <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
                     <i class="fas fa-file-alt"></i>
                     <button class="expand-btn">Abrir</button>
                     ' . htmlspecialchars($arq['nome']) . '
-                </li>';
+                    </a>
+                    </li>';
+            }
         }
     }
 
@@ -285,12 +397,26 @@ foreach ($pastas as $id_pasta => $pasta) {
         // Adiciona arquivos da subpasta
         foreach ($dados_arq as $arq) {
             if ($arq['id_grupo'] == 3 && $arq['id_pasta'] == $id_pasta && $arq['id_subpasta'] == $id_subpasta) {
-                $lista_adm .= '
+                if($arq['editavel'] == 1){
+                    $lista_adm .= '
                     <li>
+                        <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
+                            <i class="fas fa-file-alt"></i>
+                            <button class="expand-btn">Abrir</button>
+                            ' . htmlspecialchars($arq['nome']) . '
+                        </a>
+                    </li>';
+                }
+                else{
+                    $lista_adm .= '
+                    <li>
+                        <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
                         <i class="fas fa-file-alt"></i>
                         <button class="expand-btn">Abrir</button>
                         ' . htmlspecialchars($arq['nome']) . '
-                    </li>';
+                        </a>
+                        </li>';
+                }
             }
         }
 
@@ -316,12 +442,26 @@ $dados4 = $stmt4->fetchAll(PDO::FETCH_ASSOC);
 $lista_ti = ''; 
 foreach ($dados_arq as $arq) {
     if ($arq['id_grupo'] == 4 && $arq['id_pasta'] == 0 && $arq['id_subpasta'] == 0) {
-        $lista_ti .= '
+        if($arq['editavel'] == 1){
+            $lista_ti .= '
             <li>
+                <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
+                    <i class="fas fa-file-alt"></i>
+                    <button class="expand-btn">Abrir</button>
+                    ' . htmlspecialchars($arq['nome']) . '
+                </a>
+            </li>';
+        }
+        else{
+            $lista_ti .= '
+            <li>
+                <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
                 <i class="fas fa-file-alt"></i>
                 <button class="expand-btn">Abrir</button>
                 ' . htmlspecialchars($arq['nome']) . '
-            </li>';
+                </a>
+                </li>';
+        }
     }
 }
 
@@ -352,12 +492,26 @@ foreach ($pastas as $id_pasta => $pasta) {
     // Adiciona arquivos da pasta principal
     foreach ($dados_arq as $arq) {
         if ($arq['id_grupo'] == 4 && $arq['id_pasta'] == $id_pasta && $arq['id_subpasta'] == 0) {
-            $lista_ti .= '
+            if($arq['editavel'] == 1){
+                $lista_ti .= '
                 <li>
+                    <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
+                        <i class="fas fa-file-alt"></i>
+                        <button class="expand-btn">Abrir</button>
+                        ' . htmlspecialchars($arq['nome']) . '
+                    </a>
+                </li>';
+            }
+            else{
+                $lista_ti .= '
+                <li>
+                    <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
                     <i class="fas fa-file-alt"></i>
                     <button class="expand-btn">Abrir</button>
                     ' . htmlspecialchars($arq['nome']) . '
-                </li>';
+                    </a>
+                    </li>';
+            }
         }
     }
 
@@ -373,12 +527,26 @@ foreach ($pastas as $id_pasta => $pasta) {
         // Adiciona arquivos da subpasta
         foreach ($dados_arq as $arq) {
             if ($arq['id_grupo'] == 4 && $arq['id_pasta'] == $id_pasta && $arq['id_subpasta'] == $id_subpasta) {
-                $lista_ti .= '
+                if($arq['editavel'] == 1){
+                    $lista_ti .= '
                     <li>
+                        <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
+                            <i class="fas fa-file-alt"></i>
+                            <button class="expand-btn">Abrir</button>
+                            ' . htmlspecialchars($arq['nome']) . '
+                        </a>
+                    </li>';
+                }
+                else{
+                    $lista_ti .= '
+                    <li>
+                        <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
                         <i class="fas fa-file-alt"></i>
                         <button class="expand-btn">Abrir</button>
                         ' . htmlspecialchars($arq['nome']) . '
-                    </li>';
+                        </a>
+                        </li>';
+                }
             }
         }
 

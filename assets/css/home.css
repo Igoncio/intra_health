@@ -183,15 +183,15 @@ main {
 
 .folder-items, .folder-items2, .expandable-items {
     list-style: none;
-    display: none; /* Inicialmente oculto */
+    display: none; 
     overflow: hidden;
-    max-height: 0; /* Esconder inicialmente */
+    max-height: 0; 
     transition: max-height 0.3s ease-out;
 }
 
 .folder-items.expanded, .folder-items2.expanded, .expandable-items.expanded {
     display: block;
-    max-height: 500px; /* Ajuste conforme necessário */
+    max-height:100%; 
 }
 
 .folder-title {
@@ -207,7 +207,7 @@ main {
     cursor: pointer;
     font-size: 1.2rem;
     color: #3b82f6;
-    margin-left: auto; /* Alinha o botão à direita dentro do contêiner */
+    margin-left: auto; 
 }
 
 .expand-btn:hover {

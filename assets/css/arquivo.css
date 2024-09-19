@@ -88,6 +88,7 @@ body {
 }
 
 .sheet {
+
     background-color: #fdfdfd;
     padding: 40px;
     border-radius: 10px;
@@ -96,11 +97,13 @@ body {
     border: 1px solid #e0e0e0;
     font-size: 18px;
     line-height: 1.6;
-    white-space: pre-wrap;
     text-align: left;
     margin-bottom: 30px;
     overflow-y: auto;
-    max-height: 700px;
+    max-height: 600px;
+}
+textarea {
+    resize: none; /* Evita que o textarea seja redimensionado */
 }
 
 .sheet:focus {
