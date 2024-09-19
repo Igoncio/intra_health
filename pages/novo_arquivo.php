@@ -50,7 +50,10 @@ include '../includes/php/novo_arquivo.php';
             </div>
         </fieldset>
         
-        <button id="botao" type="submit">Criar Arquivo</button>
+        <div class="button-container">
+            <button id="botao" type="submit">Criar Arquivo</button>
+            <button id="botao2" onclick="history.back()">Voltar</button>
+        </div>
     </form>
 
 

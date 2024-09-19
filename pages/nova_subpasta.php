@@ -38,7 +38,10 @@ include '../includes/php/nova_subpasta.php';
         <label for="folder-name">Nome da SubPasta:</label>
         <input type="text" id="folder-name" name="nome" placeholder="Digite o nome da pasta" required>
         
-        <button id="botao" type="submit">Criar SubPasta</button>
+        <div class="button-container">
+            <button id="botao" type="submit">Criar Subpasta</button>
+            <button id="botao2" onclick="history.back()">Voltar</button>
+        </div>
     </form>
 
 

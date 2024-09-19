@@ -43,10 +43,11 @@
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="gerenciar_usuario.php">Gerenciar Usuario</a></li>
               </li>
-          </li>
-        </ul>
-
-      </div>
+            </li>
+          </ul>
+          
+        </div>
+        <a href="../"><i class="bi bi-box-arrow-right"></i></a>
     </div>
   </div>
 </nav>

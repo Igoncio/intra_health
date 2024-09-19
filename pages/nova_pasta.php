@@ -11,22 +11,27 @@ include '../includes/php/nova_pasta.php';
 </head>
 <body>
 
-    <h1 id="titulo">Criar Nova Pasta</h1>
     
     <form action="#" method="POST">
-    <select name="id_grupo" id="">
-        <option value="">Selecione o grupo</option>
-        <option value="1">Financeiro</option>
-        <option value="2">Comercial</option>
-        <option value="3">Administrativo</option>
-        <option value="4">T.I</option>
-    </select>
+        <h1 id="titulo">Criar Nova Pasta</h1>
+
+        <select name="id_grupo" id="">
+            <option value="">Selecione o grupo</option>
+            <option value="1">Financeiro</option>
+            <option value="2">Comercial</option>
+            <option value="3">Administrativo</option>
+            <option value="4">T.I</option>
+        </select>
     
     
         <label for="folder-name">Nome da Pasta:</label>
         <input type="text" id="folder-name" name="nome" placeholder="Digite o nome da pasta" required>
         
-        <button id="botao" type="submit">Criar Pasta</button>
+        <div class="button-container">
+            <button id="botao" type="submit">Criar Pasta</button>
+            <button id="botao2" onclick="history.back()">Voltar</button>
+        </div>
+    
     </form>
 
 
