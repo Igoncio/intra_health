@@ -2,3 +2,23 @@
     text-decoration: none;
     color: black;
 }
+
+#a-menu{
+    text-decoration: none;
+    color: inherit;
+}
+
+#i-menu{
+    font-size: 25px;
+    color: rgb(171, 2, 2);
+}
+
+#juntar-menu{
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+}
+
+#area-menu{
+    padding-top: 15px;
+}

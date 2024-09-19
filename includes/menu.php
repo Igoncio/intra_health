@@ -20,7 +20,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
-        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+        <ul id="area-menu" class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="home.php">Home</a>
           </li>
@@ -47,8 +47,14 @@
           </ul>
           
         </div>
-        <a href="../"><i class="bi bi-box-arrow-right"></i></a>
-    </div>
+        
+        <div id="juntar-menu">
+          <a id="a-menu" href="../"><i id="i-menu" class="bi bi-box-arrow-right"></i></a>
+          <label for="">Sair</label>
+       </div>
+
+
+      </div>
   </div>
 </nav>
 </body>
