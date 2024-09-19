@@ -41,11 +41,11 @@ include '../includes/php/novo_arquivo.php';
         <fieldset>
             <legend>Selecione uma opção</legend>
             <div class="radio-group">
-                <input type="radio" id="opcao1" name="editavel" value="0">
+                <input type="radio" id="opcao1" name="editavel" value="1">
                 <label for="opcao1">Irei adicionar um arquivo já pronto</label>
             </div>
             <div class="radio-group">
-                <input type="radio" id="opcao2" name="editavel" value="1">
+                <input type="radio" id="opcao2" name="editavel" value="0">
                 <label for="opcao2">Irei usar o editor de texto do sistema</label>
             </div>
         </fieldset>

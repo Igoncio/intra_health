@@ -55,7 +55,7 @@ foreach ($dados_arq as $arq) {
         if($arq['editavel'] == 1){
             $lista_financeiro .= '
             <li>
-                <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
+                <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
                     <i class="fas fa-file-alt"></i>
                     <button class="expand-btn">Abrir</button>
                     ' . htmlspecialchars($arq['nome']) . '
@@ -65,7 +65,7 @@ foreach ($dados_arq as $arq) {
         else{
             $lista_financeiro .= '
             <li>
-                <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
+                <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
                 <i class="fas fa-file-alt"></i>
                 <button class="expand-btn">Abrir</button>
                 ' . htmlspecialchars($arq['nome']) . '
@@ -105,7 +105,7 @@ foreach ($pastas as $id_pasta => $pasta) {
             if($arq['editavel'] == 1){
                 $lista_financeiro .= '
                 <li>
-                    <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
+                    <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
                         <i class="fas fa-file-alt"></i>
                         <button class="expand-btn">Abrir</button>
                         ' . htmlspecialchars($arq['nome']) . '
@@ -115,7 +115,7 @@ foreach ($pastas as $id_pasta => $pasta) {
             else{
                 $lista_financeiro .= '
                 <li>
-                    <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
+                    <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
                     <i class="fas fa-file-alt"></i>
                     <button class="expand-btn">Abrir</button>
                     ' . htmlspecialchars($arq['nome']) . '
@@ -140,7 +140,7 @@ foreach ($pastas as $id_pasta => $pasta) {
                 if($arq['editavel'] == 1){
                     $lista_financeiro .= '
                     <li>
-                        <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
+                        <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
                             <i class="fas fa-file-alt"></i>
                             <button class="expand-btn">Abrir</button>
                             ' . htmlspecialchars($arq['nome']) . '
@@ -150,7 +150,7 @@ foreach ($pastas as $id_pasta => $pasta) {
                 else{
                     $lista_financeiro .= '
                     <li>
-                        <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
+                        <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
                         <i class="fas fa-file-alt"></i>
                         <button class="expand-btn">Abrir</button>
                         ' . htmlspecialchars($arq['nome']) . '
@@ -185,7 +185,7 @@ foreach ($dados_arq as $arq) {
         if($arq['editavel'] == 1){
             $lista_comercial .= '
             <li>
-                <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
+                <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
                     <i class="fas fa-file-alt"></i>
                     <button class="expand-btn">Abrir</button>
                     ' . htmlspecialchars($arq['nome']) . '
@@ -195,7 +195,7 @@ foreach ($dados_arq as $arq) {
         else{
             $lista_comercial .= '
             <li>
-                <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
+                <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
                 <i class="fas fa-file-alt"></i>
                 <button class="expand-btn">Abrir</button>
                 ' . htmlspecialchars($arq['nome']) . '
@@ -235,7 +235,7 @@ foreach ($pastas as $id_pasta => $pasta) {
             if($arq['editavel'] == 1){
                 $lista_comercial .= '
                 <li>
-                    <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
+                    <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
                         <i class="fas fa-file-alt"></i>
                         <button class="expand-btn">Abrir</button>
                         ' . htmlspecialchars($arq['nome']) . '
@@ -245,7 +245,7 @@ foreach ($pastas as $id_pasta => $pasta) {
             else{
                 $lista_comercial .= '
                 <li>
-                    <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
+                    <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
                     <i class="fas fa-file-alt"></i>
                     <button class="expand-btn">Abrir</button>
                     ' . htmlspecialchars($arq['nome']) . '
@@ -270,7 +270,7 @@ foreach ($pastas as $id_pasta => $pasta) {
                 if($arq['editavel'] == 1){
                     $lista_comercial .= '
                     <li>
-                        <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
+                        <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
                             <i class="fas fa-file-alt"></i>
                             <button class="expand-btn">Abrir</button>
                             ' . htmlspecialchars($arq['nome']) . '
@@ -280,7 +280,7 @@ foreach ($pastas as $id_pasta => $pasta) {
                 else{
                     $lista_comercial .= '
                     <li>
-                        <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
+                        <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
                         <i class="fas fa-file-alt"></i>
                         <button class="expand-btn">Abrir</button>
                         ' . htmlspecialchars($arq['nome']) . '
@@ -315,7 +315,7 @@ foreach ($dados_arq as $arq) {
         if($arq['editavel'] == 1){
             $lista_adm .= '
             <li>
-                <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
+                <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
                     <i class="fas fa-file-alt"></i>
                     <button class="expand-btn">Abrir</button>
                     ' . htmlspecialchars($arq['nome']) . '
@@ -325,7 +325,7 @@ foreach ($dados_arq as $arq) {
         else{
             $lista_adm .= '
             <li>
-                <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
+                <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
                 <i class="fas fa-file-alt"></i>
                 <button class="expand-btn">Abrir</button>
                 ' . htmlspecialchars($arq['nome']) . '
@@ -365,7 +365,7 @@ foreach ($pastas as $id_pasta => $pasta) {
             if($arq['editavel'] == 1){
                 $lista_adm .= '
                 <li>
-                    <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
+                    <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
                         <i class="fas fa-file-alt"></i>
                         <button class="expand-btn">Abrir</button>
                         ' . htmlspecialchars($arq['nome']) . '
@@ -375,7 +375,7 @@ foreach ($pastas as $id_pasta => $pasta) {
             else{
                 $lista_adm .= '
                 <li>
-                    <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
+                    <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
                     <i class="fas fa-file-alt"></i>
                     <button class="expand-btn">Abrir</button>
                     ' . htmlspecialchars($arq['nome']) . '
@@ -400,7 +400,7 @@ foreach ($pastas as $id_pasta => $pasta) {
                 if($arq['editavel'] == 1){
                     $lista_adm .= '
                     <li>
-                        <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
+                        <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
                             <i class="fas fa-file-alt"></i>
                             <button class="expand-btn">Abrir</button>
                             ' . htmlspecialchars($arq['nome']) . '
@@ -410,7 +410,7 @@ foreach ($pastas as $id_pasta => $pasta) {
                 else{
                     $lista_adm .= '
                     <li>
-                        <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
+                        <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
                         <i class="fas fa-file-alt"></i>
                         <button class="expand-btn">Abrir</button>
                         ' . htmlspecialchars($arq['nome']) . '
@@ -445,7 +445,7 @@ foreach ($dados_arq as $arq) {
         if($arq['editavel'] == 1){
             $lista_ti .= '
             <li>
-                <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
+                <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
                     <i class="fas fa-file-alt"></i>
                     <button class="expand-btn">Abrir</button>
                     ' . htmlspecialchars($arq['nome']) . '
@@ -455,7 +455,7 @@ foreach ($dados_arq as $arq) {
         else{
             $lista_ti .= '
             <li>
-                <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
+                <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
                 <i class="fas fa-file-alt"></i>
                 <button class="expand-btn">Abrir</button>
                 ' . htmlspecialchars($arq['nome']) . '
@@ -495,7 +495,7 @@ foreach ($pastas as $id_pasta => $pasta) {
             if($arq['editavel'] == 1){
                 $lista_ti .= '
                 <li>
-                    <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
+                    <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
                         <i class="fas fa-file-alt"></i>
                         <button class="expand-btn">Abrir</button>
                         ' . htmlspecialchars($arq['nome']) . '
@@ -505,7 +505,7 @@ foreach ($pastas as $id_pasta => $pasta) {
             else{
                 $lista_ti .= '
                 <li>
-                    <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
+                    <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
                     <i class="fas fa-file-alt"></i>
                     <button class="expand-btn">Abrir</button>
                     ' . htmlspecialchars($arq['nome']) . '
@@ -530,7 +530,7 @@ foreach ($pastas as $id_pasta => $pasta) {
                 if($arq['editavel'] == 1){
                     $lista_ti .= '
                     <li>
-                        <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
+                        <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
                             <i class="fas fa-file-alt"></i>
                             <button class="expand-btn">Abrir</button>
                             ' . htmlspecialchars($arq['nome']) . '
@@ -540,7 +540,7 @@ foreach ($pastas as $id_pasta => $pasta) {
                 else{
                     $lista_ti .= '
                     <li>
-                        <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
+                        <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
                         <i class="fas fa-file-alt"></i>
                         <button class="expand-btn">Abrir</button>
                         ' . htmlspecialchars($arq['nome']) . '
