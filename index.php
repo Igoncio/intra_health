@@ -1,3 +1,14 @@
+<?php
+require_once __DIR__ . '/vendor/autoload.php';
+include 'includes/php/index.php';
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +27,7 @@
         <input type="text" id="folder-name" name="nome" placeholder="Digite o seu email" required>
         
         <label for="folder-name">Senha:</label>
-        <input type="password" id="folder-name" name="telefone" placeholder="Digite a sua senha" required>
+        <input type="password" id="folder-name" name="senha" placeholder="Digite a sua senha" required>
 
        
             
