@@ -24,7 +24,7 @@ include 'includes/php/index.php';
         <h1>Entrar</h1>
 
         <label for="folder-name">email do Usuario:</label>
-        <input type="text" id="folder-name" name="nome" placeholder="Digite o seu email" required>
+        <input type="text" id="folder-name" name="email" placeholder="Digite o seu email" required>
         
         <label for="folder-name">Senha:</label>
         <input type="password" id="folder-name" name="senha" placeholder="Digite a sua senha" required>

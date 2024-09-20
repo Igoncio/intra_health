@@ -1,3 +1,18 @@
+<?php
+if(!isset($_SESSION)){
+
+session_start();
+}
+
+if(!isset($_SESSION['id_user'])){
+    die("Você não está logado, por isso não pode acessar");
+    
+}
+include_once 'php/consultar_permissoes.php';
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

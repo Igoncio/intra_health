@@ -1,28 +1,32 @@
 <?php
-session_start(); 
-
-include 'App/Db/connPoo.php'; 
+session_start();
 
 $db = new PDO("mysql:host=localhost;dbname=intra_health", "root", "");
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST['nome'];
+if (isset($_POST['email'], $_POST['senha'])) {
+    $email = $_POST['email']; 
     $senha = $_POST['senha'];
 
-    $pega_id = 'SELECT * FROM usuario';
-    $stmt = $db->query($pega_id);
-    $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt = $db->prepare("SELECT * FROM usuario WHERE email = :email AND senha = :senha");
+    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':senha', $senha);
+    $stmt->execute();
 
-    // echo "<pre>"; print_r($dados); echo "</pre>";
+   
+    $quantidade = $stmt->rowCount();
 
+    if ($quantidade == 1) {
+        $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    foreach ($dados as $usuario) {
-        if($email = $usuario['email'] and $senha == $usuario['senha_hash']){
-            header('location: pages/home.php');
-        }
+       
+        $_SESSION['id_user'] = $usuario['id_user'];
+        $_SESSION['nome'] = $usuario['nome'];
+
+        header('Location: pages/home.php');
+        exit(); 
+    } else {
+        echo "Falhou: usuário ou senha incorretos.";
     }
-    echo "<script>alert('Email ou senha inválidos');</script>";
 }
 ?>
