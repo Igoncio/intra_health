@@ -37,7 +37,7 @@ $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $lista = '';
 
 foreach ($dados as $row) {
-    if ($row['arq'] == null) {
+    if ($row['arq'] == null && $cad_arq == 1) {
         $lista .= '
         <form id="uploadForm" method="POST" enctype="multipart/form-data" style="display: block;">
             <input type="hidden" id="fileId" name="fileId" value="' . htmlspecialchars($id) . '">
@@ -59,19 +59,23 @@ foreach ($dados as $row) {
         $lista .= '
         <div class="preview-container" id="previewContainer">
             ' . $preview . '
-        </div>
-        <div class="button-container" id="actionButtons">
-            <button id="hidePreviewBtn" onclick="hidePreview(); return false;">
-                Carregar outro arquivo
-            </button>
-        </div>
-        <form id="uploadForm" method="POST" enctype="multipart/form-data" style="display: none;">
-            <input type="hidden" id="fileId" name="fileId" value="' . htmlspecialchars($id) . '">
-            <input type="file" id="fileInput" name="file" accept=".pdf, .jpg, .jpeg, .png" required>
-            <div class="button-container">
-                <button type="submit">Enviar</button>
+        </div>';
+
+        if ($cad_arq == 1) {
+            $lista .= '
+            <div class="button-container" id="actionButtons">
+                <button id="hidePreviewBtn" onclick="hidePreview(); return false;">
+                    Carregar outro arquivo
+                </button>
             </div>
-        </form>';
+            <form id="uploadForm" method="POST" enctype="multipart/form-data" style="display: none;">
+                <input type="hidden" id="fileId" name="fileId" value="' . htmlspecialchars($id) . '">
+                <input type="file" id="fileInput" name="file" accept=".pdf, .jpg, .jpeg, .png" required>
+                <div class="button-container">
+                    <button type="submit">Enviar</button>
+                </div>
+            </form>';
+        }
     }
 }
 

@@ -32,6 +32,8 @@ include '../includes/php/arquivo.php';
             <?= $lista_id?>
         </div>
 
+
+        <?php if($edit_arq):?>
         <div class="edit-icon-container">
             <span class="material-icons edit-icon" id="edit-icon">edit</span>
             <p>Editar</p>
@@ -41,7 +43,9 @@ include '../includes/php/arquivo.php';
             <textarea id="text-to-send" name="text" style="display:none;"></textarea>
             <button type="submit" class="send-btn">Salvar</button>
         </form>
-    </div>
+        </div>
+        <?php endif;?>
+
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {

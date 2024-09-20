@@ -17,10 +17,23 @@ include '../includes/php/home.php';
     <main>
         <div class="content">
             <h2>Pastas</h2>
+
+            <?php if($cad_pasta):?>
             <a href="nova_pasta.php"><button class="btn-primary">+ Nova pasta</button></a>
+            <?php endif;?>
+           
+            
+            <?php if($cad_pasta):?>
             <a href="nova_subpasta.php"><button class="btn-primary">+ Nova subpasta</button></a>
+            <?php endif;?>
+           
+            <?php if($cad_arq):?>
             <a href="novo_arquivo.php"><button class="btn-primary">+ Novo arquivo</button></a>
+            <?php endif;?>
+            
             <ul class="folder-list">
+
+                <?php if($acesso_financeiro):?>
                 <li class="folder">
                     <div class="folder-title">
                         Financeiro 
@@ -29,8 +42,10 @@ include '../includes/php/home.php';
                     <ul class="folder-items">
                         <?= $lista_financeiro ?>
                     </ul>
+                <?php endif;?>
 
-
+            
+                <?php if($acesso_comercial):?>
                     <li class="folder">
                     <div class="folder-title">
                         Comercial 
@@ -39,9 +54,10 @@ include '../includes/php/home.php';
                     <ul class="folder-items">
                         <?= $lista_comercial ?>
                     </ul>
+                <?php endif;?>
 
 
-
+                <?php if($acesso_adm):?>
                     <li class="folder">
                     <div class="folder-title">
                         Administrativo
@@ -50,8 +66,10 @@ include '../includes/php/home.php';
                     <ul class="folder-items">
                         <?= $lista_adm ?>
                     </ul>
+                <?php endif;?>
 
 
+                <?php if($acesso_ti):?>
                     <li class="folder">
                     <div class="folder-title">
                         T.I
@@ -61,7 +79,7 @@ include '../includes/php/home.php';
                         
                         <?= $lista_ti ?>
                     </ul>
-
+                <?php endif;?>
 
                    
                 </li>
