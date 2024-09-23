@@ -1,5 +1,7 @@
 <?php
+require_once __DIR__ . '/../vendor/autoload.php';
 include '../includes/menu.php';
+include '../includes/php/gerenciar_usuario.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,141 +30,7 @@ include '../includes/menu.php';
             </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>João Silva</td>
-                <td>
-                    <div class="actions">
-                        <a href="editar_usuario.php"><span class="material-icons edit">edit</span></a>
-                        <span class="material-icons delete" onclick="openModal()">delete</span>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>João Silva</td>
-                <td>
-                    <div class="actions">
-                        <span class="material-icons edit">edit</span>
-                        <span class="material-icons delete">delete</span>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>João Silva</td>
-                <td>
-                    <div class="actions">
-                        <span class="material-icons edit">edit</span>
-                        <span class="material-icons delete">delete</span>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>João Silva</td>
-                <td>
-                    <div class="actions">
-                        <span class="material-icons edit">edit</span>
-                        <span class="material-icons delete">delete</span>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>João Silva</td>
-                <td>
-                    <div class="actions">
-                        <span class="material-icons edit">edit</span>
-                        <span class="material-icons delete">delete</span>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>João Silva</td>
-                <td>
-                    <div class="actions">
-                        <span class="material-icons edit">edit</span>
-                        <span class="material-icons delete">delete</span>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>João Silva</td>
-                <td>
-                    <div class="actions">
-                        <span class="material-icons edit">edit</span>
-                        <span class="material-icons delete">delete</span>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>João Silva</td>
-                <td>
-                    <div class="actions">
-                        <span class="material-icons edit">edit</span>
-                        <span class="material-icons delete">delete</span>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>João Silva</td>
-                <td>
-                    <div class="actions">
-                        <span class="material-icons edit">edit</span>
-                        <span class="material-icons delete">delete</span>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>João Silva</td>
-                <td>
-                    <div class="actions">
-                        <span class="material-icons edit">edit</span>
-                        <span class="material-icons delete">delete</span>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>João Silva</td>
-                <td>
-                    <div class="actions">
-                        <span class="material-icons edit">edit</span>
-                        <span class="material-icons delete">delete</span>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>João Silva</td>
-                <td>
-                    <div class="actions">
-                        <span class="material-icons edit">edit</span>
-                        <span class="material-icons delete">delete</span>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>Ana Oliveira</td>
-                <td>
-                    <div class="actions">
-                        <span class="material-icons edit">edit</span>
-                        <span class="material-icons delete">delete</span>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>Pedro Santos</td>
-                <td>
-                    <div class="actions">
-                        <span class="material-icons edit">edit</span>
-                        <span class="material-icons delete">delete</span>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>Maria Costa</td>
-                <td>
-                    <div class="actions">
-                        <span class="material-icons edit">edit</span>
-                        <span class="material-icons delete">delete</span>
-                    </div>
-                </td>
-            </tr>
+        <?= $lista_user ?>
         </tbody>
     </table>
 </div>

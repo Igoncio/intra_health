@@ -1,5 +1,7 @@
 <?php
-include '../includes/menu.php';
+require_once __DIR__ . '/../vendor/autoload.php';
+// include '../includes/menu.php';
+include '../includes/php/editar_user.php';
 ?>
 <head>
     <meta charset="UTF-8">
@@ -15,35 +17,31 @@ include '../includes/menu.php';
         
         <label for="folder-name">Selecione o grupo</label>
         <select name="pasta" id="pasta">
-            <option value="">Selecione o grupo</option>
-            <option value="orcamentos">Financeiro</option>
-            <option value="clausulas">Recursos Humanos</option>
-            <option value="clausulas">Comercial</option>
-            <option value="clausulas">T.I</option>
+            <option value="<?php echo $user['id_grupo']; ?>"><?php echo  $user['nome_grupo']; ?></option>
+            <option value="1">Financeiro</option>
+            <option value="2">Recursos Humanos</option>
+            <option value="3">Comercial</option>
+            <option value="4">T.I</option>
         </select>
 
         <label for="folder-name">Selecione o tipo de permissão</label>
         <select name="pasta" id="pasta">
-            <option value="">Selecione o tipo de permissão</option>
-            <option value="orcamentos">Financeiro</option>
-            <option value="orcamentos">Financeiro/adm</option>
-            <option value="clausulas">Comercial</option>
-            <option value="clausulas">Comercial/adm</option>
-            <option value="clausulas">ADM SUPREMO</option>
+            <option value="<?php echo $user['id_permissao']; ?>"><?php echo  $user['nome_permissao']; ?></option>
+            <?=$lista_perm?>
         </select>
 
 
         <label for="folder-name">Nome do Usuario:</label>
-        <input type="text" id="folder-name" name="folder-name" placeholder="Digite o nome do usuario" required>
+        <input type="text" id="folder-name" name="folder-name" placeholder="<?php echo  $user['nome']; ?>" required>
         
         <label for="folder-name">Telefone:</label>
-        <input type="text" id="folder-name" name="folder-name" placeholder="Digite o telefone" required>
+        <input type="text" id="folder-name" name="folder-name" placeholder="<?php echo  $user['telefone']; ?>" required>
 
         <label for="folder-name">email:</label>
-        <input type="text" id="folder-name" name="folder-name" placeholder="Digite o email" required>
+        <input type="text" id="folder-name" name="folder-name" placeholder="<?php echo  $user['email']; ?>" required>
 
         <label for="folder-name">senha:</label>
-        <input type="text" id="folder-name" name="folder-name" placeholder="Digite a senha" required>
+        <input type="text" id="folder-name" name="folder-name" placeholder="<?php echo  $user['senha']; ?>" required>
             
         <button id="botao" type="submit">Salvar</button>
 
