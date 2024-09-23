@@ -54,11 +54,7 @@ function closeModal() {
     document.getElementById("deleteModal").style.display = "none";
 }
 
-function confirmDelete() {
-    // Adicione aqui o código para confirmar a exclusão
-    alert("Usuário excluído!");
-    closeModal();
-}
+
 </script>
 
 </body>

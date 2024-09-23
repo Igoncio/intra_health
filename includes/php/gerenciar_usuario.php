@@ -17,8 +17,11 @@ foreach($dados as $user){
         <tr>
             <td>'.$user['nome'].'</td>
                 <td>
-                        <a href="editar_usuario.php?id_user='.$user['id_user'].'"><span class="material-icons edit">edit</span></a>                    <div class="actions">
-                        <span class="material-icons delete" onclick="openModal()">delete</span>
+                    <div class="actions">
+                        <a href="editar_usuario.php?id_user='.$user['id_user'].'"><span class="material-icons edit">edit</span></a>
+                       <a href="../includes/php/excluir.php?id_user='.$user['id_user'].'">
+                        <span class="material-icons delete">delete</span>
+                        </a>
                     </div>
                 </td>
         </tr>
