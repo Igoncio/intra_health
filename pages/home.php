@@ -96,20 +96,14 @@ include '../includes/php/home.php';
                 <h2>Gerenciar Pasta</h2>
                     <div>
                         <a href="editar_pasta.php"><button class="btn-primary">Editar</button></a>
-                        <a href="editar_pasta.php"><button class="btn-primary">Excluir</button></a>
+                        <a href="excluir_pasta.php"><button class="btn-primary">Excluir</button></a>
                     </div>
                 <h2>Gerenciar Subasta</h2>
                     <div>
                         <a href="editar_subpasta.php"><button class="btn-primary">Editar</button></a>
-                        <a href="editar_pasta.php"><button class="btn-primary">Excluir</button></a>
+                        <a href="excluir_subpasta.php"><button class="btn-primary">Excluir</button></a>
                     </div>
 
-                <h2>Gerenciar Arquivo</h2>
-                    <div>
-                        <a href="editar_pasta.php"><button class="btn-primary">Editar</button></a>
-                        <a href="editar_pasta.php"><button class="btn-primary">Excluir</button></a>
-                    </div>
-            </div>
     </div>
         
     </main>
