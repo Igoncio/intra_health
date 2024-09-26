@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
 include '../includes/menu.php';
-include '../includes/php/novo_arquivo.php';
+include '../includes/php/editar_pasta.php';
 ?>
 <head>
     <meta charset="UTF-8">
@@ -40,7 +40,7 @@ include '../includes/php/novo_arquivo.php';
         
         <div class="button-container">
             <button id="botao" type="submit">salvar</button>
-            <button id="botao2" onclick="history.back()">Voltar</button>
+            <a href="home.php"><button id="botao2">Voltar</button></a>
         </div>
     </form>
 

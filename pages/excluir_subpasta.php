@@ -38,7 +38,7 @@ include '../includes/php/excluir_subpasta.php';
         
         <div class="button-container">
         <button id="botao2" type="submit">Excluir</button>
-        <button id="botao" onclick="history.back()">Voltar</button>
+        <a href="home.php"><button id="botao">Voltar</button></a>
         </div>
     </form>
 
