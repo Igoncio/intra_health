@@ -95,7 +95,7 @@ foreach ($pastas as $id_pasta => $pasta) {
     $lista_financeiro .= '
         <li class="expandable">
             <button class="expand-btn">+</button>
-            <i class="bi bi-gear-wide-connected gear-icon"></i>
+            
             <i class="fas fa-folder"></i> ' . htmlspecialchars($pasta['nome']) . '
             <ul class="expandable-items">';
 
@@ -130,7 +130,7 @@ foreach ($pastas as $id_pasta => $pasta) {
         $lista_financeiro .= '
             <li class="expandable">
                 <button class="expand-btn">+</button>
-                <i class="bi bi-gear-wide-connected"></i>
+                
                 <i class="fas fa-folder"></i> ' . htmlspecialchars($nome_subpasta) . '
                 <ul class="expandable-items">';
 
@@ -225,7 +225,7 @@ foreach ($pastas as $id_pasta => $pasta) {
     $lista_comercial .= '
         <li class="expandable">
             <button class="expand-btn">+</button>
-            <i class="bi bi-gear-wide-connected gear-icon"></i>
+            
             <i class="fas fa-folder"></i> ' . htmlspecialchars($pasta['nome']) . '
             <ul class="expandable-items">';
 
@@ -260,7 +260,7 @@ foreach ($pastas as $id_pasta => $pasta) {
         $lista_comercial .= '
             <li class="expandable">
                 <button class="expand-btn">+</button>
-                <i class="bi bi-gear-wide-connected"></i>
+                
                 <i class="fas fa-folder"></i> ' . htmlspecialchars($nome_subpasta) . '
                 <ul class="expandable-items">';
 
@@ -355,7 +355,7 @@ foreach ($pastas as $id_pasta => $pasta) {
     $lista_adm .= '
         <li class="expandable">
             <button class="expand-btn">+</button>
-            <i class="bi bi-gear-wide-connected gear-icon"></i>
+            
             <i class="fas fa-folder"></i> ' . htmlspecialchars($pasta['nome']) . '
             <ul class="expandable-items">';
 
@@ -390,7 +390,7 @@ foreach ($pastas as $id_pasta => $pasta) {
         $lista_adm .= '
             <li class="expandable">
                 <button class="expand-btn">+</button>
-                <i class="bi bi-gear-wide-connected"></i>
+                
                 <i class="fas fa-folder"></i> ' . htmlspecialchars($nome_subpasta) . '
                 <ul class="expandable-items">';
 
@@ -485,7 +485,7 @@ foreach ($pastas as $id_pasta => $pasta) {
     $lista_ti .= '
         <li class="expandable">
             <button class="expand-btn">+</button>
-            <i class="bi bi-gear-wide-connected gear-icon"></i>
+            
             <i class="fas fa-folder"></i> ' . htmlspecialchars($pasta['nome']) . '
             <ul class="expandable-items">';
 
@@ -520,7 +520,7 @@ foreach ($pastas as $id_pasta => $pasta) {
         $lista_ti .= '
             <li class="expandable">
                 <button class="expand-btn">+</button>
-                <i class="bi bi-gear-wide-connected"></i>
+                
                 <i class="fas fa-folder"></i> ' . htmlspecialchars($nome_subpasta) . '
                 <ul class="expandable-items">';
 

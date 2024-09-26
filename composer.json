@@ -2,8 +2,14 @@
     "name": "igora/intra_health",
     "autoload": {
         "psr-4": {
-             "App\\": "app/"
+            "Igora\\IntraHealth\\": "src/"
         }
     },
+    "authors": [
+        {
+            "name": "Igor",
+            "email": "igoralbieri04@gmail.com"
+        }
+    ],
     "require": {}
 }

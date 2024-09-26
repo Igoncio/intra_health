@@ -31,18 +31,23 @@ include '../includes/php/home.php';
             <a href="novo_arquivo.php"><button class="btn-primary">+ Novo arquivo</button></a>
             <?php endif;?>
             
-            <ul class="folder-list">
+            <?php if($cad_arq):?>
+                <button class="btn-primary" id="openModal">Gerenciar pasta ou arquivo</button>
+            <?php endif;?>
 
-                <?php if($acesso_financeiro):?>
+
+            <ul class="folder-list">
+                <?php if($acesso_financeiro): ?>
                 <li class="folder">
                     <div class="folder-title">
                         Financeiro 
-                        <i class="fas fa-chevron-down"></i>
+                       
                     </div>
                     <ul class="folder-items">
                         <?= $lista_financeiro ?>
                     </ul>
-                <?php endif;?>
+                </li>
+                <?php endif; ?>
 
             
                 <?php if($acesso_comercial):?>
@@ -85,7 +90,30 @@ include '../includes/php/home.php';
                 </li>
             </ul>
         </div>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close" id="closeModal">&times;</span>
+                <h2>Gerenciar Pasta</h2>
+                    <div>
+                        <a href="editar_pasta.php"><button class="btn-primary">Editar</button></a>
+                        <a href="editar_pasta.php"><button class="btn-primary">Excluir</button></a>
+                    </div>
+                <h2>Gerenciar Subasta</h2>
+                    <div>
+                        <a href="editar_subpasta.php"><button class="btn-primary">Editar</button></a>
+                        <a href="editar_pasta.php"><button class="btn-primary">Excluir</button></a>
+                    </div>
+
+                <h2>Gerenciar Arquivo</h2>
+                    <div>
+                        <a href="editar_pasta.php"><button class="btn-primary">Editar</button></a>
+                        <a href="editar_pasta.php"><button class="btn-primary">Excluir</button></a>
+                    </div>
+            </div>
+    </div>
+        
     </main>
+
 
     <!-- FontAwesome for icons -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
@@ -93,7 +121,26 @@ include '../includes/php/home.php';
     <!-- Script para abrir o modal ao clicar no ícone -->
     <script>
        
+       const modal = document.getElementById("myModal");
+const btn = document.getElementById("openModal");
+const span = document.getElementById("closeModal");
 
+// Quando o usuário clica no botão, abre o modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// Quando o usuário clica na x (fechar), fecha o modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// Quando o usuário clica fora do modal, fecha-o
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+}
         // JavaScript to handle folder toggle
         document.querySelectorAll('.folder').forEach(folder => {
             folder.addEventListener('click', () => {
