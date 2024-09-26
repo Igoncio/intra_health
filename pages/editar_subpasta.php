@@ -13,11 +13,11 @@ include '../includes/php/novo_arquivo.php';
 </head>
 <body>
 
-    <h1 id="titulo">Criar Novo Arquivo</h1>
+    <h1 id="titulo">Editar Subpasta</h1>
     
     <form action="#" method="POST">  
 
-        <label for="folder-name">Selecione a pasta</label>
+        <label for="folder-name">Editar Pasta</label>
 
         <select class="form-select" name="id_grupo" id="grupo">
             <option value="">Selecione o grupo</option>
