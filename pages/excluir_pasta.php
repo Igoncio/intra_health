@@ -35,8 +35,8 @@ include '../includes/php/excluir_pasta.php';
         
 
         <div class="button-container">
-            <button id="botao" type="submit">salvar</button>
-            <button id="botao2" onclick="history.back()">Voltar</button>
+            <button id="botao2" type="submit">Excluir</button>
+            <button id="botao" onclick="history.back()">Voltar</button>
         </div>
     </form>
 

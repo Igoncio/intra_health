@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
 include '../includes/menu.php';
-// include '../includes/php/novo_arquivo.php';
+include '../includes/php/excluir_subpasta.php';
 ?>
 <head>
     <meta charset="UTF-8">
@@ -9,7 +9,7 @@ include '../includes/menu.php';
     <link rel="stylesheet" href="../assets/css/nova_pasta.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 
-    <title>excluir subpasta</title>
+    <title>Nova Pasta</title>
 </head>
 <body>
 
@@ -17,7 +17,7 @@ include '../includes/menu.php';
     
     <form action="#" method="POST">  
 
-        <label for="folder-name">Excluir Pasta</label>
+        <label for="folder-name">Selecione a pasta</label>
 
         <select class="form-select" name="id_grupo" id="grupo">
             <option value="">Selecione o grupo</option>
@@ -34,11 +34,11 @@ include '../includes/menu.php';
 
 
         <select  class="form-select"  name="id_subpasta" id="sub"></select>
-        
+
         
         <div class="button-container">
-            <button id="botao2" type="submit">excluir</button>
-            <button id="botao" onclick="history.back()">Voltar</button>
+        <button id="botao2" type="submit">Excluir</button>
+        <button id="botao" onclick="history.back()">Voltar</button>
         </div>
     </form>
 
