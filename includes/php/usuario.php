@@ -1,4 +1,13 @@
 <?php
+
+#SENHA GMAIL ACESSO A APP mbiz ysvt dhsb fiqo
+
+
+include '.././App/Db/connPoo.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 include '.././App/Db/connPoo.php';
 
 $db = new PDO("mysql:host=localhost;dbname=intra_health", "root", "");
@@ -38,7 +47,40 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Execute o statement
     if ($stmt->execute()) {
-        echo "Usuário cadastrado com sucesso!";
+        // Envio de e-mail
+        $mail = new PHPMailer(true); // Instancia PHPMailer
+
+        try {
+            // Configurações do servidor
+            $mail->isSMTP();                                      // Define o envio por SMTP
+            $mail->Host = 'smtp.gmail.com';               // Especifique o servidor SMTP
+            $mail->SMTPAuth = true;                             // Ativa autenticação SMTP
+            $mail->Username = 'intrahealthti@gmail.com';           // Seu e-mail
+            $mail->Password = 'mbiz ysvt dhsb fiqo';                       // Sua senha
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Ativa criptografia TLS
+            $mail->Port = 587;                                  // Porta TCP para TLS
+
+            // Destinatários
+            $mail->setFrom($email);
+            $mail->addAddress($email);                  // Adiciona um destinatário
+
+            // Conteúdo do e-mail
+            $mail->isHTML(true);                                // Define o formato de e-mail como HTML
+            $mail->Subject = 'Bem-vindo ao sistema!';
+            $mail->Body    = "
+            Olá $nome,<br><br>Você foi cadastrado em nosso sistema intra health, um sistema criado para o armazenamento de arquivos!<br>
+            acesse sua conta em:  <br>http://192.168.1.78/intra_health/ <br>
+            nome: $nome<br>
+            senha: $senha_hash
+
+            <br><br>Atenciosamente,<br>Equipe.";
+
+            // Envio
+            $mail->send();
+            echo "<script>alert('Usuário cadastrado com sucesso! Um e-mail de confirmação foi enviado.')</script>";
+        } catch (Exception $e) {
+            echo "Usuário cadastrado com sucesso, mas não foi possível enviar o e-mail. Erro: {$mail->ErrorInfo}";
+        }
     } else {
         echo "Erro ao cadastrar o usuário.";
     }
