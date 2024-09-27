@@ -31,7 +31,7 @@ include '../includes/php/home.php';
             <a href="novo_arquivo.php"><button class="btn-primary">+ Novo arquivo</button></a>
             <?php endif;?>
             
-            <?php if($cad_arq):?>
+            <?php if($edit_pasta or $excluir_pasta):?>
                 <button class="btn-primary" id="openModal">Gerenciar pasta ou arquivo</button>
             <?php endif;?>
 
@@ -90,18 +90,27 @@ include '../includes/php/home.php';
                 </li>
             </ul>
         </div>
+
         <div id="myModal" class="modal">
             <div class="modal-content">
                 <span class="close" id="closeModal">&times;</span>
+                <?php if($edit_pasta):?>
                 <h2>Gerenciar Pasta</h2>
                     <div>
                         <a href="editar_pasta.php"><button class="btn-primary">Editar</button></a>
+                        <? endif;?>
+                        <?php if($excluir_pasta):?>
                         <a href="excluir_pasta.php"><button class="btn-primary">Excluir</button></a>
+                        <?php endif;?>
                     </div>
+                    <?php if($edit_pasta):?>
                 <h2>Gerenciar Subasta</h2>
                     <div>
                         <a href="editar_subpasta.php"><button class="btn-primary">Editar</button></a>
+                        <?php endif;?>
+                        <?php if($excluir_pasta):?>
                         <a href="excluir_subpasta.php"><button class="btn-primary">Excluir</button></a>
+                        <?php endif;?>
                     </div>
 
     </div>

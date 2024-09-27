@@ -69,10 +69,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $mail->Subject = 'Bem-vindo ao sistema!';
             $mail->Body    = "
             Olá $nome,<br><br>Você foi cadastrado em nosso sistema intra health, um sistema criado para o armazenamento de arquivos!<br>
-            acesse sua conta em:  <br>http://192.168.1.78/intra_health/ <br>
-            nome: $nome<br>
+            nome do usuario: $nome<br>
             senha: $senha_hash
-
+            
+            acesse sua conta em:  <br>http://192.168.1.78/intra_health/ <br>
             <br><br>Atenciosamente,<br>Equipe.";
 
             // Envio
