@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bind_param('iiisi', $id_grupo,$id_pasta, $id_subpasta, $nome, $editavel);  // 'i' para integer e 's' para string
 
     if ($stmt->execute()) {
-        echo "Usuário cadastrado com sucesso!";
+        echo "<script>alert('Arquivo cadastrado com sucesso!')</script>";
     } else {
         echo "Erro ao cadastrar o usuário.";
     }

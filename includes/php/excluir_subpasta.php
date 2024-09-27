@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->bind_param('i', $id_subpasta); 
 
         if ($stmt->execute()) {
-            echo "Subpasta excluída com sucesso!";
+            echo "<script>alert('Subpasta excluida com sucesso')</script>";
         } else {
             echo "Erro ao excluir a subpasta: " . $stmt->error;
         }

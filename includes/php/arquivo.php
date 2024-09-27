@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $id);
             exit;
         } catch (PDOException $e) {
-            echo "Erro ao atualizar o registro: " . $e->getMessage();
+            echo "<script>alert('Erro ao atualizar o registro:')</script>" . $e->getMessage();
         }
     } else {
         echo "ID não fornecido.";

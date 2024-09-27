@@ -1,16 +1,13 @@
 <?php
-if(!isset($_SESSION)){
-
-session_start();
+if (!isset($_SESSION)) {
+    session_start();
 }
 
-if(!isset($_SESSION['id_user'])){
+if (!isset($_SESSION['id_user'])) {
     die("Você não está logado, por isso não pode acessar");
-    
 }
+
 include_once 'php/consultar_permissoes.php';
-
-
 ?>
 
 <!DOCTYPE html>
@@ -24,53 +21,66 @@ include_once 'php/consultar_permissoes.php';
 </head>
 <body>
 <nav class="navbar bg-body-tertiary fixed-top">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#"></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Usuario</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <div class="offcanvas-body">
-        <ul id="area-menu" class="navbar-nav justify-content-end flex-grow-1 pe-3">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="home.php">Home</a>
-          </li>
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><?php echo $_SESSION['nome']?></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul id="area-menu" class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="home.php">Home</a>
+                    </li>
 
-          <li class="nav-item dropdown">
-            <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Cadastros
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="cadastrar_usuario.php">Cadastrar Usuario</a></li>
-              <li><a class="dropdown-item" href="cadastrar_permissao.php">Cadastrar Permissão</a></li>
-              </li>
-          </li>
-        </ul>
+                    <li class="nav-item dropdown">
+                        <?php if ($cad_user || $cad_arq || $cad_pasta || $cad_perm): ?>
+                            <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Cadastros
+                            </a>
+                        <?php endif; ?>
+                        <ul class="dropdown-menu">
+                            <?php if ($cad_user): ?>
+                                <li><a class="dropdown-item" href="cadastrar_usuario.php">Cadastrar Usuario</a></li>
+                            <?php endif; ?>
 
-        <li class="nav-item dropdown">
-            <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Gerenciar
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="gerenciar_usuario.php">Gerenciar Usuario</a></li>
-              </li>
-            </li>
-          </ul>
-          
+                            <?php if ($cad_perm): ?>
+                                <li><a class="dropdown-item" href="cadastrar_permissao.php">Cadastrar Permissão</a></li>
+                            <?php endif; ?>
+
+                            <?php if ($cad_pasta): ?>
+                                <li><a class="dropdown-item" href="nova_pasta.php">Cadastrar Pasta</a></li>
+                            <?php endif; ?>
+
+                            <?php if ($cad_subpasta): ?>
+                                <li><a class="dropdown-item" href="nova_subpasta.php">Cadastrar Subpasta</a></li>
+                            <?php endif; ?>
+                        </ul>
+                    </li>
+
+                    <?php if ($edit_user || $excluir_user): ?>
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Gerenciar
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="gerenciar_usuario.php">Gerenciar Usuario</a></li>
+                            </ul>
+                        </li>
+                    <?php endif; ?>
+                </ul>
+
+              </div>
+              <div id="juntar-menu">
+                  <a id="a-menu" href="../"><i id="i-menu" class="bi bi-box-arrow-right"></i></a>
+                  <label for="">Sair</label>
+              </div>
         </div>
-        
-        <div id="juntar-menu">
-          <a id="a-menu" href="../"><i id="i-menu" class="bi bi-box-arrow-right"></i></a>
-          <label for="">Sair</label>
-       </div>
-
-
-      </div>
-  </div>
+    </div>
 </nav>
 </body>
 </html>

@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Execute o statement
     if ($stmt->execute()) {
-        echo "Usuário atualizado com sucesso!";
+        echo "<script>alert('Subasta atualizada com sucesso!')</script>";
     } 
 }
 ?>
