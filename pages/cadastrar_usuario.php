@@ -15,13 +15,25 @@ include '../includes/php/usuario.php';
     
     <form action="#" method="POST">  
         
-        <label for="folder-name">Selecione o grupo</label>
-        <select name="id_grupo" id="pasta">
+    <select name="id_grupo" id="">
             <option value="">Selecione o grupo</option>
+            
+            <?php if($acesso_financeiro):?>
             <option value="1">Financeiro</option>
+            <?php endif;
+            ?>
+            
+            <?php if($acesso_comercial):?>
             <option value="2">Comercial</option>
+            <?php endif;?>
+            
+            <?php if($acesso_adm):?>
             <option value="3">Administrativo</option>
+            <?php endif;?>
+
+            <?php if($acesso_ti):?>
             <option value="4">T.I</option>
+            <?php endif;?>
         </select>
 
         <label for="folder-name">Selecione o tipo de permissão</label>
