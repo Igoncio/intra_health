@@ -56,7 +56,7 @@ include_once 'php/consultar_permissoes.php';
                                 <li><a class="dropdown-item" href="nova_pasta.php">Cadastrar Pasta</a></li>
                             <?php endif; ?>
 
-                            <?php if ($cad_subpasta): ?>
+                            <?php if ($cad_pasta): ?>
                                 <li><a class="dropdown-item" href="nova_subpasta.php">Cadastrar Subpasta</a></li>
                             <?php endif; ?>
                         </ul>

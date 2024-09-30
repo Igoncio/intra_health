@@ -67,23 +67,24 @@ include '../includes/php/novo_arquivo.php';
 
     <script>
     $(document).ready(function(){
-    $('#grupo').on('change', function(){
-        var grupoID = $(this).val();
-        if (grupoID) {
-            $.ajax({
-                type: 'POST',
-                url: 'filtro2.php',
-                data: { id_grupo: grupoID },
-                success: function(html) {
-                    $('#pasta').html(html);
-                    $('#sub').html('<option value="">Selecione a pasta primeiro</option>'); 
-                }
-            }); 
-        } else {
-            $('#pasta').html('<option value="">Selecione o grupo primeiro</option>');
-            $('#sub').html('<option value="">Selecione a pasta primeiro</option>'); 
-        }
-    });
+        $('#selectID').on('change', function(){
+    var grupoID = $(this).val();
+    console.log(grupoID); // Verifique o valor
+    if (grupoID) {
+        $.ajax({
+            type: 'POST',
+            url: 'filtro2.php',
+            data: { id_grupo: grupoID },
+            success: function(html) {
+                $('#pasta').html(html);
+                $('#sub').html('<option value="">Selecione a pasta primeiro</option>'); 
+            }
+        }); 
+    } else {
+        $('#pasta').html('<option value="">Selecione o grupo primeiro</option>');
+        $('#sub').html('<option value="">Selecione a pasta primeiro</option>'); 
+    }
+});
 
     $('#pasta').on('change', function(){
         var pastaID = $(this).val();
