@@ -25,7 +25,7 @@ include '../includes/php/arquivo2.php';
         <span class="material-icons">arrow_back</span>
         Voltar
     </button>
-    <h1 class="page-title">Orçamentos 2</h1>
+    <h1 class="page-title"><?=$lista_nome?></h1>
     
     <div id="uploadSection">
         <?=$lista?>

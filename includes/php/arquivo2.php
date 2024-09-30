@@ -6,6 +6,8 @@ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 $id = isset($_GET['id']) ? $_GET['id'] : null;
 
+
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_FILES['file'])) {
         $file = $_FILES['file'];
@@ -25,7 +27,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }}}}
 
 
-
+            $stmt2 = $db->prepare("SELECT nome FROM arquivo WHERE id_arquivo = :id");
+            $stmt2->execute([':id' => $id]);
+            
+            $lista_nome = '';
+            $dados2 = $stmt2->fetchAll(PDO::FETCH_ASSOC); 
+            foreach ($dados2 as $row2) {
+                $lista_nome .= $row2['nome'];
+            }
+            
 
 
 
