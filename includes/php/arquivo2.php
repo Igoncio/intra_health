@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($file['error'] === UPLOAD_ERR_OK) {
             $uploadDir = '../uploads/'; 
             $uploadFile = $uploadDir . basename($file['name']);
-
+ 
 
             if (move_uploaded_file($file['tmp_name'], $uploadFile)) {
                 $stmt = $db->prepare("UPDATE arquivo SET arq = :arq WHERE id_arquivo = :id");

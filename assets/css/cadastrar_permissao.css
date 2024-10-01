@@ -114,3 +114,15 @@ margin-top: 25px;
     padding: 5px;
 
 }
+
+@media (max-width: 1055px) {
+    h1 {
+        margin-top: 10%;
+    }
+}
+
+@media (max-width: 531px) {
+    h1 {
+        margin-top: 15%;
+    }
+}

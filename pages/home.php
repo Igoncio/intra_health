@@ -72,21 +72,23 @@ include '../includes/php/home.php';
                     <h2>Gerenciar Pasta</h2>
                     <div>
                         <a href="editar_pasta.php"><button class="btn-primary">Editar</button></a>
+                        <?php endif; ?>
+
+                        <?php if ($excluir_pasta): ?>
+                            <a href="excluir_pasta.php"><button class="btn-primary">Excluir</button></a>
+                        <?php endif; ?>
                     </div>
-                <?php endif; ?>
-                <?php if ($excluir_pasta): ?>
-                    <a href="excluir_pasta.php"><button class="btn-primary">Excluir</button></a>
-                <?php endif; ?>
 
                 <?php if ($edit_pasta): ?>
                     <h2>Gerenciar Subpasta</h2>
-                    <div>
+                    <div class="juntar-btn">
                         <a href="editar_subpasta.php"><button class="btn-primary">Editar</button></a>
+                        <?php endif; ?>
+
+                        <?php if ($excluir_pasta): ?>
+                        <a href="excluir_subpasta.php"><button class="btn-primary">Excluir</button></a>           
+                        <?php endif; ?>
                     </div>
-                <?php endif; ?>
-                <?php if ($excluir_pasta): ?>
-                    <a href="excluir_subpasta.php"><button class="btn-primary">Excluir</button></a>
-                <?php endif; ?>
             </div>
         </div>
     </main>

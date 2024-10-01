@@ -72,7 +72,7 @@ main {
 /* Content area */
 .content {
     flex: 1;
-    padding: 2rem;
+    padding: 3rem;
     background-color: #f4f4f9;
 }
 
