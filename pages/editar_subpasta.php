@@ -41,7 +41,7 @@ include '../includes/php/editar_subpasta.php';
         
         <div class="button-container">
             <button id="botao" type="submit">salvar</button>
-            <a href="home.php">Voltar</a>
+            <button id="botao2" onclick="history.back()">Voltar</button>
         </div>
     </form>
 

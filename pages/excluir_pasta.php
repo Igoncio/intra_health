@@ -36,7 +36,7 @@ include '../includes/php/excluir_pasta.php';
 
         <div class="button-container">
             <button id="botao2" type="submit">Excluir</button>
-            <a href="home.php"><button id="botao">Voltar</button></a>
+            <button id="botao" onclick="history.back()">Voltar</button>
         </div>
     </form>
 

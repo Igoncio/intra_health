@@ -43,13 +43,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo "<script>alert('Pasta excluida com sucesso')</script>";
         } else {
             echo "Erro ao excluir a pasta: " . $stmt->error;
-        }
-        $stmt->close();
-    } else {
-        echo "Erro ao preparar a declaração para pasta: " . $db->error;
+        }}
     }
 
-}
 
-$db->close();
+
+
 ?>
