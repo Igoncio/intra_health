@@ -98,7 +98,10 @@ fieldset {
     padding: 0;
 }
 
-
+.a-btn{
+    text-align: center;
+    text-decoration: none;
+}
 
 /* Estilo dos inputs de rádio e labels */
 .radio-group {
