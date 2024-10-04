@@ -1,8 +1,8 @@
 <?php
 
 $dbHost = "localhost";
-$dbUsername = "teste";
-$dbPassword = "H3@LTH_2024";
+$dbUsername = "root";
+$dbPassword = "";
 $dbName = "intra_health";
 
 // Conectar ao banco de dados
@@ -13,4 +13,4 @@ if ($db->connect_error) {
     die("Falha na conexão: " . $db->connect_error);
 }
 
-$conn = mysqli_connect("localhost", "teste", "H3@LTH_2024", "intra_health");
+$conn = mysqli_connect("localhost", "root", "", "intra_health");

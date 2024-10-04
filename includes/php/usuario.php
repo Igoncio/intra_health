@@ -10,7 +10,7 @@ use PHPMailer\PHPMailer\Exception;
 
 include '.././App/Db/connPoo.php';
 
-$db = new PDO("mysql:host=localhost;dbname=intra_health", "teste", "H3@LTH_2024");
+$db = new PDO("mysql:host=localhost;dbname=intra_health", "root", "");
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 // Obtenha a lista de permissões
