@@ -42,5 +42,6 @@ if (isset($_POST["id_pasta"]) && !empty($_POST["id_pasta"])) {
     $stmt->close();
 }
 
-$db->close();
+
+
 ?>
