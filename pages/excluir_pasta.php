@@ -33,10 +33,9 @@ include '../includes/php/excluir_pasta.php';
         <select  class="form-select"  name="id_pasta" id="pasta"></select>
 
         
-
         <div class="button-container">
-            <button id="botao2" type="submit">Excluir</button>
-            <a href="home.php" class="a-btn" id="botao" >Voltar</a>
+            <button id="botao2" type="submit">salvar</button>
+            <a class="a-btn" id="botao" href="home.php">Voltar</a>
         </div>
     </form>
 

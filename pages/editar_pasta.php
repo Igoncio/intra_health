@@ -40,7 +40,7 @@ include '../includes/php/editar_pasta.php';
         
         <div class="button-container">
             <button id="botao" type="submit">salvar</button>
-            <button id="botao2" onclick="history.back()">Voltar</button>
+            <a class="a-btn" id="botao2" href="home.php">Voltar</a>
         </div>
     </form>
 

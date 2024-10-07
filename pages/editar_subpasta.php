@@ -40,8 +40,8 @@ include '../includes/php/editar_subpasta.php';
 
         
         <div class="button-container">
-            <button id="botao" type="submit">salvar</button>
-            <button id="botao2" onclick="history.back()">Voltar</button>
+            <button id="botao2" type="submit">salvar</button>
+            <a class="a-btn" id="botao" href="home.php">Voltar</a>
         </div>
     </form>
 
