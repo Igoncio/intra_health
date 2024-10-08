@@ -23,6 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Execute o statement
     if ($stmt->execute()) {
         echo "<script>alert('Pasta atualizada com sucesso!')</script>";
+        header('location: home.php');
     } 
 }
 ?>

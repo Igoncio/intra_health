@@ -22,7 +22,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Execute o statement
     if ($stmt->execute()) {
-        echo "<script>alert('Subasta atualizada com sucesso!')</script>";
+        echo "<script>alert('Subpasta atualizada com sucesso!')</script>";
+        header('location: home.php');
     } 
 }
 ?>

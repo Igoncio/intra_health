@@ -65,7 +65,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Execute o statement
     if ($stmt->execute()) {
-        echo "<script>alert('Usuário atualizado com sucesso!')</script>";
+        echo "<script>alert('Usuario Atualizado com sucesso!')</script>";
+        header('location: home.php');
     } 
 }
 ?>

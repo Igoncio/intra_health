@@ -16,6 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($stmt->execute()) {
         echo "<script>alert('Arquivo cadastrado com sucesso!')</script>";
+        header('location: home.php');
     } else {
         echo "Erro ao cadastrar o usuário.";
     }

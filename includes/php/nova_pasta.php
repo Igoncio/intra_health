@@ -20,7 +20,8 @@ include '.././App/Db/connPoo.php';
 
         // Executa a inserção
         if ($stmt->execute()) {
-            echo "<script>alert('Pasta cadastrada com sucesso!')</script>";
+            echo "<script>alert('Pasta criada com sucesso!')</script>";
+            header('location: home.php');
         } else {
             echo "Erro ao cadastrar o usuário.";
         }

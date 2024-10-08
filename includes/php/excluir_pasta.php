@@ -36,7 +36,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($stmt) {
         $stmt->bind_param('i', $id_pasta); 
         if ($stmt->execute()) {
-            echo "<script>alert('Pasta excluida com sucesso')</script>";
+            echo "<script>alert('Pasta excluida com sucesso!')</script>";
+            header('location: home.php');
         } else {
             echo "Erro ao excluir a pasta: " . $stmt->error;
         }}

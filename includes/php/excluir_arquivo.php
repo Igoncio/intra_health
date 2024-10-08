@@ -13,7 +13,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (!$stmt2->execute()) {
                 echo "Erro ao excluir subpastas: " . $stmt2->error;
             } else {
-                echo "Arquivo excluído com sucesso.";
+                echo "<script>alert('Arquivo excluido com sucesso!')</script>";
+                header('location: home.php');
             }
             $stmt2->close();
         } else {

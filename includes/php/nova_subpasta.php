@@ -12,7 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bind_param('is', $id_pasta, $nome);  // 'i' para integer e 's' para string
 
     if ($stmt->execute()) {
-        echo "<script>alert('Sub pasta cadastrada com sucesso!')</script>";
+        echo "<script>alert('Subpasta criada com sucesso!')</script>";
+        header('location: home.php');
     } else {
         echo "Erro ao cadastrar o usuário.";
     }
