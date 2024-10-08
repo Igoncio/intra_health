@@ -6,7 +6,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id_grupo = $_POST['id_grupo'];
     $id_subpasta = $_POST['id_subpasta'];
 
-    // Primeiro, excluir arquivos relacionados à subpasta
     $sql2 = "DELETE FROM arquivo WHERE id_subpasta = ?";
     $stmt2 = $db->prepare($sql2);
 
@@ -21,7 +20,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "Erro ao preparar a declaração para arquivos: " . $db->error;
     }
 
-    // Depois, excluir a subpasta
     $sql = "DELETE FROM subpasta WHERE id_subpasta = ?";
     $stmt = $db->prepare($sql);
 

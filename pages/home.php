@@ -89,6 +89,18 @@ include '../includes/php/home.php';
                         <a href="excluir_subpasta.php"><button class="btn-primary">Excluir</button></a>           
                         <?php endif; ?>
                     </div>
+
+
+                    <?php if ($edit_arq): ?>
+                    <h2>Gerenciar Arquivo</h2>
+                    <div class="juntar-btn">
+                        <a href="editar_subpasta.php"><button class="btn-primary">Editar</button></a>
+                        <?php endif; ?>
+
+                        <?php if ($excluir_arq): ?>
+                        <a href="excluir_arquivo.php"><button class="btn-primary">Excluir</button></a>           
+                        <?php endif; ?>
+                    </div>
             </div>
         </div>
     </main>
