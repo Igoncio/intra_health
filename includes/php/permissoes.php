@@ -2,7 +2,7 @@
 
 include '.././App/Db/connPoo.php';
 
-$db = new PDO("mysql:host=localhost;dbname=intra_health", "root", "");
+$db = new PDO("mysql:host=localhost;dbname=intra_health", "teste", "H3@LTH_2024");
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
