@@ -12,10 +12,10 @@ include '../includes/php/arquivo.php';
 </head>
 <body>
     <div class="editor-container">
-        <button class="back-btn" onclick="window.history.back()">
-            <span class="material-icons">arrow_back</span>
-            Voltar
-        </button>
+        <a class="link-btn" href="home.php">   
+        <span class="material-icons">arrow_back</span>
+        Voltar
+        </a> 
 
         <h1 class="page-title"><?=$lista_nome?></h1>
 

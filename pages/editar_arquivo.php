@@ -9,11 +9,11 @@ include '../includes/php/editar_arquivo.php';
     <link rel="stylesheet" href="../assets/css/nova_pasta.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 
-    <title>Excluir Arquivo</title>
+    <title>Editar Arquivo</title>
 </head>
 <body>
 
-    <h1 id="titulo">Excluir Arquivo</h1>
+    <h1 id="titulo">Editar Arquivo</h1>
     
     <form action="#" method="POST">  
 

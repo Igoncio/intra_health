@@ -78,6 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Envio
             $mail->send();
             echo "<script>alert('Usuário cadastrado com sucesso! Um e-mail de confirmação foi enviado.')</script>";
+            header('location: home.php');
         } catch (Exception $e) {
             echo "Usuário cadastrado com sucesso, mas não foi possível enviar o e-mail. Erro: {$mail->ErrorInfo}";
         }
