@@ -124,8 +124,12 @@ include '../includes/php/permissoes.php';
             </div>
         </section>
 
+        <div class="button-container">
 
-        <button id="botao" type="submit">Cadastrar Usuario</button>
+            <button id="botao" type="submit">Cadastrar Usuario</button>
+            <a class="a-btn" id="botao2" href="home.php">Voltar</a>
+
+        </div>
 
     </form>
 

@@ -7,6 +7,7 @@ include '../includes/php/usuario.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/cadastrar_usuario.css">
+    <link rel="stylesheet" href="../assets/css/nova_pasta.css">
     
     <title>Document</title>
 </head>
@@ -54,8 +55,12 @@ include '../includes/php/usuario.php';
         <label for="folder-name">senha:</label>
         <input type="text" id="folder-name" name="senha_hash" placeholder="Digite a senha" required>
             
-        <button id="botao" type="submit">Cadastrar Usuario</button>
+        <div class="button-container">
 
+            <button id="botao" type="submit">Cadastrar Usuario</button>
+            <a class="a-btn" id="botao2" href="home.php">Voltar</a>
+
+        </div>
     </form>
 
 </body>

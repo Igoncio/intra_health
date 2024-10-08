@@ -115,6 +115,12 @@ margin-top: 25px;
 
 }
 
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
 @media (max-width: 1055px) {
     h1 {
         margin-top: 10%;
