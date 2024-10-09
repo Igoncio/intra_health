@@ -56,10 +56,8 @@ include '../includes/php/usuario.php';
         <input type="text" id="folder-name" name="senha_hash" placeholder="Digite a senha" required>
             
         <div class="button-container">
-
-            <button id="botao" type="submit">Cadastrar Usuario</button>
+            <button id="botao" type="submit">Criar Usuario</button>
             <a class="a-btn" id="botao2" href="home.php">Voltar</a>
-
         </div>
     </form>
 

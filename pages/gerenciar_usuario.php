@@ -44,7 +44,7 @@ include '../includes/php/gerenciar_usuario.php';
         </div>
     </div>
 </div>
-<button>voltar</button>
+<a href="home.php"><button>voltar</button></a>
 
 <script>function openModal() {
     document.getElementById("deleteModal").style.display = "block";

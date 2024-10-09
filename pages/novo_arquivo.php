@@ -59,7 +59,7 @@ include '../includes/php/novo_arquivo.php';
         
         <div class="button-container">
             <button id="botao" type="submit">Criar Arquivo</button>
-            <button id="botao2" onclick="history.back()">Voltar</button>
+            <a class="a-btn" id="botao2" href="home.php">Voltar</a>
         </div>
     </form>
 
