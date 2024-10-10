@@ -2,6 +2,10 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 include '../includes/menu.php';
 include '../includes/php/nova_pasta.php';
+
+if ($cad_pasta == 0) {
+    die("<span id='msg_perm'> Você não tem permissão, por isso não pode acessar</span>");
+}
 ?>
 <head>
     <meta charset="UTF-8">

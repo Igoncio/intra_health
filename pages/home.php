@@ -79,9 +79,9 @@ include '../includes/php/home.php';
                         <?php endif; ?>
                     </div>
 
-                <?php if ($edit_pasta): ?>
                     <h2>Gerenciar Subpasta</h2>
                     <div class="juntar-btn">
+                        <?php if ($edit_pasta): ?>
                         <a href="editar_subpasta.php"><button class="btn-primary">Editar</button></a>
                         <?php endif; ?>
 
@@ -91,9 +91,9 @@ include '../includes/php/home.php';
                     </div>
 
 
-                    <?php if ($edit_arq): ?>
                     <h2>Gerenciar Arquivo</h2>
                     <div class="juntar-btn">
+                        <?php if ($edit_arq): ?>
                         <a href="editar_arquivo.php"><button class="btn-primary">Editar</button></a>
                         <?php endif; ?>
 

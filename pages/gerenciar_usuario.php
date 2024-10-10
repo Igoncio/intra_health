@@ -2,6 +2,7 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 include '../includes/menu.php';
 include '../includes/php/gerenciar_usuario.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
