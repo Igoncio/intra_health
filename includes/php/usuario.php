@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nome = $_POST['nome'];
     $telefone = $_POST['telefone'];
     $email = $_POST['email'];
-    $senha_hash = $_POST['senha_hash'];
+    $senha_hash = password_hash($_POST['senha_hash'], PASSWORD_DEFAULT);
 
     // Prepare o SQL
     $sql = "INSERT INTO usuario (id_grupo, id_permissao, nome, telefone, email, senha)
