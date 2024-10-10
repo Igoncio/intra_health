@@ -12,13 +12,13 @@ if ($cad_pasta == 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/nova_pasta.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
-    <title>Nova Pasta</title>
+    <title>Nova SubPasta</title>
 </head>
 <body>
 
-    <h1 id="titulo">Criar Nova SubPasta</h1>
     
     <form action="#" method="POST">
+        <h1 id="titulo">Nova SubPasta</h1>
 
     <select class="form-select" name="id_grupo" id="selectID">
         <option value="">Selecione o grupo</option>

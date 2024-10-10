@@ -13,12 +13,12 @@ if ($cad_perm == 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/cadastrar_permissao.css">
     
-    <title>Document</title>
+    <title>cadastrar permissao</title>
 </head>
 <body>
-<h1 id="titulo">Cadastrar Grupo de Permissões</h1>
     
     <form action="#" method="POST">  
+        <h1 id="titulo">Cadastrar Grupo de Permissões</h1>
         
         <label for="folder-name">Nome do Grupo:</label>
         <input type="text" id="folder-name" name="nome" placeholder="Digite o nome do grupo" required>

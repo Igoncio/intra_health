@@ -14,13 +14,13 @@ if ($cad_arq == 0) {
     <link rel="stylesheet" href="../assets/css/nova_pasta.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 
-    <title>Nova Pasta</title>
+    <title>Nova Arquivo</title>
 </head>
 <body>
 
-    <h1 id="titulo">Criar Novo Arquivo</h1>
     
     <form action="#" method="POST">  
+        <h1 id="titulo">Novo Arquivo</h1>
 
         <label for="folder-name">Selecione a pasta</label>
 

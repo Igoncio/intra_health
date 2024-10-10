@@ -9,13 +9,13 @@ include '../includes/php/editar_subpasta.php';
     <link rel="stylesheet" href="../assets/css/nova_pasta.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 
-    <title>Nova Pasta</title>
+    <title>editar subpasta</title>
 </head>
 <body>
 
-    <h1 id="titulo">Editar Subpasta</h1>
     
     <form action="#" method="POST">  
+        <h1 id="titulo">Editar Subpasta</h1>
 
         <label for="folder-name">Editar Pasta</label>
 

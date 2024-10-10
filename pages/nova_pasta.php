@@ -17,7 +17,7 @@ if ($cad_pasta == 0) {
 
     
     <form action="#" method="POST">
-        <h1 id="titulo">Criar Nova Pasta</h1>
+        <h1 id="titulo">Nova Pasta</h1>
 
         <select name="id_grupo" id="">
             <option value="">Selecione o grupo</option>

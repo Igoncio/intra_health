@@ -78,6 +78,10 @@ input[type="text"] {
     background-color: rgb(132, 1, 1);
 }
 
+.a-btn{
+    text-decoration: none;
+    text-align: center;
+}
 
 /* Estilo do seletor */
 select {

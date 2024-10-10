@@ -13,12 +13,12 @@ if ($cad_user == 0) {
     <link rel="stylesheet" href="../assets/css/cadastrar_usuario.css">
     <link rel="stylesheet" href="../assets/css/nova_pasta.css">
     
-    <title>Document</title>
+    <title>cadastrar usuario</title>
 </head>
 <body>
-<h1 id="titulo">Cadastrar Usuario</h1>
     
     <form action="#" method="POST">  
+        <h1 id="titulo">Cadastrar Usuario</h1>
         
     <select name="id_grupo" id="">
             <option value="">Selecione o grupo</option>

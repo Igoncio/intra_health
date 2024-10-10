@@ -17,9 +17,9 @@ if ($edit_arq == 0) {
 </head>
 <body>
 
-    <h1 id="titulo">Editar Arquivo</h1>
     
     <form action="#" method="POST">  
+        <h1 id="titulo">Editar Arquivo</h1>
 
         <label for="folder-name">Selecione o grupo</label>
 
