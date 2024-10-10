@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt->execute([':arq' => $uploadFile, ':id' => $id]);
 
                 if ($stmt->rowCount() > 0) {
-                    echo "boa";
+                    
                 } 
             }}}}
 
