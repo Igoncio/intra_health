@@ -30,8 +30,10 @@ include '../includes/php/home.php';
                 <a href="novo_arquivo.php"><button class="btn-primary">+ Novo arquivo</button></a>
             <?php endif; ?>
 
-            <?php if ($edit_pasta || $excluir_pasta): ?>
+            <?php if ($edit_pasta || $excluir_pasta == 1): ?>
                 <button class="btn-primary" id="openModal">Gerenciar pasta ou arquivo</button>
+            <?php else: ?>
+                <button style="display: none;" class="btn-primary" id="openModal">Gerenciar pasta ou arquivo</button>
             <?php endif; ?>
 
             <ul class="folder-list">
@@ -111,26 +113,26 @@ include '../includes/php/home.php';
     <!-- Script para abrir o modal ao clicar no ícone -->
     <script>
        
-       const modal = document.getElementById("myModal");
-const btn = document.getElementById("openModal");
-const span = document.getElementById("closeModal");
+        const modal = document.getElementById("myModal");
+        const btn = document.getElementById("openModal");
+        const span = document.getElementById("closeModal");
 
-// Quando o usuário clica no botão, abre o modal 
-btn.onclick = function() {
-    modal.style.display = "block";
-}
+        // Quando o usuário clica no botão, abre o modal 
+        btn.onclick = function() {
+        modal.style.display = "block";
+        }
 
-// Quando o usuário clica na x (fechar), fecha o modal
-span.onclick = function() {
-    modal.style.display = "none";
-}
-
-// Quando o usuário clica fora do modal, fecha-o
-window.onclick = function(event) {
-    if (event.target === modal) {
+        // Quando o usuário clica na x (fechar), fecha o modal
+        span.onclick = function() {
         modal.style.display = "none";
-    }
-}
+        }
+
+        // Quando o usuário clica fora do modal, fecha-o
+        window.onclick = function(event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+        }
         // JavaScript to handle folder toggle
         document.querySelectorAll('.folder').forEach(folder => {
             folder.addEventListener('click', () => {

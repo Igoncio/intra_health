@@ -35,14 +35,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             foreach ($dados2 as $row2) {
                 $lista_nome .= $row2['nome'];
             }
-            
+            http://192.168.1.71/Intra_health/pages/cadastrar_usuario.php
 
 
 
 
 $stmt = $db->prepare("SELECT arq FROM arquivo WHERE id_arquivo = :id");
 $stmt->execute([':id' => $id]);
-
 $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $lista = '';
 
@@ -60,9 +59,9 @@ foreach ($dados as $row) {
         $extensao = pathinfo($row['arq'], PATHINFO_EXTENSION);
         
         $preview = '';
-        if (in_array($extensao, ['jpg', 'jpeg', 'png'])) {
+        if (in_array($extensao, ['jpg', 'jpeg', 'png', 'docx'])) {
             $preview = '<img src="' . htmlspecialchars($row['arq']) . '" alt="Preview do arquivo" style="max-width: 100%; height: auto;">';
-        } elseif ($extensao === 'pdf') {
+        } elseif ($extensao === 'pdf' or $extensao === 'docx' or $extensao === 'png') {
             $preview = '<iframe src="' . htmlspecialchars($row['arq']) . '" width="100%" height="400px"></iframe>';
         }
 
