@@ -15,11 +15,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $stmt = $db->prepare($sql);
 
-    // Bind os parâmetros
     $stmt->bindParam(':nome', $nome);
     $stmt->bindParam(':id_arquivo', $id_arquivo);
 
-    // Execute o statement
     if ($stmt->execute()) {
         echo "<script>alert('Arquivo atualizada com sucesso!')</script>";
         header('location: home.php');

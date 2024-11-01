@@ -15,11 +15,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $stmt = $db->prepare($sql);
 
-    // Bind os parâmetros
     $stmt->bindParam(':nome', $nome);
     $stmt->bindParam(':id_pasta', $id_pasta);
 
-    // Execute o statement
     if ($stmt->execute()) {
         echo "<script>alert('Pasta atualizada com sucesso!')</script>";
         header('location: home.php');

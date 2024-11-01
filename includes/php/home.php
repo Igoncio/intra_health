@@ -26,8 +26,7 @@ foreach ($dados as $row) {
 
     if (!in_array($id_grupo, $ids_grupos)) {
         $ids_grupos[] = $id_grupo;
-        
-        // Corrigido: Use aspas duplas e chaves para interpolar variáveis
+
         $lista_id .= "<a href='nova_subpasta.php?id_grupo={$id_grupo}'>ID: {$id_grupo}</a><br>";
     }
 }
@@ -47,9 +46,9 @@ $sql = 'SELECT * FROM vw_grupo_estrutura WHERE id_grupo = 1';
 $stmt = $db->query($sql);
 $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$lista_financeiro = ''; // Certifique-se de que essa variável esteja inicializada
+$lista_financeiro = ''; 
 
-// Primeiro, adiciona arquivos na raiz (id_grupo = 1, id_pasta = 0, id_subpasta = 0)
+
 foreach ($dados_arq as $arq) {
     if ($arq['id_grupo'] == 1 && $arq['id_pasta'] == 0 && $arq['id_subpasta'] == 0) {
         if($arq['editavel'] == 1){
@@ -75,21 +74,18 @@ foreach ($dados_arq as $arq) {
     }
 }
 
-// Agrupando dados por pasta e subpasta
 $pastas = [];
 foreach ($dados as $row) {
     $pastas[$row['id_pasta']]['nome'] = $row['nome_pasta'];
     $pastas[$row['id_pasta']]['subpastas'] = [];
 }
 
-// Adicionando subpastas
 foreach ($dados as $row) {
     if ($row['id_subpasta'] != 0) {
         $pastas[$row['id_pasta']]['subpastas'][$row['id_subpasta']] = $row['nome_subpasta'];
     }
 }
 
-// Agora, itere sobre as pastas e subpastas
 foreach ($pastas as $id_pasta => $pasta) {
     // Pasta principal
     $lista_financeiro .= '
@@ -99,7 +95,6 @@ foreach ($pastas as $id_pasta => $pasta) {
             <i class="fas fa-folder"></i> ' . htmlspecialchars($pasta['nome']) . '
             <ul class="expandable-items">';
 
-    // Adiciona arquivos da pasta principal
     foreach ($dados_arq as $arq) {
         if ($arq['id_grupo'] == 1 && $arq['id_pasta'] == $id_pasta && $arq['id_subpasta'] == 0) {
             if($arq['editavel'] == 1){
@@ -205,21 +200,18 @@ foreach ($dados_arq as $arq) {
     }
 }
 
-// Agrupando dados por pasta e subpasta
 $pastas = [];
 foreach ($dados2 as $row) {
     $pastas[$row['id_pasta']]['nome'] = $row['nome_pasta'];
     $pastas[$row['id_pasta']]['subpastas'] = [];
 }
 
-// Adicionando subpastas
 foreach ($dados2 as $row) {
     if ($row['id_subpasta'] != 0) {
         $pastas[$row['id_pasta']]['subpastas'][$row['id_subpasta']] = $row['nome_subpasta'];
     }
 }
 
-// Agora, itere sobre as pastas e subpastas
 foreach ($pastas as $id_pasta => $pasta) {
     // Pasta principal
     $lista_comercial .= '

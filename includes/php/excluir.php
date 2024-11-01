@@ -17,4 +17,3 @@ $id_user = $_GET['id_user'];
     echo header('location: ../../pages/home.php');
  
 
-?>

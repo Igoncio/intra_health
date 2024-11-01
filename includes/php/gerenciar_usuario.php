@@ -33,4 +33,3 @@ foreach ($dados as $user) {
         </tr>';
 }
 
-?>

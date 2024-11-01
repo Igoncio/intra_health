@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt->execute([':arq' => $uploadFile, ':id' => $id]);
 
                 if ($stmt->rowCount() > 0) {
-                    // Exibe uma mensagem de sucesso
+                   
                 } 
             }
         }
@@ -40,7 +40,7 @@ $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $lista = '';
 
 foreach ($dados as $row) {
-    $filePath =  $row['arq']; // Remove '../' do caminho do arquivo
+    $filePath =  $row['arq']; 
     if ($row['arq'] == null && $cad_arq == 1) {
         $lista .= '
         <form id="uploadForm" method="POST" enctype="multipart/form-data" style="display: block;">
@@ -87,4 +87,4 @@ foreach ($dados as $row) {
         }
     }
 }
-?>
+

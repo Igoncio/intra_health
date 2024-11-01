@@ -34,13 +34,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $telefone = $_POST['telefone'];
     $email = $_POST['email'];
     
-    // Verifica se uma nova senha foi fornecida
     $senha_hash = '';
     if (!empty($_POST['senha'])) {
         $senha_hash = password_hash($_POST['senha'], PASSWORD_DEFAULT);
     }
 
-    // Prepare o SQL
     $sql = "UPDATE usuario 
             SET id_grupo = :id_grupo, 
                 id_permissao = :id_permissao, 
@@ -52,7 +50,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $stmt = $db->prepare($sql);
 
-    // Bind os parâmetros
     $stmt->bindParam(':id_usuario', $id_usuario);
     $stmt->bindParam(':id_grupo', $id_grupo);
     $stmt->bindParam(':id_permissao', $id_permissao);
@@ -60,12 +57,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bindParam(':telefone', $telefone);
     $stmt->bindParam(':email', $email);
 
-    // Bind da senha somente se houver uma nova senha
     if (!empty($senha_hash)) {
         $stmt->bindParam(':senha_hash', $senha_hash);
     }
 
-    // Execute o statement
     if ($stmt->execute()) {
         echo "<script>alert('Usuario Atualizado com sucesso!')</script>";
         header('location: home.php');
