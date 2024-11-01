@@ -6,8 +6,6 @@ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 $id = isset($_GET['id']) ? $_GET['id'] : null;
 
-
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_FILES['file'])) {
         $file = $_FILES['file'];
@@ -15,30 +13,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($file['error'] === UPLOAD_ERR_OK) {
             $uploadDir = '../uploads/'; 
             $uploadFile = $uploadDir . basename($file['name']);
- 
 
             if (move_uploaded_file($file['tmp_name'], $uploadFile)) {
                 $stmt = $db->prepare("UPDATE arquivo SET arq = :arq WHERE id_arquivo = :id");
                 $stmt->execute([':arq' => $uploadFile, ':id' => $id]);
 
                 if ($stmt->rowCount() > 0) {
-                    
+                    // Exibe uma mensagem de sucesso
                 } 
-            }}}}
-
-
-            $stmt2 = $db->prepare("SELECT nome FROM arquivo WHERE id_arquivo = :id");
-            $stmt2->execute([':id' => $id]);
-            
-            $lista_nome = '';
-            $dados2 = $stmt2->fetchAll(PDO::FETCH_ASSOC); 
-            foreach ($dados2 as $row2) {
-                $lista_nome .= $row2['nome'];
             }
-            http://192.168.1.71/Intra_health/pages/cadastrar_usuario.php
+        }
+    }
+}
 
-
-
+$stmt2 = $db->prepare("SELECT nome FROM arquivo WHERE id_arquivo = :id");
+$stmt2->execute([':id' => $id]);
+$lista_nome = '';
+$dados2 = $stmt2->fetchAll(PDO::FETCH_ASSOC); 
+foreach ($dados2 as $row2) {
+    $lista_nome .= $row2['nome'];
+}
 
 $stmt = $db->prepare("SELECT arq FROM arquivo WHERE id_arquivo = :id");
 $stmt->execute([':id' => $id]);
@@ -46,11 +40,12 @@ $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $lista = '';
 
 foreach ($dados as $row) {
+    $filePath =  $row['arq']; // Remove '../' do caminho do arquivo
     if ($row['arq'] == null && $cad_arq == 1) {
         $lista .= '
         <form id="uploadForm" method="POST" enctype="multipart/form-data" style="display: block;">
             <input type="hidden" id="fileId" name="fileId" value="' . htmlspecialchars($id) . '">
-            <input type="file" id="fileInput" name="file" accept=".pdf, .jpg, .jpeg, .png" required>
+            <input type="file" id="fileInput" name="file" accept=".pdf, .jpg, .jpeg, .png, .docx" required>
             <div class="button-container">
                 <button type="submit">Enviar</button>
             </div>
@@ -59,11 +54,16 @@ foreach ($dados as $row) {
         $extensao = pathinfo($row['arq'], PATHINFO_EXTENSION);
         
         $preview = '';
-        if (in_array($extensao, ['jpg', 'jpeg', 'png', 'docx'])) {
-            $preview = '<img src="' . htmlspecialchars($row['arq']) . '" alt="Preview do arquivo" style="max-width: 100%; height: auto;">';
-        } elseif ($extensao === 'pdf' or $extensao === 'docx' or $extensao === 'png') {
-            $preview = '<iframe src="' . htmlspecialchars($row['arq']) . '" width="100%" height="400px"></iframe>';
+        if (in_array($extensao, ['jpg', 'jpeg', 'png'])) {
+            $preview = '<img src="' . htmlspecialchars($filePath) . '" alt="Preview do arquivo" style="max-width: 100%; height: auto;">';
+        } elseif ($extensao === 'pdf') {
+            $preview = '<iframe src="' . htmlspecialchars($filePath) . '" width="100%" height="400px"></iframe>';
+        } if ($extensao === 'docx') {
+            // echo $filePath;
+            $preview = '<iframe src="/viewerjs/#/C:\xampp\htdocs\intra_health\uploads' . $row['arq'] . '" width="100%" height="400px"></iframe>';
+            $preview .= '<p><a href="' . htmlspecialchars($filePath) . '" download>Baixar o arquivo</a></p>';
         }
+        
 
         $lista .= '
         <div class="preview-container" id="previewContainer">
@@ -79,7 +79,7 @@ foreach ($dados as $row) {
             </div>
             <form id="uploadForm" method="POST" enctype="multipart/form-data" style="display: none;">
                 <input type="hidden" id="fileId" name="fileId" value="' . htmlspecialchars($id) . '">
-                <input type="file" id="fileInput" name="file" accept=".pdf, .jpg, .jpeg, .png" required>
+                <input type="file" id="fileInput" name="file" accept=".pdf, .jpg, .jpeg, .png, .docx" required>
                 <div class="button-container">
                     <button type="submit">Enviar</button>
                 </div>
@@ -87,6 +87,4 @@ foreach ($dados as $row) {
         }
     }
 }
-
-
-
+?>

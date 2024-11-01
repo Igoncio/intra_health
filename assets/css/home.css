@@ -46,7 +46,7 @@ main {
     height: calc(100vh - 80px);
 }
 
-/* Sidebar styles */
+
 .sidebar {
     width: 240px;
     background-color: #1f2937;
@@ -69,7 +69,6 @@ main {
     color: #3b82f6;
 }
 
-/* Content area */
 .content {
     flex: 1;
     padding: 3rem;
@@ -83,7 +82,6 @@ main {
     color: #1f2937;
 }
 
-/* Folder structure styles */
 .folder-list {
     list-style-type: none;
     padding: 1rem 0;
@@ -144,12 +142,12 @@ main {
     margin-right: 0.5rem;
 }
 
-/* Subfolder styling */
+
 .folder-items .subfolder {
     padding-left: 1.5rem;
 }
 
-/* Button styles */
+
 .btn-primary {
     background-color: #3b82f6;
     color: white;
@@ -160,16 +158,13 @@ main {
     transition: background-color 0.3s, box-shadow 0.3s;
     margin-bottom: 1.5rem;
 }
-
+  
 .btn-primary:hover {
     background-color: #2563eb;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 
-
-
-/* Additional button styling inside folder items */
 .folder-items button {
     border: none;
     padding: 0.4rem 0.8rem;
@@ -218,7 +213,7 @@ main {
 }
 
 .modal {
-    display: none; /* Oculto por padrão */
+    display: none; 
     position: fixed; 
     z-index: 1; 
     left: 0;
