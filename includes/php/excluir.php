@@ -1,7 +1,7 @@
 <?php
 
 
-$db = new PDO("mysql:host=192.168.1.71;dbname=intra_health", "teste", "H3@LTH_2024");
+$db = new PDO("mysql:host=192.168.1.92;dbname=intra_health", "teste", "H3@LTH_2024");
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 $id_user = $_GET['id_user'];

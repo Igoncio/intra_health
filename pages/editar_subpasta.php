@@ -17,6 +17,7 @@ include '../includes/php/editar_subpasta.php';
     <form action="#" method="POST">  
         <h1 id="titulo">Editar Subpasta</h1>
 
+
         <label for="folder-name">Editar Pasta</label>
 
         <select class="form-select" name="id_grupo" id="grupo">
