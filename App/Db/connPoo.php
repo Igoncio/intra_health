@@ -1,6 +1,6 @@
 <?php
 
-$dbHost = "192.168.1.92";
+$dbHost = "192.168.1.15";
 $dbUsername = "teste";
 $dbPassword = "H3@LTH_2024";
 $dbName = "intra_health";
@@ -12,4 +12,4 @@ if ($db->connect_error) {
     die("Falha na conexão: " . $db->connect_error);
 }
 
-$conn = mysqli_connect("192.168.1.92", "teste", "H3@LTH_2024", "intra_health");
+$conn = mysqli_connect("192.168.1.15", "teste", "H3@LTH_2024", "intra_health");
