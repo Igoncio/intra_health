@@ -13,11 +13,9 @@ $db = new PDO("mysql:host=192.168.1.15;dbname=intra_health", "teste", "H3@LTH_20
         $sql = "INSERT INTO pasta (id_grupo, nome) VALUES (:id_grupo, :nome)";
         $stmt = $db->prepare($sql);
 
-        // Vincula os parâmetros
         $stmt->bindParam(':id_grupo', $id_grupo);
         $stmt->bindParam(':nome', $nome);
 
-        // Executa a inserção
         if ($stmt->execute()) {
             echo "<script>alert('Pasta criada com sucesso!')</script>";
             header('location: home.php');

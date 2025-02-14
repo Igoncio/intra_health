@@ -18,7 +18,7 @@ if ($cad_pasta == 0) {
 
     
     <form action="#" method="POST">
-        <h1 id="titulo">Nova SubPasta</h1>
+        <h1 id="titulo">Nova subpasta</h1>
 
     <select class="form-select" name="id_grupo" id="selectID">
         <option value="">Selecione o grupo</option>
@@ -44,11 +44,11 @@ if ($cad_pasta == 0) {
    </div>
     
     
-        <label for="folder-name">Nome da SubPasta:</label>
-        <input type="text" id="folder-name" name="nome" placeholder="Digite o nome da pasta" required>
+        <label for="folder-name">Nome da subpasta:</label>
+        <input type="text" id="folder-name" name="nome" placeholder="Digite o nome da subpasta" required>
         
         <div class="button-container">
-            <button id="botao" type="submit">Criar Subpasta</button>
+            <button id="botao" type="submit">Nova subpasta</button>
             <a class="a-btn" id="botao2" href="home.php">Voltar</a>
         </div>
     </form>

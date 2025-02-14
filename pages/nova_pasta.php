@@ -41,11 +41,11 @@ if ($cad_pasta == 0) {
         </select>
     
     
-        <label for="folder-name">Nome da Pasta:</label>
+        <label for="folder-name">Nome da pasta:</label>
         <input type="text" id="folder-name" name="nome" placeholder="Digite o nome da pasta" required>
         
         <div class="button-container">
-            <button id="botao" type="submit">Criar Pasta</button>
+            <button id="botao" type="submit">Nova pasta</button>
             <a class="a-btn" id="botao2" href="home.php">Voltar</a>
         </div>
     

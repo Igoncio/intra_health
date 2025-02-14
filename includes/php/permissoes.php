@@ -7,7 +7,6 @@ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    // Coleta os dados do formulário
     $nome = $_POST['nome'];
     $acesso_financeiro = isset($_POST['acesso_financeiro']) ? 1 : 0;
     $acesso_comercial = isset($_POST['acesso_comercial']) ? 1 : 0;
@@ -25,7 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $excluir_user = isset($_POST['excluir_user']) ? 1 : 0;
     $excluir_perm = isset($_POST['excluir_perm']) ? 1 : 0;
 
-    // Prepara a consulta SQL
     $sql = "INSERT INTO permissoes 
             (nome, acesso_financeiro, acesso_comercial, acesso_adm, acesso_ti, 
              cad_pasta, cad_arq, cad_user, cad_perm, 
@@ -39,7 +37,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $stmt = $db->prepare($sql);
 
-    // Vincula os parâmetros
     $stmt->bindParam(':nome', $nome);
     $stmt->bindParam(':acesso_financeiro', $acesso_financeiro);
     $stmt->bindParam(':acesso_comercial', $acesso_comercial);
@@ -57,7 +54,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bindParam(':excluir_user', $excluir_user);
     $stmt->bindParam(':excluir_perm', $excluir_perm);
 
-    // Executa a inserção
     if ($stmt->execute()) {
         echo "Permissão cadastrada com sucesso!";
     } else {

@@ -9,7 +9,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nome = $_POST['nome'];
     $editavel = isset($_POST['editavel']) ? intval($_POST['editavel']) : 0;
 
-    // Verificar se o nome do arquivo já existe
     $checkSql = "SELECT COUNT(*) FROM arquivo WHERE nome = ?";
     $checkStmt = $db->prepare($checkSql);
     $checkStmt->bind_param('s', $nome);

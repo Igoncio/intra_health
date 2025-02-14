@@ -2,19 +2,17 @@
 include '.././App/Db/connPoo.php';
 
 try {
-    // Configuração do banco de dados
     $db = new PDO("mysql:host=192.168.1.15;dbname=intra_health", "teste", "H3@LTH_2024");
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $id = isset($_GET['id']) ? $_GET['id'] : null;
 
-    // Verificação se é uma requisição POST para upload de arquivo
+
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
             $uploadDir = '../uploads/';
             $uploadFile = $uploadDir . basename($_FILES['file']['name']);
 
-            // Movendo o arquivo para o diretório de uploads
             if (move_uploaded_file($_FILES['file']['tmp_name'], $uploadFile)) {
                 $stmt = $db->prepare("UPDATE arquivo SET arq = :arq WHERE id_arquivo = :id");
                 $stmt->execute([':arq' => $uploadFile, ':id' => $id]);
@@ -22,24 +20,21 @@ try {
         }
     }
 
-    // Obtendo o nome do arquivo
+
     $stmt2 = $db->prepare("SELECT nome FROM arquivo WHERE id_arquivo = :id");
     $stmt2->execute([':id' => $id]);
     $dados2 = $stmt2->fetch(PDO::FETCH_ASSOC);
     $lista_nome = $dados2 ? $dados2['nome'] : '';
 
-    // Obtendo o caminho do arquivo
     $stmt = $db->prepare("SELECT arq FROM arquivo WHERE id_arquivo = :id");
     $stmt->execute([':id' => $id]);
     $dados = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    // Verificação se há um arquivo existente e configuração da visualização
     $lista = '';
     if ($dados && $dados['arq'] !== null) {
         $filePath = htmlspecialchars($dados['arq']);
         $extensao = pathinfo($filePath, PATHINFO_EXTENSION);
 
-        // Determinando a pré-visualização com base na extensão do arquivo
         $preview = '';
         if (in_array($extensao, ['jpg', 'jpeg', 'png'])) {
             $preview = '<img src="' . $filePath . '" alt="Preview do arquivo" style="max-width: 100%; height: auto;">';
@@ -54,7 +49,6 @@ try {
             ' . $preview . '
         </div>';
 
-        // Exibição do botão para carregar outro arquivo, se permitido
         if ($cad_arq == 1) {
             $lista .= '
             <div class="button-container" id="actionButtons">
@@ -70,7 +64,6 @@ try {
             </form>';
         }
     } else {
-        // Formulário para upload de arquivo, caso não exista nenhum arquivo associado
         $lista .= '
         <form id="uploadForm" method="POST" enctype="multipart/form-data" style="display: block;">
             <input type="file" id="fileInput" name="file" accept=".pdf, .jpg, .jpeg, .png, .docx" required>

@@ -1,6 +1,6 @@
 <?php
 
-#SENHA GMAIL ACESSO A APP mbiz ysvt dhsb fiqo
+#SENHA GMAIL ACESSO A APP "xhft xqiw tgbl gcwk"
 
 
 include '.././App/Db/connPoo.php';
@@ -8,12 +8,12 @@ include '.././App/Db/connPoo.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+// require 'PHPMailer/PHPMailerAutoload.php';
 include '.././App/Db/connPoo.php';
 
 $db = new PDO("mysql:host=192.168.1.15;dbname=intra_health", "teste", "H3@LTH_2024");
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-// Obtenha a lista de permissões
 $select = "SELECT * FROM permissoes";
 $stmt = $db->query($select);
 $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -31,13 +31,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $senha_hash = password_hash($_POST['senha_hash'], PASSWORD_DEFAULT);
 
-    // Prepare o SQL
     $sql = "INSERT INTO usuario (id_grupo, id_permissao, nome, telefone, email, senha)
             VALUES (:id_grupo, :id_permissao, :nome, :telefone, :email, :senha_hash)";
 
     $stmt = $db->prepare($sql);
 
-    // Bind os parâmetros
     $stmt->bindParam(':id_grupo', $id_grupo);
     $stmt->bindParam(':id_permissao', $id_permissao);
     $stmt->bindParam(':nome', $nome);
@@ -45,7 +43,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bindParam(':email', $email);
     $stmt->bindParam(':senha_hash', $senha_hash);
 
-    // Execute o statement
     if ($stmt->execute()) {
         // Envio de e-mail
         $mail = new PHPMailer(true); // Instancia PHPMailer
@@ -53,11 +50,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         try {
             // Configurações do servidor
             $mail->isSMTP();                                      // Define o envio por SMTP
-            $mail->Host = 'smtp.gmail.com';               // Especifique o servidor SMTP
+            $mail->Host = 'smtp-mail.outlook.com';               // Especifique o servidor SMTP
             $mail->SMTPAuth = true;                             // Ativa autenticação SMTP
-            $mail->Username = 'intrahealthti@gmail.com';           // Seu e-mail
-            $mail->Password = 'mbiz ysvt dhsb fiqo';                       // Sua senha
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Ativa criptografia TLS
+            $mail->Username = 'igor.albieri@healthbrasil.com.br';           // Seu e-mail
+            $mail->Password = 'Iguinho1v9-';                       // Sua senha
+            $mail->SMTPSecure = 'tls'; // Ativa criptografia TLS
             $mail->Port = 587;                                  // Porta TCP para TLS
 
             // Destinatários
@@ -72,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             nome do usuario: $nome<br>
             senha: $senha_hash
             
-            acesse sua conta em:  <br>http://192.168.1.78/intra_health/ <br>
+            acesse sua conta em:  <br>http://192.168.1.15/intra_health/ <br>
             <br><br>Atenciosamente,<br>Equipe.";
 
             // Envio

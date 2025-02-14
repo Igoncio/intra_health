@@ -15,7 +15,6 @@ if (isset($_POST['email'], $_POST['senha'])) {
     if ($stmt->rowCount() == 1) {
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // Verifica se a senha fornecida corresponde ao hash armazenado
         if (password_verify($senha, $usuario['senha'])) {
             $_SESSION['id_user'] = $usuario['id_user'];
             $_SESSION['nome'] = $usuario['nome'];
@@ -23,10 +22,10 @@ if (isset($_POST['email'], $_POST['senha'])) {
             header('Location: pages/home.php');
             exit(); 
         } else {
-            echo "Falhou: usuário ou senha incorretos.";
+            echo "<script>alert('email ou senha incorretos!')</script>";
         }
     } else {
-        echo "Falhou: usuário ou senha incorretos.";
+        echo "<script>alert('email ou senha incorretos!')</script>";
     }
 }
 ?>
