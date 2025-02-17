@@ -42,7 +42,7 @@ if ($excluir_pasta == 0) {
 
         
         <div class="button-container">
-            <button id="botao2" type="submit">salvar</button>
+            <button id="botao2" type="submit">Excluir</button>
             <a class="a-btn" id="botao" href="home.php">Voltar</a>
         </div>
     </form>

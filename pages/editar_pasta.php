@@ -19,7 +19,7 @@ if ($edit_pasta == 0) {
 
     
     <form action="#" method="POST">  
-        <h1 id="titulo">Editar pasta</h1>
+        <h1 id="titulo">Editar Pasta</h1>
 
         <label for="folder-name">Selecione a pasta</label>
 

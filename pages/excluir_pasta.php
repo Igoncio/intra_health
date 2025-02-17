@@ -19,7 +19,7 @@ if ($excluir_pasta == 0) {
 
     
     <form action="#" method="POST">  
-        <h1 id="titulo">Excluir pasta</h1>
+        <h1 id="titulo">Excluir Pasta</h1>
 
         <label for="folder-name">Selecione a pasta</label>
 
@@ -38,7 +38,7 @@ if ($excluir_pasta == 0) {
 
         
         <div class="button-container">
-            <button id="botao2" type="submit">salvar</button>
+            <button id="botao2" type="submit">Excluir</button>
             <a class="a-btn" id="botao" href="home.php">Voltar</a>
         </div>
     </form>
