@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Rubik:ital,wght@0,300..900;1,300..900&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');*{ 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Atkinson Hyperlegible Next", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
 .table-container {
     width: 80%;
     margin: 0 auto;

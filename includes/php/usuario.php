@@ -45,42 +45,43 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($stmt->execute()) {
         // Envio de e-mail
-        $mail = new PHPMailer(true); // Instancia PHPMailer
-
-        try {
-            // Configurações do servidor
-            $mail->isSMTP();                                      // Define o envio por SMTP
-            $mail->Host = 'smtp-mail.outlook.com';               // Especifique o servidor SMTP
-            $mail->SMTPAuth = true;                             // Ativa autenticação SMTP
-            $mail->Username = 'igor.albieri@healthbrasil.com.br';           // Seu e-mail
-            $mail->Password = 'Iguinho1v9-';                       // Sua senha
-            $mail->SMTPSecure = 'tls'; // Ativa criptografia TLS
-            $mail->Port = 587;                                  // Porta TCP para TLS
-
-            // Destinatários
-            $mail->setFrom($email);
-            $mail->addAddress($email);                  // Adiciona um destinatário
-
-            // Conteúdo do e-mail
-            $mail->isHTML(true);                                // Define o formato de e-mail como HTML
-            $mail->Subject = 'Bem-vindo ao sistema!';
-            $mail->Body    = "
-            Olá $nome,<br><br>Você foi cadastrado em nosso sistema intra health, um sistema criado para o armazenamento de arquivos!<br>
-            nome do usuario: $nome<br>
-            senha: $senha_hash
-            
-            acesse sua conta em:  <br>http://192.168.1.15/intra_health/ <br>
-            <br><br>Atenciosamente,<br>Equipe.";
-
-            // Envio
-            $mail->send();
-            echo "<script>alert('Usuário cadastrado com sucesso! Um e-mail de confirmação foi enviado.')</script>";
-            header('location: home.php');
-        } catch (Exception $e) {
-            echo "Usuário cadastrado com sucesso, mas não foi possível enviar o e-mail. Erro: {$mail->ErrorInfo}";
-        }
-    } else {
-        echo "Erro ao cadastrar o usuário.";
+        // $mail = new PHPMailer(true); // Instancia PHPMailer
+        echo "<script>alert('Usuário cadastrado com sucesso!</script>";
     }
+    //     try {
+    //         // Configurações do servidor
+    //         $mail->isSMTP();                                      // Define o envio por SMTP
+    //         $mail->Host = 'smtp-mail.outlook.com';               // Especifique o servidor SMTP
+    //         $mail->SMTPAuth = true;                             // Ativa autenticação SMTP
+    //         $mail->Username = 'igor.albieri@healthbrasil.com.br';           // Seu e-mail
+    //         $mail->Password = ;                       // Sua senha
+    //         $mail->SMTPSecure = 'tls'; // Ativa criptografia TLS
+    //         $mail->Port = 587;                                  // Porta TCP para TLS
+
+    //         // Destinatários
+    //         $mail->setFrom($email);
+    //         $mail->addAddress($email);                  // Adiciona um destinatário
+
+    //         // Conteúdo do e-mail
+    //         $mail->isHTML(true);                                // Define o formato de e-mail como HTML
+    //         $mail->Subject = 'Bem-vindo ao sistema!';
+    //         $mail->Body    = "
+    //         Olá $nome,<br><br>Você foi cadastrado em nosso sistema intra health, um sistema criado para o armazenamento de arquivos!<br>
+    //         nome do usuario: $nome<br>
+    //         senha: $senha_hash
+            
+    //         acesse sua conta em:  <br>http://192.168.1.15/intra_health/ <br>
+    //         <br><br>Atenciosamente,<br>Equipe.";
+
+    //         // Envio
+    //         $mail->send();
+    //         echo "<script>alert('Usuário cadastrado com sucesso! Um e-mail de confirmação foi enviado.')</script>";
+    //         header('location: home.php');
+    //     } catch (Exception $e) {
+    //         echo "Usuário cadastrado com sucesso, mas não foi possível enviar o e-mail. Erro: {$mail->ErrorInfo}";
+    //     }
+    // } else {
+    //     echo "Erro ao cadastrar o usuário.";
+    // }
 }
 ?>
