@@ -427,13 +427,13 @@ foreach ($pastas as $id_pasta => $pasta) {
 
 //===============  T . I  ======================================================================================================================= 
 
-$sql4 = 'SELECT * FROM vw_grupo_estrutura WHERE id_grupo = 5';
+$sql4 = 'SELECT * FROM vw_grupo_estrutura WHERE id_grupo = 4';
 $stmt4 = $db->query($sql4);
 $dados4 = $stmt4->fetchAll(PDO::FETCH_ASSOC);
 
 $lista_ti = ''; 
 foreach ($dados_arq as $arq) {
-    if ($arq['id_grupo'] == 5 && $arq['id_pasta'] == 0 && $arq['id_subpasta'] == 0) {
+    if ($arq['id_grupo'] == 4 && $arq['id_pasta'] == 0 && $arq['id_subpasta'] == 0) {
         if($arq['editavel'] == 1){
             $lista_ti .= '
             <li>
@@ -483,7 +483,7 @@ foreach ($pastas as $id_pasta => $pasta) {
 
     // Adiciona arquivos da pasta principal
     foreach ($dados_arq as $arq) {
-        if ($arq['id_grupo'] == 5 && $arq['id_pasta'] == $id_pasta && $arq['id_subpasta'] == 0) {
+        if ($arq['id_grupo'] == 4 && $arq['id_pasta'] == $id_pasta && $arq['id_subpasta'] == 0) {
             if($arq['editavel'] == 1){
                 $lista_ti .= '
                 <li>
@@ -518,7 +518,7 @@ foreach ($pastas as $id_pasta => $pasta) {
 
         // Adiciona arquivos da subpasta
         foreach ($dados_arq as $arq) {
-            if ($arq['id_grupo'] == 5 && $arq['id_pasta'] == $id_pasta && $arq['id_subpasta'] == $id_subpasta) {
+            if ($arq['id_grupo'] == 4 && $arq['id_pasta'] == $id_pasta && $arq['id_subpasta'] == $id_subpasta) {
                 if($arq['editavel'] == 1){
                     $lista_ti .= '
                     <li>
@@ -555,7 +555,7 @@ foreach ($pastas as $id_pasta => $pasta) {
 //===============  Modalidades  ======================================================================================================================= 
 
 $sql5 = 'SELECT * FROM vw_grupo_estrutura WHERE id_grupo = 5';
-$stmt5 = $db->query($sql4);
+$stmt5 = $db->query($sql5);
 $dados5 = $stmt5->fetchAll(PDO::FETCH_ASSOC);
 
 $lista_mod = ''; 

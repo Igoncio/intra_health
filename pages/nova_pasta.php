@@ -38,6 +38,10 @@ if ($cad_pasta == 0) {
             <?php if($acesso_ti):?>
             <option value="4">T.I</option>
             <?php endif;?>
+
+            <?php if($acesso_mod):?>
+            <option value="5">Modalidade</option>
+            <?php endif;?>
         </select>
     
     
