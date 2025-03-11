@@ -427,13 +427,13 @@ foreach ($pastas as $id_pasta => $pasta) {
 
 //===============  T . I  ======================================================================================================================= 
 
-$sql4 = 'SELECT * FROM vw_grupo_estrutura WHERE id_grupo = 4';
+$sql4 = 'SELECT * FROM vw_grupo_estrutura WHERE id_grupo = 5';
 $stmt4 = $db->query($sql4);
 $dados4 = $stmt4->fetchAll(PDO::FETCH_ASSOC);
 
 $lista_ti = ''; 
 foreach ($dados_arq as $arq) {
-    if ($arq['id_grupo'] == 4 && $arq['id_pasta'] == 0 && $arq['id_subpasta'] == 0) {
+    if ($arq['id_grupo'] == 5 && $arq['id_pasta'] == 0 && $arq['id_subpasta'] == 0) {
         if($arq['editavel'] == 1){
             $lista_ti .= '
             <li>
@@ -483,7 +483,7 @@ foreach ($pastas as $id_pasta => $pasta) {
 
     // Adiciona arquivos da pasta principal
     foreach ($dados_arq as $arq) {
-        if ($arq['id_grupo'] == 4 && $arq['id_pasta'] == $id_pasta && $arq['id_subpasta'] == 0) {
+        if ($arq['id_grupo'] == 5 && $arq['id_pasta'] == $id_pasta && $arq['id_subpasta'] == 0) {
             if($arq['editavel'] == 1){
                 $lista_ti .= '
                 <li>
@@ -518,7 +518,7 @@ foreach ($pastas as $id_pasta => $pasta) {
 
         // Adiciona arquivos da subpasta
         foreach ($dados_arq as $arq) {
-            if ($arq['id_grupo'] == 4 && $arq['id_pasta'] == $id_pasta && $arq['id_subpasta'] == $id_subpasta) {
+            if ($arq['id_grupo'] == 5 && $arq['id_pasta'] == $id_pasta && $arq['id_subpasta'] == $id_subpasta) {
                 if($arq['editavel'] == 1){
                     $lista_ti .= '
                     <li>
@@ -548,6 +548,133 @@ foreach ($pastas as $id_pasta => $pasta) {
     }
 
     $lista_ti .= '
+            </ul>
+        </li>'; // Fecha pasta principal
+}
+
+//===============  Modalidades  ======================================================================================================================= 
+
+$sql5 = 'SELECT * FROM vw_grupo_estrutura WHERE id_grupo = 5';
+$stmt5 = $db->query($sql4);
+$dados5 = $stmt5->fetchAll(PDO::FETCH_ASSOC);
+
+$lista_mod = ''; 
+foreach ($dados_arq as $arq) {
+    if ($arq['id_grupo'] == 5 && $arq['id_pasta'] == 0 && $arq['id_subpasta'] == 0) {
+        if($arq['editavel'] == 1){
+            $lista_mod .= '
+            <li>
+                <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
+                    <i class="fas fa-file-alt"></i>
+                    <button class="expand-btn">Abrir</button>
+                    ' . htmlspecialchars($arq['nome']) . '
+                </a>
+            </li>';
+        }
+        else{
+            $lista_mod .= '
+            <li>
+                <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
+                <i class="fas fa-file-alt"></i>
+                <button class="expand-btn">Abrir</button>
+                ' . htmlspecialchars($arq['nome']) . '
+                </a>
+                </li>';
+        }
+    }
+}
+
+// Agrupando dados por pasta e subpasta
+$pastas = [];
+foreach ($dados5 as $row) {
+    $pastas[$row['id_pasta']]['nome'] = $row['nome_pasta'];
+    $pastas[$row['id_pasta']]['subpastas'] = [];
+}
+
+// Adicionando subpastas
+foreach ($dados5 as $row) {
+    if ($row['id_subpasta'] != 0) {
+        $pastas[$row['id_pasta']]['subpastas'][$row['id_subpasta']] = $row['nome_subpasta'];
+    }
+}
+
+// Agora, itere sobre as pastas e subpastas
+foreach ($pastas as $id_pasta => $pasta) {
+    // Pasta principal
+    $lista_mod .= '
+        <li class="expandable">
+            <button class="expand-btn">+</button>
+            
+            <i class="fas fa-folder"></i> ' . htmlspecialchars($pasta['nome']) . '
+            <ul class="expandable-items">';
+
+    // Adiciona arquivos da pasta principal
+    foreach ($dados_arq as $arq) {
+        if ($arq['id_grupo'] == 5 && $arq['id_pasta'] == $id_pasta && $arq['id_subpasta'] == 0) {
+            if($arq['editavel'] == 1){
+                $lista_mod .= '
+                <li>
+                    <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
+                        <i class="fas fa-file-alt"></i>
+                        <button class="expand-btn">Abrir</button>
+                        ' . htmlspecialchars($arq['nome']) . '
+                    </a>
+                </li>';
+            }
+            else{
+                $lista_mod .= '
+                <li>
+                    <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
+                    <i class="fas fa-file-alt"></i>
+                    <button class="expand-btn">Abrir</button>
+                    ' . htmlspecialchars($arq['nome']) . '
+                    </a>
+                    </li>';
+            }
+        }
+    }
+
+    // Adiciona subpastas e seus arquivos
+    foreach ($pasta['subpastas'] as $id_subpasta => $nome_subpasta) {
+        $lista_mod .= '
+            <li class="expandable">
+                <button class="expand-btn">+</button>
+                
+                <i class="fas fa-folder"></i> ' . htmlspecialchars($nome_subpasta) . '
+                <ul class="expandable-items">';
+
+        // Adiciona arquivos da subpasta
+        foreach ($dados_arq as $arq) {
+            if ($arq['id_grupo'] == 5 && $arq['id_pasta'] == $id_pasta && $arq['id_subpasta'] == $id_subpasta) {
+                if($arq['editavel'] == 1){
+                    $lista_mod .= '
+                    <li>
+                        <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
+                            <i class="fas fa-file-alt"></i>
+                            <button class="expand-btn">Abrir</button>
+                            ' . htmlspecialchars($arq['nome']) . '
+                        </a>
+                    </li>';
+                }
+                else{
+                    $lista_mod .= '
+                    <li>
+                        <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
+                        <i class="fas fa-file-alt"></i>
+                        <button class="expand-btn">Abrir</button>
+                        ' . htmlspecialchars($arq['nome']) . '
+                        </a>
+                        </li>';
+                }
+            }
+        }
+
+        $lista_mod .= '
+                </ul>
+            </li>'; // Fecha subpasta
+    }
+
+    $lista_mod .= '
             </ul>
         </li>'; // Fecha pasta principal
 }

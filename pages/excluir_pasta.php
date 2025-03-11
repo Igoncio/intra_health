@@ -28,9 +28,16 @@ if ($excluir_pasta == 0) {
             <?php
             $sql = "SELECT * FROM grupo";
             $result = mysqli_query($conn, $sql);
-            while($row = mysqli_fetch_assoc($result)){?>
-            <option value="<?php echo $row['id_grupo']?>"><?php echo $row['nome']?></option>
-            <?php }?>
+            while ($row = mysqli_fetch_assoc($result)) {
+                // Verifique o acesso com base no grupo
+                if (($row['id_grupo'] == 1 && $acesso_financeiro) ||
+                    ($row['id_grupo'] == 2 && $acesso_comercial) ||
+                    ($row['id_grupo'] == 3 && $acesso_adm) ||
+                    ($row['id_grupo'] == 4 && $acesso_ti)) {
+                    echo '<option value="' . $row['id_grupo'] . '">' . $row['nome'] . '</option>';
+                }
+            }
+            ?>
         </select>
 
 

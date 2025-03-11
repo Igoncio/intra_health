@@ -64,6 +64,13 @@ include '../includes/php/home.php';
                         <ul class="folder-items"><?= $lista_ti ?></ul>
                     </li>
                 <?php endif; ?>
+
+                <?php if ($acesso_mod): ?>
+                    <li class="folder">
+                        <div class="folder-title">Modalidade</div>
+                        <ul class="folder-items"><?= $lista_mod ?></ul>
+                    </li>
+                <?php endif; ?>
             </ul>
         </div>
 

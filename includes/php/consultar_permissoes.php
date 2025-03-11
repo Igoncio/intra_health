@@ -16,6 +16,8 @@ foreach($dados as $permissao){
     $acesso_financeiro = $permissao['acesso_financeiro'];
     $acesso_comercial = $permissao['acesso_comercial'];
     $acesso_adm = $permissao['acesso_adm'];
+    $acesso_mod = $permissao['acesso_mod'];
+    $acesso_geral = $permissao['acesso_geral'];
     $acesso_ti = $permissao['acesso_ti'];
     $cad_pasta = $permissao['cad_pasta'];
     $cad_user = $permissao['cad_user'];

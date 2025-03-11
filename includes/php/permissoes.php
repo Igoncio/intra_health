@@ -12,6 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $acesso_comercial = isset($_POST['acesso_comercial']) ? 1 : 0;
     $acesso_adm = isset($_POST['acesso_adm']) ? 1 : 0;
     $acesso_ti = isset($_POST['acesso_ti']) ? 1 : 0;
+    $acesso_mod = isset($_POST['acesso_mod']) ? 1 : 0;
+    $acesso_geral = 1;
     $cad_pasta = isset($_POST['cad_pasta']) ? 1 : 0;
     $cad_arq = isset($_POST['cad_arq']) ? 1 : 0;
     $cad_user = isset($_POST['cad_user']) ? 1 : 0;
@@ -41,6 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bindParam(':acesso_financeiro', $acesso_financeiro);
     $stmt->bindParam(':acesso_comercial', $acesso_comercial);
     $stmt->bindParam(':acesso_adm', $acesso_adm);
+    $stmt->bindParam(':acesso_geral', $acesso_adm);
     $stmt->bindParam(':acesso_ti', $acesso_ti);
     $stmt->bindParam(':cad_pasta', $cad_pasta);
     $stmt->bindParam(':cad_arq', $cad_arq);

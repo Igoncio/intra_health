@@ -1,5 +1,5 @@
 <?php
-include '.././App/Db/connPoo.php';
+include '../App/Db/connPoo.php';
 
 try {
     $db = new PDO("mysql:host=192.168.1.15;dbname=intra_health", "teste", "H3@LTH_2024");
@@ -8,11 +8,22 @@ try {
     $id = isset($_GET['id']) ? $_GET['id'] : null;
 
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
             $uploadDir = '../uploads/';
             $uploadFile = $uploadDir . basename($_FILES['file']['name']);
-
+    
+       
+            $stmtOldFile = $db->prepare("SELECT arq FROM arquivo WHERE id_arquivo = :id");
+            $stmtOldFile->execute([':id' => $id]);
+            $oldFile = $stmtOldFile->fetch(PDO::FETCH_ASSOC);
+    
+     
+            if ($oldFile && !empty($oldFile['arq']) && file_exists($oldFile['arq'])) {
+                unlink($oldFile['arq']);
+            }
+    
+         
             if (move_uploaded_file($_FILES['file']['tmp_name'], $uploadFile)) {
                 $stmt = $db->prepare("UPDATE arquivo SET arq = :arq WHERE id_arquivo = :id");
                 $stmt->execute([':arq' => $uploadFile, ':id' => $id]);

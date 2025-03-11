@@ -43,6 +43,12 @@ if ($cad_perm == 0) {
                 </label>
 
                 <label class="container-check">
+                    <input type="checkbox" name="acesso_mod" value="1">
+                    <div>Modalidade</div>
+                </label>
+
+
+                <label class="container-check">
                     <input type="checkbox" name="acesso_ti" value="1">
                     <div>T.I</div>
                 </label>
