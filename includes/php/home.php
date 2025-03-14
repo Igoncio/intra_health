@@ -54,7 +54,7 @@ foreach ($dados_arq as $arq) {
             $lista_mod .= '
             <li>
                 <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
-                    <i class="fas fa-file-alt"></i>
+                    
                     <button class="expand-btn">Abrir</button>
                     ' . htmlspecialchars($arq['nome']) . '
                 </a>
@@ -64,7 +64,7 @@ foreach ($dados_arq as $arq) {
             $lista_geral .= '
             <li>
                 <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
-                <i class="fas fa-file-alt"></i>
+                
                 <button class="expand-btn">Abrir</button>
                 ' . htmlspecialchars($arq['nome']) . '
                 </a>
@@ -104,7 +104,7 @@ foreach ($pastas as $id_pasta => $pasta) {
                 $lista_geral .= '
                 <li>
                     <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
-                        <i class="fas fa-file-alt"></i>
+                        
                         <button class="expand-btn">Abrir</button>
                         ' . htmlspecialchars($arq['nome']) . '
                     </a>
@@ -114,7 +114,7 @@ foreach ($pastas as $id_pasta => $pasta) {
                 $lista_geral .= '
                 <li>
                     <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
-                    <i class="fas fa-file-alt"></i>
+                    
                     <button class="expand-btn">Abrir</button>
                     ' . htmlspecialchars($arq['nome']) . '
                     </a>
@@ -139,7 +139,7 @@ foreach ($pastas as $id_pasta => $pasta) {
                     $lista_geral .= '
                     <li>
                         <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
-                            <i class="fas fa-file-alt"></i>
+                            
                             <button class="expand-btn">Abrir</button>
                             ' . htmlspecialchars($arq['nome']) . '
                         </a>
@@ -149,7 +149,7 @@ foreach ($pastas as $id_pasta => $pasta) {
                     $lista_geral .= '
                     <li>
                         <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
-                        <i class="fas fa-file-alt"></i>
+                        
                         <button class="expand-btn">Abrir</button>
                         ' . htmlspecialchars($arq['nome']) . '
                         </a>
@@ -182,7 +182,7 @@ foreach ($dados_arq as $arq) {
             $lista_financeiro .= '
             <li>
                 <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
-                    <i class="fas fa-file-alt"></i>
+                    
                     <button class="expand-btn">Abrir</button>
                     ' . htmlspecialchars($arq['nome']) . '
                 </a>
@@ -192,7 +192,7 @@ foreach ($dados_arq as $arq) {
             $lista_financeiro .= '
             <li>
                 <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
-                <i class="fas fa-file-alt"></i>
+                
                 <button class="expand-btn">Abrir</button>
                 ' . htmlspecialchars($arq['nome']) . '
                 </a>
@@ -228,7 +228,7 @@ foreach ($pastas as $id_pasta => $pasta) {
                 $lista_financeiro .= '
                 <li>
                     <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
-                        <i class="fas fa-file-alt"></i>
+                        
                         <button class="expand-btn">Abrir</button>
                         ' . htmlspecialchars($arq['nome']) . '
                     </a>
@@ -238,7 +238,7 @@ foreach ($pastas as $id_pasta => $pasta) {
                 $lista_financeiro .= '
                 <li>
                     <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
-                    <i class="fas fa-file-alt"></i>
+                    
                     <button class="expand-btn">Abrir</button>
                     ' . htmlspecialchars($arq['nome']) . '
                     </a>
@@ -263,7 +263,7 @@ foreach ($pastas as $id_pasta => $pasta) {
                     $lista_financeiro .= '
                     <li>
                         <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
-                            <i class="fas fa-file-alt"></i>
+                            
                             <button class="expand-btn">Abrir</button>
                             ' . htmlspecialchars($arq['nome']) . '
                         </a>
@@ -273,7 +273,7 @@ foreach ($pastas as $id_pasta => $pasta) {
                     $lista_financeiro .= '
                     <li>
                         <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
-                        <i class="fas fa-file-alt"></i>
+                        
                         <button class="expand-btn">Abrir</button>
                         ' . htmlspecialchars($arq['nome']) . '
                         </a>
@@ -308,7 +308,7 @@ foreach ($dados_arq as $arq) {
             $lista_comercial .= '
             <li>
                 <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
-                    <i class="fas fa-file-alt"></i>
+                    
                     <button class="expand-btn">Abrir</button>
                     ' . htmlspecialchars($arq['nome']) . '
                 </a>
@@ -318,7 +318,7 @@ foreach ($dados_arq as $arq) {
             $lista_comercial .= '
             <li>
                 <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
-                <i class="fas fa-file-alt"></i>
+                
                 <button class="expand-btn">Abrir</button>
                 ' . htmlspecialchars($arq['nome']) . '
                 </a>
@@ -355,7 +355,7 @@ foreach ($pastas as $id_pasta => $pasta) {
                 $lista_comercial .= '
                 <li>
                     <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
-                        <i class="fas fa-file-alt"></i>
+                        
                         <button class="expand-btn">Abrir</button>
                         ' . htmlspecialchars($arq['nome']) . '
                     </a>
@@ -365,7 +365,7 @@ foreach ($pastas as $id_pasta => $pasta) {
                 $lista_comercial .= '
                 <li>
                     <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
-                    <i class="fas fa-file-alt"></i>
+                    
                     <button class="expand-btn">Abrir</button>
                     ' . htmlspecialchars($arq['nome']) . '
                     </a>
@@ -390,7 +390,7 @@ foreach ($pastas as $id_pasta => $pasta) {
                     $lista_comercial .= '
                     <li>
                         <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
-                            <i class="fas fa-file-alt"></i>
+                            
                             <button class="expand-btn">Abrir</button>
                             ' . htmlspecialchars($arq['nome']) . '
                         </a>
@@ -400,7 +400,7 @@ foreach ($pastas as $id_pasta => $pasta) {
                     $lista_comercial .= '
                     <li>
                         <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
-                        <i class="fas fa-file-alt"></i>
+                        
                         <button class="expand-btn">Abrir</button>
                         ' . htmlspecialchars($arq['nome']) . '
                         </a>
@@ -435,7 +435,7 @@ foreach ($dados_arq as $arq) {
             $lista_adm .= '
             <li>
                 <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
-                    <i class="fas fa-file-alt"></i>
+                    
                     <button class="expand-btn">Abrir</button>
                     ' . htmlspecialchars($arq['nome']) . '
                 </a>
@@ -445,7 +445,7 @@ foreach ($dados_arq as $arq) {
             $lista_adm .= '
             <li>
                 <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
-                <i class="fas fa-file-alt"></i>
+                
                 <button class="expand-btn">Abrir</button>
                 ' . htmlspecialchars($arq['nome']) . '
                 </a>
@@ -485,7 +485,7 @@ foreach ($pastas as $id_pasta => $pasta) {
                 $lista_adm .= '
                 <li>
                     <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
-                        <i class="fas fa-file-alt"></i>
+                        
                         <button class="expand-btn">Abrir</button>
                         ' . htmlspecialchars($arq['nome']) . '
                     </a>
@@ -495,7 +495,7 @@ foreach ($pastas as $id_pasta => $pasta) {
                 $lista_adm .= '
                 <li>
                     <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
-                    <i class="fas fa-file-alt"></i>
+                    
                     <button class="expand-btn">Abrir</button>
                     ' . htmlspecialchars($arq['nome']) . '
                     </a>
@@ -520,7 +520,7 @@ foreach ($pastas as $id_pasta => $pasta) {
                     $lista_adm .= '
                     <li>
                         <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
-                            <i class="fas fa-file-alt"></i>
+                            
                             <button class="expand-btn">Abrir</button>
                             ' . htmlspecialchars($arq['nome']) . '
                         </a>
@@ -530,7 +530,7 @@ foreach ($pastas as $id_pasta => $pasta) {
                     $lista_adm .= '
                     <li>
                         <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
-                        <i class="fas fa-file-alt"></i>
+                        
                         <button class="expand-btn">Abrir</button>
                         ' . htmlspecialchars($arq['nome']) . '
                         </a>
@@ -565,7 +565,7 @@ foreach ($dados_arq as $arq) {
             $lista_ti .= '
             <li>
                 <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
-                    <i class="fas fa-file-alt"></i>
+                    
                     <button class="expand-btn">Abrir</button>
                     ' . htmlspecialchars($arq['nome']) . '
                 </a>
@@ -575,7 +575,7 @@ foreach ($dados_arq as $arq) {
             $lista_ti .= '
             <li>
                 <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
-                <i class="fas fa-file-alt"></i>
+                
                 <button class="expand-btn">Abrir</button>
                 ' . htmlspecialchars($arq['nome']) . '
                 </a>
@@ -615,7 +615,7 @@ foreach ($pastas as $id_pasta => $pasta) {
                 $lista_ti .= '
                 <li>
                     <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
-                        <i class="fas fa-file-alt"></i>
+                        
                         <button class="expand-btn">Abrir</button>
                         ' . htmlspecialchars($arq['nome']) . '
                     </a>
@@ -625,7 +625,7 @@ foreach ($pastas as $id_pasta => $pasta) {
                 $lista_ti .= '
                 <li>
                     <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
-                    <i class="fas fa-file-alt"></i>
+                    
                     <button class="expand-btn">Abrir</button>
                     ' . htmlspecialchars($arq['nome']) . '
                     </a>
@@ -650,7 +650,7 @@ foreach ($pastas as $id_pasta => $pasta) {
                     $lista_ti .= '
                     <li>
                         <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
-                            <i class="fas fa-file-alt"></i>
+                            
                             <button class="expand-btn">Abrir</button>
                             ' . htmlspecialchars($arq['nome']) . '
                         </a>
@@ -660,7 +660,7 @@ foreach ($pastas as $id_pasta => $pasta) {
                     $lista_ti .= '
                     <li>
                         <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
-                        <i class="fas fa-file-alt"></i>
+                        
                         <button class="expand-btn">Abrir</button>
                         ' . htmlspecialchars($arq['nome']) . '
                         </a>
@@ -692,7 +692,7 @@ foreach ($dados_arq as $arq) {
             $lista_mod .= '
             <li>
                 <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
-                    <i class="fas fa-file-alt"></i>
+                    
                     <button class="expand-btn">Abrir</button>
                     ' . htmlspecialchars($arq['nome']) . '
                 </a>
@@ -702,7 +702,7 @@ foreach ($dados_arq as $arq) {
             $lista_mod .= '
             <li>
                 <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
-                <i class="fas fa-file-alt"></i>
+                
                 <button class="expand-btn">Abrir</button>
                 ' . htmlspecialchars($arq['nome']) . '
                 </a>
@@ -742,7 +742,7 @@ foreach ($pastas as $id_pasta => $pasta) {
                 $lista_mod .= '
                 <li>
                     <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
-                        <i class="fas fa-file-alt"></i>
+                        
                         <button class="expand-btn">Abrir</button>
                         ' . htmlspecialchars($arq['nome']) . '
                     </a>
@@ -752,7 +752,7 @@ foreach ($pastas as $id_pasta => $pasta) {
                 $lista_mod .= '
                 <li>
                     <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
-                    <i class="fas fa-file-alt"></i>
+                    
                     <button class="expand-btn">Abrir</button>
                     ' . htmlspecialchars($arq['nome']) . '
                     </a>
@@ -777,7 +777,7 @@ foreach ($pastas as $id_pasta => $pasta) {
                     $lista_mod .= '
                     <li>
                         <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
-                            <i class="fas fa-file-alt"></i>
+                            
                             <button class="expand-btn">Abrir</button>
                             ' . htmlspecialchars($arq['nome']) . '
                         </a>
@@ -787,7 +787,7 @@ foreach ($pastas as $id_pasta => $pasta) {
                     $lista_mod .= '
                     <li>
                         <a href="arquivo.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
-                        <i class="fas fa-file-alt"></i>
+                        
                         <button class="expand-btn">Abrir</button>
                         ' . htmlspecialchars($arq['nome']) . '
                         </a>

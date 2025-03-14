@@ -5,6 +5,9 @@
     font-style: normal;
 }
 
+#logo-menu{
+    width: 120px;
+}
 
 .dropdown-toggle{
     text-decoration: none;
