@@ -30,12 +30,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             (nome, acesso_financeiro, acesso_comercial, acesso_adm, acesso_ti, 
              cad_pasta, cad_arq, cad_user, cad_perm, 
              edit_pasta, edit_arq, edit_user, 
-             excluir_pasta, excluir_arq, excluir_user, excluir_perm) 
+             excluir_pasta, excluir_arq, excluir_user, excluir_perm, acesso_geral, acesso_mod) 
             VALUES 
             (:nome, :acesso_financeiro, :acesso_comercial, :acesso_adm, :acesso_ti, 
              :cad_pasta, :cad_arq, :cad_user, :cad_perm, 
              :edit_pasta, :edit_arq, :edit_user, 
-             :excluir_pasta, :excluir_arq, :excluir_user, :excluir_perm)";
+             :excluir_pasta, :excluir_arq, :excluir_user, :excluir_perm, :acesso_geral, :acesso_mod)";
 
     $stmt = $db->prepare($sql);
 
@@ -43,8 +43,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bindParam(':acesso_financeiro', $acesso_financeiro);
     $stmt->bindParam(':acesso_comercial', $acesso_comercial);
     $stmt->bindParam(':acesso_adm', $acesso_adm);
-    $stmt->bindParam(':acesso_geral', $acesso_adm);
     $stmt->bindParam(':acesso_ti', $acesso_ti);
+    $stmt->bindParam(':acesso_mod', $acesso_mod);
+    $stmt->bindParam(':acesso_geral', $acesso_geral);
     $stmt->bindParam(':cad_pasta', $cad_pasta);
     $stmt->bindParam(':cad_arq', $cad_arq);
     $stmt->bindParam(':cad_user', $cad_user);
@@ -56,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bindParam(':excluir_arq', $excluir_arq);
     $stmt->bindParam(':excluir_user', $excluir_user);
     $stmt->bindParam(':excluir_perm', $excluir_perm);
-
+ 
     if ($stmt->execute()) {
         echo "Permissão cadastrada com sucesso!";
     } else {
