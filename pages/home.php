@@ -37,6 +37,14 @@ include '../includes/php/home.php';
             <?php endif; ?>
 
             <ul class="folder-list">
+
+                <?php if ($acesso_geral): ?>
+                    <li class="folder">
+                        <div class="folder-title">Todos</div>
+                        <ul class="folder-items"><?= $lista_geral ?></ul>
+                    </li>
+                <?php endif; ?>
+
                 <?php if ($acesso_financeiro): ?>
                     <li class="folder">
                         <div class="folder-title">Financeiro</div>
