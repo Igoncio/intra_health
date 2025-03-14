@@ -42,6 +42,8 @@ if ($cad_pasta == 0) {
             <?php if($acesso_mod):?>
             <option value="5">Modalidade</option>
             <?php endif;?>
+
+            <option value="6">Todos</option>
         </select>
     
     

@@ -31,7 +31,8 @@ if ($cad_pasta == 0) {
                     ($row['id_grupo'] == 2 && $acesso_comercial) ||
                     ($row['id_grupo'] == 3 && $acesso_adm) ||
                     ($row['id_grupo'] == 4 && $acesso_ti)||
-                    ($row['id_grupo'] == 5 && $acesso_mod) 
+                    ($row['id_grupo'] == 5 && $acesso_mod) ||
+                    ($row['id_grupo'] == 6 && $acesso_geral)
                     ) {
                     echo '<option value="' . $row['id_grupo'] . '">' . $row['nome'] . '</option>';
                 }
