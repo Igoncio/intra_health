@@ -40,14 +40,14 @@ include '../includes/php/home.php';
 
                 <?php if ($acesso_geral): ?>
                     <li class="folder">
-                        <div class="folder-title">Todos</div>
+                        <div class="folder-title">Todos <div class="folder-title"><i class="fas fa-chevron-down"></i></div></div>
                         <ul class="folder-items"><?= $lista_geral ?></ul>
                     </li>
                 <?php endif; ?>
 
                 <?php if ($acesso_financeiro): ?>
                     <li class="folder">
-                        <div class="folder-title">Financeiro</div>
+                        <div class="folder-title">Financeiro <div class="folder-title"><i class="fas fa-chevron-down"></i></div> </div>
                         <ul class="folder-items"><?= $lista_financeiro ?></ul>
                     </li>
                 <?php endif; ?>
@@ -75,7 +75,7 @@ include '../includes/php/home.php';
 
                 <?php if ($acesso_mod): ?>
                     <li class="folder">
-                        <div class="folder-title">Modalidade</div>
+                        <div class="folder-title">Modalidade <div class="folder-title"><i class="fas fa-chevron-down"></i></div></div>
                         <ul class="folder-items"><?= $lista_mod ?></ul>
                     </li>
                 <?php endif; ?>
