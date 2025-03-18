@@ -1,7 +1,6 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
 include '../includes/menu.php';
-include '../includes/php/permissoes.php';
 include '../includes/php/config_user.php';
 ?>
 
@@ -22,19 +21,20 @@ include '../includes/php/config_user.php';
         <div class="area-img">
             <img src="img.png" id="imgperfil">
             <input type="file" id="inputFile" style="display: none;">
-            <h1 class="nome">Roberto da Conceissao</h1>
+            <h1 class="nome"><?php echo $nome_user; ?></h1>
         </div>
 
         <label for="folder-name">Setor:</label>
         <select name="id_grupo" id="">
-            <option value="">T.I</option>
+            <option value="<?php echo $id_grupo; ?>"><?php echo $nome_grupo; ?></option>
         </select>
 
         <label for="folder-name">Telefone:</label>
-        <input type="text" id="folder-name" name="telefone" placeholder="Digite o telefone" required>
+        <input type="text" id="folder-name" name="telefone" value="<?php echo $telefone;?>" required>
 
         <label for="folder-name">senha:</label>
-        <input type="text" id="folder-name" name="senha_hash" placeholder="Digite a senha" required>
+        <button>Clique aqui para alterar a senha</button>
+     
 
         <div class="button-container">
             <button id="botao" type="submit">Salvar</button>
