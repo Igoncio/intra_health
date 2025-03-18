@@ -33,7 +33,7 @@ include '../includes/php/config_user.php';
         <input type="text" id="folder-name" name="telefone" value="<?php echo $telefone;?>" required>
 
         <label for="folder-name">senha:</label>
-        <button>Clique aqui para alterar a senha</button>
+        <a id="alterar_senha" href="acesso_alterar_senha.php">Clique aqui para alterar a senha</a>
      
 
         <div class="button-container">
