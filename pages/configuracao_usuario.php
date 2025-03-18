@@ -19,8 +19,8 @@ include '../includes/php/config_user.php';
         <h1 id="titulo">Configuração de Usuario</h1>
 
         <div class="area-img">
-            <img src="img.png" id="imgperfil">
-            <input type="file" id="inputFile" style="display: none;">
+            <img src="<?php echo $foto_user;?>" id="imgperfil">
+            <input type="file" name="foto" id="inputFile" style="display: none;">
             <h1 class="nome"><?php echo $nome_user; ?></h1>
         </div>
 
