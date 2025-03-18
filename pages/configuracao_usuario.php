@@ -15,12 +15,12 @@ include '../includes/php/config_user.php';
 </head>
 <body>
   
-<form action="#" method="POST">
+<form action="#" method="POST" enctype="multipart/form-data">
         <h1 id="titulo">Configuração de Usuario</h1>
 
         <div class="area-img">
             <img src="<?php echo $foto_user;?>" id="imgperfil">
-            <input type="file" name="foto" id="inputFile" style="display: none;">
+            <input type="file" name="foto" id="inputFile" accept="image/*" style="display: none;">
             <h1 class="nome"><?php echo $nome_user; ?></h1>
         </div>
 
