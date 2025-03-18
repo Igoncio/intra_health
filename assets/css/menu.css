@@ -5,6 +5,18 @@
     font-style: normal;
 }
 
+#imagem-perfil{
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #dfdfdf;
+}
+
+#offcanvasNavbarLabel{
+    margin-left: 10px;
+}
+
 #logo-menu{
     width: 120px;
 }

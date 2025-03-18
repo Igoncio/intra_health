@@ -31,16 +31,18 @@ include_once 'php/consultar_permissoes.php';
         </button>
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
+                <img src="../img/perfil/image.png" id="imagem-perfil" alt="">
                 <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><?php echo $_SESSION['nome']?></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
                 <ul id="area-menu" class="navbar-nav justify-content-end flex-grow-1 pe-3">
                     <li class="nav-item">
+                        
                         <a class="nav-link active" aria-current="page" href="home.php">Home</a>
                     </li>
 
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown ">
                         <?php if ($cad_user || $cad_arq || $cad_pasta || $cad_perm): ?>
                             <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Cadastros
@@ -66,7 +68,7 @@ include_once 'php/consultar_permissoes.php';
                     </li>
 
                     <?php if ($edit_user || $excluir_user): ?>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown ">
                             <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Gerenciar
                             </a>
