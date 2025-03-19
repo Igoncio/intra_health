@@ -24,6 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $telefone = $_POST['telefone'];
     $email = $_POST['email'];
     $senha_hash = password_hash($_POST['senha_hash'], PASSWORD_DEFAULT);
+    $acao = "cadastrou o usuario '$nome'";
+    $id_log = $_SESSION['id_user'];
 
     $sql = "INSERT INTO usuario (id_grupo, id_permissao, nome, telefone, email, senha)
             VALUES (:id_grupo, :id_permissao, :nome, :telefone, :email, :senha_hash)";
@@ -36,10 +38,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bindParam(':telefone', $telefone);
     $stmt->bindParam(':email', $email);
     $stmt->bindParam(':senha_hash', $senha_hash);
-
     if ($stmt->execute()) {
 
-        echo "<script>alert('Usuário cadastrado com sucesso!</script>";
+        $sql_log = "INSERT INTO log (id_user, acao)
+        VALUES (:id_user, :acao)";
+
+        $stmt_log = $db->prepare($sql_log);
+        $stmt_log->bindParam(':id_user', $id_log);
+        $stmt_log->bindParam(':acao', $acao);
+
+        if($stmt_log->execute()){
+            echo "<script>alert('Usuário cadastrado com sucesso!');</script>";
+        }
     }
  
 }
