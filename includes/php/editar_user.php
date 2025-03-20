@@ -62,9 +62,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if ($stmt->execute()) {
-        echo "<script>alert('Usuario Atualizado com sucesso!')</script>";
-        header('location: home.php');
+
+        $acao = "Editou o usuário '$user[nome]'";
+        $id_log = $_SESSION['id_user'];
+
+        $sql_log = "INSERT INTO log (id_user, acao) VALUES (:id_user, :acao)";
+        $stmt_log = $db->prepare($sql_log);
+        $stmt_log->bindParam(':id_user', $id_log);
+        $stmt_log->bindParam(':acao', $acao);
+        $stmt_log->execute();
+
+        echo "<script>alert('Usuario Atualizado com sucesso!'); window.location.href='home.php';</script>";
+
         exit(); 
     } 
 }
 ?>
+<!-- $2y$10$getSMxPv8YJarFa17G8H4.vaS0hUChNnjyq9KWvQ7yFdQHKXeZ6Uq -->
