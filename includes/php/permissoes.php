@@ -59,6 +59,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bindParam(':excluir_perm', $excluir_perm);
  
     if ($stmt->execute()) {
+
+        $acao = "Cadastrou a permissão '$nome'";
+        $id_log = $_SESSION['id_user'];
+
+        $sql_log = "INSERT INTO log (id_user, acao)
+        VALUES (:id_user, :acao)";
+
+        $stmt_log = $db->prepare($sql_log);
+        $stmt_log->bindParam(':id_user', $id_log);
+        $stmt_log->bindParam(':acao', $acao);
+        $stmt_log->execute();
+
         echo "Permissão cadastrada com sucesso!";
     } else {
         echo "Erro ao cadastrar a permissão.";

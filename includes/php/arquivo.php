@@ -35,7 +35,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         try {
             $stmt = $db->prepare("UPDATE arquivo SET texto = :texto WHERE id_arquivo = :id");
             $stmt->execute([':texto' => $texto, ':id' => $id]);
-            header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $id);
+            
+            $acao = "Atualizou o texto do arquivo '$lista_nome'";
+            $id_log = $_SESSION['id_user'];
+
+            $sql_log = "INSERT INTO log (id_user, acao)
+            VALUES (:id_user, :acao)";
+
+            $stmt_log = $db->prepare($sql_log);
+            $stmt_log->bindParam(':id_user', $id_log);
+            $stmt_log->bindParam(':acao', $acao);
+            $stmt_log->execute();
+
+            echo "<script>window.location.href = '" . $_SERVER['PHP_SELF'] . "?id=" . $id . "';</script>";
             exit;
         } catch (PDOException $e) {
             echo "<script>alert('Erro ao atualizar o registro:')</script>" . $e->getMessage();
