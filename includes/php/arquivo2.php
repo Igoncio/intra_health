@@ -11,7 +11,8 @@ try {
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
             $uploadDir = '../uploads/';
-            $uploadFile = $uploadDir . basename($_FILES['file']['name']);
+            $fileName = basename($_FILES['file']['name']);
+            $uploadFile = $uploadDir . $fileName;
     
        
             $stmtOldFile = $db->prepare("SELECT arq FROM arquivo WHERE id_arquivo = :id");
@@ -26,7 +27,21 @@ try {
          
             if (move_uploaded_file($_FILES['file']['tmp_name'], $uploadFile)) {
                 $stmt = $db->prepare("UPDATE arquivo SET arq = :arq WHERE id_arquivo = :id");
-                $stmt->execute([':arq' => $uploadFile, ':id' => $id]);
+                if($stmt->execute([':arq' => $uploadFile, ':id' => $id])){
+                    
+                    $acao = "Realizou o upload de: '$fileName'";
+                    $id_log = $_SESSION['id_user'];
+
+                    $sql_log = "INSERT INTO log (id_user, acao)
+                    VALUES (:id_user, :acao)";
+    
+                    $stmt_log = $db->prepare($sql_log);
+                    $stmt_log->bindParam(':id_user', $id_log);
+                    $stmt_log->bindParam(':acao', $acao);
+                    $stmt_log->execute();
+
+
+                }
             }
         }
     }
