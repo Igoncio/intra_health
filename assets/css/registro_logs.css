@@ -7,6 +7,18 @@
     font-style: normal;
 }
 
+#voltar{
+    margin-top: 35%;
+}
+
+#foto{
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #dfdfdf;
+}
+
 .table-container {
     width: 90%;
     margin: 0 auto;
@@ -14,7 +26,7 @@
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     max-height: 600px; /* Limite de altura */
-    max-width: 740px;
+    max-width: 100vh;
     overflow-y: auto; /* Ativa a rolagem vertical */
 }
 table {

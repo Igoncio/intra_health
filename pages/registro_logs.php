@@ -25,9 +25,9 @@ include '../includes/php/registro_logs.php';
     <table>
         <thead>
             <tr> 
-                <th>Data</th>
                 <th>Responsável</th>
                 <th>Ação</th>
+                <th>Data</th>
             </tr>
         </thead>
         <tbody>
@@ -45,7 +45,7 @@ include '../includes/php/registro_logs.php';
         </div>
     </div>
 </div>
-<!-- <a href="home.php"><button>voltar</button></a> -->
+<a href="home.php"><button id="voltar" class="btn btn-primary">voltar</button></a>
 
 <script>function openModal() {
     document.getElementById("deleteModal").style.display = "block";
