@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 }
 $palavra_chave = "%$lista_nome%"; 
-$consultar_registros = "SELECT * FROM vw_grupo_log WHERE acao LIKE :acao";
+$consultar_registros = "SELECT * FROM vw_grupo_log WHERE acao LIKE :acao ORDER BY data_hora DESC";
 $stmt_consulta = $db->prepare($consultar_registros);
 $stmt_consulta->bindParam(':acao', $palavra_chave, PDO::PARAM_STR);
 $stmt_consulta->execute();

@@ -53,6 +53,8 @@ foreach($dados_menu as $menu){
              
                       
                         <a class="nav-link active" aria-current="page" href="configuracao_usuario.php">Configurações</a>
+
+                        <a class="nav-link active" aria-current="page" href="registro_logs.php">Registro de Ações</a>
                     </li>
 
                     <li class="nav-item dropdown ">

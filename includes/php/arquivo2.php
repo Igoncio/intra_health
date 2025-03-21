@@ -7,6 +7,10 @@ try {
 
     $id = isset($_GET['id']) ? $_GET['id'] : null;
 
+    $stmt2 = $db->prepare("SELECT nome FROM arquivo WHERE id_arquivo = :id");
+    $stmt2->execute([':id' => $id]);
+    $dados2 = $stmt2->fetch(PDO::FETCH_ASSOC);
+    $lista_nome = $dados2 ? $dados2['nome'] : '';
 
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
@@ -24,10 +28,7 @@ try {
                 unlink($oldFile['arq']);
             }
     
-            $stmt2 = $db->prepare("SELECT nome FROM arquivo WHERE id_arquivo = :id");
-            $stmt2->execute([':id' => $id]);
-            $dados2 = $stmt2->fetch(PDO::FETCH_ASSOC);
-            $lista_nome = $dados2 ? $dados2['nome'] : '';
+           
             if (move_uploaded_file($_FILES['file']['tmp_name'], $uploadFile)) {
                 $stmt = $db->prepare("UPDATE arquivo SET arq = :arq WHERE id_arquivo = :id");
                 if($stmt->execute([':arq' => $uploadFile, ':id' => $id])){
@@ -108,7 +109,7 @@ try {
 }
 $palavra_chave = "%$lista_nome%"; 
 
-$consultar_registros = "SELECT * FROM vw_grupo_log WHERE acao LIKE :acao";
+$consultar_registros = "SELECT * FROM vw_grupo_log WHERE acao LIKE :acao ORDER BY data_hora DESC";
 $stmt_consulta = $db->prepare($consultar_registros);
 $stmt_consulta->bindParam(':acao', $palavra_chave, PDO::PARAM_STR);
 $stmt_consulta->execute();

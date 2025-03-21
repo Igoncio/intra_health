@@ -5,7 +5,7 @@ include '.././App/Db/connPoo.php';
 $db = new PDO("mysql:host=$dbHost;dbname=intra_health", "$dbUsername", "$dbPassword");
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$perm = "SELECT * FROM vw_grupo_log";
+$perm = "SELECT * FROM vw_grupo_log ORDER BY data_hora DESC";
 $stmt = $db->query($perm);
 $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

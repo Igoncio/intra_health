@@ -51,7 +51,7 @@ $lista_geral = '';
 foreach ($dados_arq as $arq) {
     if ($arq['id_grupo'] == 6 && $arq['id_pasta'] == 0 && $arq['id_subpasta'] == 0) {
         if($arq['editavel'] == 1){
-            $lista_mod .= '
+            $lista_geral .= '
             <li>
                 <a href="arquivo2.php?id=' . htmlspecialchars($arq["id_arquivo"]) . '">
                     
