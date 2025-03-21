@@ -55,5 +55,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "ID não fornecido.";
     }
+
+}
+$palavra_chave = "%$lista_nome%"; 
+$consultar_registros = "SELECT * FROM vw_grupo_log WHERE acao LIKE :acao";
+$stmt_consulta = $db->prepare($consultar_registros);
+$stmt_consulta->bindParam(':acao', $palavra_chave, PDO::PARAM_STR);
+$stmt_consulta->execute();
+
+$dados_consulta = $stmt_consulta->fetchAll(PDO::FETCH_ASSOC);
+
+$lista_registros = '';
+foreach($dados_consulta as $registros){
+    // print_r($registros); die;
+    
+    $lista_registros .= '
+    <div class="registro">
+        <ul id="foto-resp">
+            <img id="foto-registro" src=" '. $registros['foto'] . '" alt=""> 
+            <p id="nome">'. $registros['nome'] . '</p>
+        </ul> 
+    
+        <p id="acao">'. $registros['acao'] . '</p>
+        <p id="data_hora">'. $registros['data_hora'] . ' </p>
+    </div>
+    
+    ';
 }
 ?>

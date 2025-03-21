@@ -106,7 +106,7 @@ try {
 } catch (PDOException $e) {
     echo "Erro ao conectar ao banco de dados: " . $e->getMessage();
 }
-$palavra_chave = "%jyhg%"; 
+$palavra_chave = "%$lista_nome%"; 
 
 $consultar_registros = "SELECT * FROM vw_grupo_log WHERE acao LIKE :acao";
 $stmt_consulta = $db->prepare($consultar_registros);

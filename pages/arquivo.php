@@ -16,6 +16,7 @@ include '../includes/php/arquivo.php';
         <span class="material-icons">arrow_back</span>
         Voltar
         </a> 
+        <i id="registros" class="fa-solid fa-clock-rotate-left"></i>
 
         <h1 class="page-title"><?=$lista_nome?></h1>
 
@@ -45,6 +46,27 @@ include '../includes/php/arquivo.php';
         </form>
         </div>
         <?php endif;?>
+
+        <div id="modalRegistros" class="modal">
+    <div class="modal-content">
+        <h2>Histórico de Registros</h2>
+        <div class="area-registro">
+            <div class="registro-cabecalho">
+                <p id="nome">Responsável</p>
+                <p id="acao">Ação</p>
+                <p id="data_hora">Data e hora </p>
+            </div>
+        <div class="registros-2">
+
+
+                <?= $lista_registros; ?>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
 
 
     <script>
@@ -77,6 +99,21 @@ include '../includes/php/arquivo.php';
         function formatText(command) {
             document.execCommand(command, false, null);
         }
+
+        document.getElementById('registros').addEventListener('click', function() {
+    document.getElementById('modalRegistros').style.display = 'block';
+});
+
+function fecharModal() {
+    document.getElementById('modalRegistros').style.display = 'none';
+}
+
+window.onclick = function(event) {
+    var modal = document.getElementById('modalRegistros');
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+}
     </script>
 </body>
 </html>
