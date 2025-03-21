@@ -24,7 +24,10 @@ try {
                 unlink($oldFile['arq']);
             }
     
-
+            $stmt2 = $db->prepare("SELECT nome FROM arquivo WHERE id_arquivo = :id");
+            $stmt2->execute([':id' => $id]);
+            $dados2 = $stmt2->fetch(PDO::FETCH_ASSOC);
+            $lista_nome = $dados2 ? $dados2['nome'] : '';
             if (move_uploaded_file($_FILES['file']['tmp_name'], $uploadFile)) {
                 $stmt = $db->prepare("UPDATE arquivo SET arq = :arq WHERE id_arquivo = :id");
                 if($stmt->execute([':arq' => $uploadFile, ':id' => $id])){
@@ -50,10 +53,7 @@ try {
 
 
 
-    $stmt2 = $db->prepare("SELECT nome FROM arquivo WHERE id_arquivo = :id");
-    $stmt2->execute([':id' => $id]);
-    $dados2 = $stmt2->fetch(PDO::FETCH_ASSOC);
-    $lista_nome = $dados2 ? $dados2['nome'] : '';
+
     // echo $lista_nome; die;
 
     $stmt = $db->prepare("SELECT arq FROM arquivo WHERE id_arquivo = :id");
