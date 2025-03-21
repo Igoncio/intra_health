@@ -11,12 +11,7 @@ include '../includes/php/arquivo2.php';
     <title>Editor de Texto</title>
     <link rel="stylesheet" href="../assets/css/arquivo2.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <style>
-        .button-container {
-            display: flex;
-            gap: 10px;
-        }
-    </style>
+
 </head>
 <body>
     
@@ -27,13 +22,11 @@ include '../includes/php/arquivo2.php';
     Voltar
     </a> 
     <h1 class="page-title"><?=$lista_nome?></h1>
-    
-    <div id="uploadSection">
+    <i id="registros" class="fa-solid fa-clock-rotate-left"></i>
+        <div id="uploadSection">
         <?=$lista?>
     </div>
 
-
-    
     <div class="button-container" id="actionButtons" style="display: none;">
         <button id="reloadBtn" onclick="resetForm()">
             <span class="material-icons"></span>Selecionar outro arquivo
@@ -43,12 +36,46 @@ include '../includes/php/arquivo2.php';
     <div class="preview-container" id="previewContainer"></div>
 </div>
 
+<div id="modalRegistros" class="modal">
+    <div class="modal-content">
+        <h2>Histórico de Registros</h2>
+        <div class="area-registro">
+            <div class="registro-cabecalho">
+                <p id="nome">Responsável</p>
+                <p id="acao">Ação</p>
+                <p id="data_hora">Data e hora </p>
+            </div>
+        <div class="registros-2">
+
+
+                <?= $lista_registros; ?>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
 <script>
 function hidePreview() {
-   
     document.getElementById('previewContainer').style.display = 'none';
-    document.getElementById('hidePreviewBtn').style.display = 'none'
+    document.getElementById('hidePreviewBtn').style.display = 'none';
     document.getElementById('uploadForm').style.display = 'block';
+}
+
+document.getElementById('registros').addEventListener('click', function() {
+    document.getElementById('modalRegistros').style.display = 'block';
+});
+
+function fecharModal() {
+    document.getElementById('modalRegistros').style.display = 'none';
+}
+
+window.onclick = function(event) {
+    var modal = document.getElementById('modalRegistros');
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
 }
 </script>
 </body>

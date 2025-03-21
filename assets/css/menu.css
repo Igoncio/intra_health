@@ -12,6 +12,7 @@
     object-fit: cover;
     background: #dfdfdf;
 }
+
 #link-config{
     display: flex;
     text-decoration: none;

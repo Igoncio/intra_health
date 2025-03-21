@@ -24,12 +24,12 @@ try {
                 unlink($oldFile['arq']);
             }
     
-         
+
             if (move_uploaded_file($_FILES['file']['tmp_name'], $uploadFile)) {
                 $stmt = $db->prepare("UPDATE arquivo SET arq = :arq WHERE id_arquivo = :id");
                 if($stmt->execute([':arq' => $uploadFile, ':id' => $id])){
                     
-                    $acao = "Realizou o upload de: '$fileName'";
+                    $acao = "Realizou o upload de: '$fileName' em '$lista_nome'";
                     $id_log = $_SESSION['id_user'];
 
                     $sql_log = "INSERT INTO log (id_user, acao)
@@ -47,10 +47,14 @@ try {
     }
 
 
+
+
+
     $stmt2 = $db->prepare("SELECT nome FROM arquivo WHERE id_arquivo = :id");
     $stmt2->execute([':id' => $id]);
     $dados2 = $stmt2->fetch(PDO::FETCH_ASSOC);
     $lista_nome = $dados2 ? $dados2['nome'] : '';
+    // echo $lista_nome; die;
 
     $stmt = $db->prepare("SELECT arq FROM arquivo WHERE id_arquivo = :id");
     $stmt->execute([':id' => $id]);
@@ -102,4 +106,36 @@ try {
 } catch (PDOException $e) {
     echo "Erro ao conectar ao banco de dados: " . $e->getMessage();
 }
+$palavra_chave = "%jyhg%"; 
+
+$consultar_registros = "SELECT * FROM vw_grupo_log WHERE acao LIKE :acao";
+$stmt_consulta = $db->prepare($consultar_registros);
+$stmt_consulta->bindParam(':acao', $palavra_chave, PDO::PARAM_STR);
+$stmt_consulta->execute();
+
+$dados_consulta = $stmt_consulta->fetchAll(PDO::FETCH_ASSOC);
+
+$lista_registros = '';
+foreach($dados_consulta as $registros){
+    // print_r($registros); die;
+    
+    $lista_registros .= '
+    <div class="registro">
+        <ul id="foto-resp">
+            <img id="foto-registro" src=" '. $registros['foto'] . '" alt=""> 
+            <p id="nome">'. $registros['nome'] . '</p>
+        </ul> 
+    
+        <p id="acao">'. $registros['acao'] . '</p>
+        <p id="data_hora">'. $registros['data_hora'] . ' </p>
+    </div>
+    
+    ';
+
+
+
+
+}
+
+
 ?>
