@@ -13,7 +13,7 @@ if (isset($_POST['senha'])) {
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if (password_verify($senha, $usuario['senha'])) {
-            header('Location: alterar_senha.php');
+            echo "<script>window.location.href='alterar_senha.php';</script>";
             exit(); 
         } else {
             echo "<script>alert('senha incorreta!')</script>";
