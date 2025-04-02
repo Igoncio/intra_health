@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if ($stmt->execute()) {
             echo "<script>alert('Senha atualizada com sucesso!');</script>";
-            header('Location: home.php');
+            echo "<script>window.location.href='home.php';</script>";
             exit();
         } else {
             echo "<script>alert('Erro ao atualizar senha!');</script>";
