@@ -29,6 +29,8 @@ foreach($dados_menu as $menu){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/menu.css">
     <link rel="icon" href="../img/width_200.png" type="image/x-icon">
+
+    
 </head>
 <body>
 <nav class="navbar bg-body-tertiary fixed-top">
@@ -48,50 +50,83 @@ foreach($dados_menu as $menu){
             <div class="offcanvas-body">
                 <ul id="area-menu" class="navbar-nav justify-content-end flex-grow-1 pe-3">
                     <li class="nav-item">
-                      
-                        <a class="nav-link active" aria-current="page" href="home.php">Home</a>
-             
-                      
-                        <a class="nav-link active" aria-current="page" href="configuracao_usuario.php">Configurações</a>
 
-                        <a class="nav-link active" aria-current="page" href="registro_logs.php">Registro de Ações</a>
-                    </li>
-
-                    <li class="nav-item dropdown ">
-                        <?php if ($cad_user || $cad_arq || $cad_pasta || $cad_perm): ?>
-                            <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Cadastros
-                            </a>
+                        <div class="area-acesso-menu">
+                            <i id="icon-menu" class="fa-solid fa-house"></i>
+                            <a class="nav-link active" id="acesso-txt-menu" aria-current="page" href="home.php">Home</a>
+                        </div>
+        
+                        <?php if ($edit_user || $excluir_user): ?>
+                            <div class="area-acesso-menu">
+                                <i id="icon-menu" class="fa-solid fa-bars-staggered"></i>
+                                <a class="nav-link active" id="acesso-txt-menu" href="gerenciar_usuario.php">Gerenciar</a>
+                            </div>
                         <?php endif; ?>
-                        <ul class="dropdown-menu">
-                            <?php if ($cad_user): ?>
-                                <li><a class="dropdown-item" href="cadastrar_usuario.php">Cadastrar Usuario</a></li>
+
+                        <div class="area-acesso-menu">
+                            <i id="icon-menu" class="fa-solid fa-gear"></i>
+                            <a class="nav-link active" id="acesso-txt-menu" aria-current="page" href="configuracao_usuario.php">Configurações</a>
+                        </div>
+
+                        <?php if ($acesso_ti): ?>
+                            <div class="area-acesso-menu">
+                                <i id="icon-menu" class="fa-solid fa-newspaper"></i>
+                                <a class="nav-link active"id="acesso-txt-menu"  aria-current="page" href="registro_logs.php">Registro de Ações</a>
+                            </div>
+                        <?php endif; ?>
+
+
+                        <li style="position: relative; display: flex; margin-top: 5px;">
+                            <?php if ($cad_user || $cad_arq || $cad_pasta || $cad_perm): ?>
+                                <div class="area-acesso-menu">
+                                    <i id="icon-menu" class="fa-solid fa-square-plus"></i>
+                                    <a class="abrir-modal-cad" id="acesso-txt-menu" href="#" onclick="toggleModal(event)">Cadastros</a>
+                                </div>
                             <?php endif; ?>
 
-                            <?php if ($cad_perm): ?>
-                                <li><a class="dropdown-item" href="cadastrar_permissao.php">Cadastrar Permissão</a></li>
-                            <?php endif; ?>
+                            <!-- Modal pequeno abaixo do texto -->
+                            <div id="modalCadastros" class="modal-cad">
+                                <ul>
+                                    <?php if ($cad_user): ?>
+                                        <li><a href="cadastrar_usuario.php">Cadastrar Usuário</a></li>
+                                    <?php endif; ?>
 
-                            <?php if ($cad_pasta): ?>
-                                <li><a class="dropdown-item" href="nova_pasta.php">Cadastrar Pasta</a></li>
-                            <?php endif; ?>
+                                    <?php if ($cad_perm): ?>
+                                        <li><a href="cadastrar_permissao.php">Cadastrar Permissão</a></li>
+                                    <?php endif; ?>
 
-                            <?php if ($cad_pasta): ?>
-                                <li><a class="dropdown-item" href="nova_subpasta.php">Cadastrar Subpasta</a></li>
-                            <?php endif; ?>
-                        </ul>
+                                    <?php if ($cad_pasta): ?>
+                                        <li><a href="nova_pasta.php">Cadastrar Pasta</a></li>
+                                        <li><a href="nova_subpasta.php">Cadastrar Subpasta</a></li>
+                                    <?php endif; ?>
+                                </ul>
+                            </div>
+                        </li>
+
+
+
+
                     </li>
 
-                    <?php if ($edit_user || $excluir_user): ?>
-                        <li class="nav-item dropdown ">
-                            <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Gerenciar
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="gerenciar_usuario.php">Gerenciar Usuario</a></li>
-                            </ul>
-                        </li>
-                    <?php endif; ?>
+
+                    <script>
+                        function toggleModal(event) {
+                            event.preventDefault(); 
+                            var modal = document.getElementById('modalCadastros');
+                            modal.style.display = (modal.style.display === 'block') ? 'none' : 'block';
+                        }
+
+                        // Fechar o modal ao clicar fora dele
+                        document.addEventListener('click', function(event) {
+                            var modal = document.getElementById('modalCadastros');
+                            var link = document.querySelector('.abrir-modal-cad');
+                            if (modal.style.display === 'block' && !modal.contains(event.target) && !link.contains(event.target)) {
+                                modal.style.display = 'none';
+                            }
+                        });
+                    </script>
+
+
                 </ul>
 
               </div>
