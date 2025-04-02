@@ -1,5 +1,4 @@
 <?php
-session_start();
 include '../App/Db/connPoo.php';
 
 $db = new PDO("mysql:host=$dbHost;dbname=intra_health", "$dbUsername", "$dbPassword");
